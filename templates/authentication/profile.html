@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Your Profile
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+
+<body>
+    <header class="banner">
+        <img src="" alt="">
+    </header>
+    <div class="container">
+        <div class="card-profile">
+            <div>
+                <img src="{{ profile.image.url }}" alt="">
+            </div>
+            <div class="details-container">
+                <div class="details">
+                <h4>{{ request.user.get_username }}</h4>
+                <h5>{{ request.user.get_full_name }}</h5>
+                <h3>{{ profile.bio }}</h3>
+            </div>
+            </div>
+        </div>
+        <div class="other-deets">              
+            <h6>Joined on: {{profile.join_date}}</h6>
+            <p>Birthday: {{profile.birth_date}}</p>
+        </div>
+        <a class='edit' href="{% url 'profile_edit' %}">Edit Details</a>
+    </div>
+
+</body>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Your Journal
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+
+<body class="journal-body">
+    <div id="journal">
+        <div>
+            <img class="profilebg" src="{% static 'images/pastelbg.jpg' %}" alt="">
+        </div>
+        <div id="jname">Your mom's <br>journal</div>
+        <div class="journal-info">
+            <a href="{% url 'entry' %}">New Entry<i class="ri ri-add-box-fill"></i></a>
+            <br />
+            <a href="{% url 'all_entries' %}">All Entries<i class="ri ri-database-fill"></i></a>
+            <br />
+            <a href="{% url 'star_entries' star='star' %}">Starred Entries<i class="ri ri-star-half-line"></i></a>
+        </div>
+    </div>
+</body>
+{% endblock %}

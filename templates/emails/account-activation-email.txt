@@ -1,0 +1,13 @@
+{% autoescape off %}
+Ahoy, {{ user.username }}!
+
+Your arrival here brings us immense pleasure. There's just one small step left for you to embark on your journey with
+us...
+Please click on the link below to confirm your registration:
+
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+
+Happy Journaling!
+Team Eudaimonia
+{% endautoescape %}

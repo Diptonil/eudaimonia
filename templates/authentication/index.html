@@ -1,0 +1,109 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Welcome
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'authentication/index.css' %}">
+
+<body>
+    <div class="navbar" id="myNavbar">
+        <div class="container flex">
+            <h1 class="webname">Eudaimonia</h1>
+            <div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'services' %}">Feature Description</a></li>
+                    <li><a href="{% url 'demo' %}">Try Mood Improver</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="showcase" id="home">
+        <div class="container">
+            <div class="showcase-text">
+                <h1 id="showcase-text-quote">"I write because I don't know what I think until I read what I say."</h1>
+                <h2 id="showcase-text-quote-by">- Flannery O'Connor</h2>
+                <p>Be it for leisure, scheduling, building a habit, or logging hobbies, journaling is a voyage to the
+                    interior. So amidst the pandemonium that life is, sit down for a moment of quiet reflection and
+                    delve deep - within yourself. It is a soujourn to self-exploration, stillness and bliss...</p>
+                <p>Welcome to Eudaimonia - your own private space for your personal odysseys.</p>
+                <br>
+                <button onclick="location.href='{% url 'signup' %}'">Get Started</button>
+                <div>Already a diarist here? <a href="{% url 'login' %}">Log in.</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!--Features-->
+    <div>
+        <div id="features">
+            <br>
+            <br>
+            <div class="right">
+                <div id="bg1">
+                </div>
+                <div class="border">
+                    <h1 id="feature1">A Personal Diary...</h1>
+                    <p>Wherever you are, whenever it is, however you might feel like, Eudaimonia is your own personal
+                        diary where you may write whatever you wish to.</p>
+                    <p>Learn more about our <a href="#">utilities</a> here.</p>
+                </div>
+            </div>
+            <div class="right">
+                <div id="bg2"></div>
+                <div class="border">
+                    <h1 id="feature2">... that is also a Collage...</h1>
+                    <p>Feeling drained of words? Or would you just like to catalogue your entry with pictures, like a
+                        collage or a detailed study (or some top-secret investiga... fine, we'll be quiet regarding
+                        that)? Be not bound by words, Eudaimonia offers you the liberty to upload pictures in your
+                        entries.</p>
+                    <p>Learn more about our <a href="#">storage</a> here.</p>
+                </div>
+            </div>
+            <div class="right">
+                <div id="bg3"></div>
+                <div class="border">
+                    <h1 id="feature3">... that nobody on earth can break into...</h1>
+                    <p>Worried about security? We at Eudaimonia offer you the military-grade 256-bit AES encryption that
+                        has been proven to be unbreakable.</p>
+                    <p>Learn more about our <a href="#">security policies</a> here.</p>
+                </div>
+            </div>
+            <div class="right">
+                <div id="bg4"></div>
+                <div class="border">
+                    <h1 id="feature4">... and comes for free.</h1>
+                    <p>There are no charges involved at any stage for any service. Everything is completely free (the
+                        developers made it so because they know how it feels to avail the best services without spending
+                        a dime).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+
+    <div id="footer">
+
+    </div>
+</body>
+
+<script>
+    let navbar = document.getElementById('myNavbar')
+    window.onscroll = function () {
+        "use strict"
+        if (document.body.scrollTop >= 200 || document.documentElement.scrollTop >= 200) {
+            navbar.classList.add("scrolling-active")
+        }
+        else {
+            navbar.classList.remove("scrolling-active")
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% autoescape off %}
+Ahoy, {{ name }}!
+
+We hope that you have been doing great. Also, what have you been upto? (The eyez emojis that I am not including just because I am unable to find it in my keyboard. Otherwise I would have included it. Really. Divyansh-promise.)
+THIS TEMPLATE IS FOR TESTING PURPOSES AND IS MARKED FOR CHANGE
+
+Sincerely,
+Team Eudaimonia.
+
+{% endautoescape %}

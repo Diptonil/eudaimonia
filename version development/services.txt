@@ -1,0 +1,50 @@
+DATABASE (Production) - Heroku:
+# PostgreSQL
+- <managed>
+
+
+DATABASE (Development) - ElephantSQL:
+# PostgreSQL
+- NAME: hxoiluux
+- USER: hxoiluux
+- PASSWORD: spo2lr4cZp2m2QNNDlrSudXFVuXrkxwT
+- HOST: john.db.elephantsql.com
+
+
+DATABASE (Test) - Localhost:
+# Sqlite3
+- NAME: test.sqlite3
+
+
+CACHE (All) - Redis Labs:
+# Redis
+- LOCATION: redis-11309.c264.ap-south-1-1.ec2.cloud.redislabs.com:11309
+
+
+SMTP (All) - Google:
+# GMail
+- EMAIL_HOST: smtp.gmail.com
+- EMAIL_HOST_USER: yourmomsjournal@gmail.com
+- EMAIL_HOST_PASSWORD: sylnklistqsmsztw
+- EMAIL_PORT: 587
+- EMAIL_USE_TLS: True
+- DEFAULT_FROM_EMAIL: yourmomsjournal@gmail.com
+
+
+STORAGE (All) - Cloudinary:
+# Cloudinary
+- CLOUD_NAME: yourmomscloud
+- API_KEY: 471845542247137
+- API_SECRET: Jgai2VdgvE1j0hrcnNlgAciPXkA
+
+
+MESSAGE BROKER (All) - CloudAMQP:
+# RabbitMQ
+- CELERY_BROKER_URL = 'amqps://vomcxylc:L9uD-DWsO9vwcMqyF7b3CfvqD1F1cudz@puffin.rmq2.cloudamqp.com/vomcxylc'
+- CELERY_RESULT_BACKEND = 'amqps://vomcxylc:L9uD-DWsO9vwcMqyF7b3CfvqD1F1cudz@puffin.rmq2.cloudamqp.com/vomcxylc'
+
+
+CAPTCHA (All) = Google
+# ReCaptcha
+- RECATCHA_PUBLIC_KEY = '6Lde9vYeAAAAAAqkzxT95WxssHcD_fHb16Jc_EbC'
+- RECAPTCHA_PRIVATE_KEY = '6Lde9vYeAAAAAK6WbLJOym1TazSq24xej5DZwc9f'

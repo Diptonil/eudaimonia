@@ -1,0 +1,118 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Feature Description
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'authentication/index.css' %}">
+
+<body>
+    <div class="navbar" id="myNavbar">
+        <div class="container flex">
+            <h1 class="webname">Eudaimonia</h1>
+            <div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'services' %}">Feature Description</a></li>
+                    <li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1 class="test-heading">About Us</h1>
+    <p>Every member of the Eudaimonia community may use the platform without the hassle of agreeing to strict
+        guidelines. This is a free platform hosted by students with the primary motive of learning and providing
+        a peaceful environment for personal development and growth that may not be otherwise available elsewhere on the
+        web.</p>
+    <p>Although there exists no pressure of going through any Terms and Conditions, we are still providing the link for
+        those interested.</p>
+    <br />
+    <h1 class="test-heading">Utilities</h1>
+    <p>The complete set of utilities that we provide:</p>
+    <ul>
+        <li>A personalised Notebook for the users to use without any limit (See <a href="#">Limits</a> for more
+            information).</li>
+        <li>Allowing the use of images as a part of the entry (See <a href="#">Limits</a> for more information).</li>
+        <li>Smart-recovery of deleted entries (See <a href="#">Storage</a> for more information).</li>
+        <li>Encryption of all entries by Military Grade 256-bit AES algorithm (See <a href="#">Security</a> for more
+            information).</li>
+    </ul>
+    <h1 class="test-heading">Storage</h1>
+    <p>Although Eudaimonia in itself does not impose any limit on the utilization of any of its sources, the development
+        team is bounded by technicalities imposed by their implementations (See <a href="#">Limits</a> for more
+        information).</p>
+    <p>Eudaimonia allows the feature of Smart-recovery of all entries on the platform. But it is of paramount importance
+        to know that over-utilization of the feature is greatly discouraged primarily for two reasons:</p>
+    <ul>
+        <li>Data Recovery techniques are expensive and create a considerable overhead on the resources.</li>
+        <li>Frequent deletions and recovery defeats the primal purpose of journaling, which is the creation of a
+            preservable record of reference, for whatsoever purpose the user may see fit, that is not to be deleted in
+            the first place, unless very sure of the reasons of its defragmentation.</li>
+    </ul>
+    <p>It is our duty to instill proper sense of the art to journaling, so that the users may benefit from the activity
+        to the maximum extent. Therefore, even though we provide the facilities, deletions and recovery are not
+        encouraged at all.</p>
+    <p>The implementation of the data-recovery technique used for the application shall not be disclosed.</p>
+    <br />
+    <h1 class="test-heading">Security</h1>
+    <p>Eudaimonia is supported by web-frameworks that put security above all else. Amidst the many vulnarabilities all
+        over the web, care is taken to secure all components of the user data. Technicalities to the said statement are
+        explained as:</p>
+    <ul>
+        <li>The source code of the application does not reveal any configuration variable or secret values that any
+            attacker may leverage to gain access to discreet information (sensitive data have been exported as
+            Environment Variables on the host server).</li>
+        <li>All forms have been protected against SQL Injection attacks.</li>
+        <li>All forms have CSRF token validation.</li>
+        <li>The support for logging in through other socials such as GMail, Facebook, etc. has been prohibited to
+            strictly ensure that the password being set for the Eudaimonia account is unique and different from the
+            rest. This has been done to ensure that anyone else using the same computer would not be able to access the
+            entries. Users are suggested to not let the browser save their credentials.</li>
+    </ul>
+    <p>The Advanced Encryption Standard (AES) is a symmetric block cipher chosen by the U.S. government to protect
+        classified information. AES-256 uses a 256-bit key length to encrypt and decrypt a block of
+        messages and it has the following attributes that make it uncrackable:</p>
+    <ul>
+        <li>It is a Quantum-secure encryption standard, which means that even quantum computers would not be unable to
+            crack it because the cipher can adapt to a quantum attack by increasing its key size.</li>
+        <li>The AES security is an impermeable layer of security that exists beneath several layers of protection of the
+            database. Even in extreme cases of data breach of the database (the occurence that does not have any chance
+            of
+            taking place, theoretically), there is no possible mechanism to break the encryption that gets generated.
+        </li>
+    </ul>
+    <p>Hence, the security measures provided are more than sufficient to keep compromise of data in check and provide an
+        unbreakable environment. The only way in which the data of a potential user might leak out is if
+        someone else knows their password (or if someone else sneaks up behind them).</p>
+    <p>The implementation of the AES Encryption technique used for the application shall not be disclosed.</p>
+    <br />
+    <h1 class="test-heading">Limits</h1>
+    <p>Project Eudaimonia has been developed with the sole purpose of learning how to craft a functional and marketable
+        product that is commercially viable and scalable for free. But the project is built on the free tiers of finite
+        resources (in terms of textual data storage, media data storage, hosting hours and caching) that have the
+        ability to be upscaled but would require funds.</p>
+    <p>Hence, the team of developers at Eudaimonia would like to make the following points clear on the term for which
+        the application may be used:</p>
+    <ul>
+        <li>The exhaustion of resources is an unlikely outcome since the site would not gather traffic (again, serving
+            high traffic was not the intention of the developers). Hence the lifetime of the site may be approximated as
+            infinite.</li>
+        <li>In the unlikely scenario of exhaustion of resources, by whatsoever reasons, the service and support would be
+            discontinued with a notice.</li>
+        <li>In the scenario of the team permanently stopping development of the web application, the website shall
+            continue to exist independently with no flaws up until the resource cap is reached. The systems have been
+            built capable of unmaintained existence.</li>
+    </ul>
+    <p>Eudaimonia would like to reiterate the fact that this endeavour was an attempt at allowing people to inculcate
+        journaling into their daily lives. Hence, the possibility of a premature and unforeseen end to the services
+        offered should not discourage them to embark on this journey.</p>
+    <br />
+    <p>Happy Journaling!</p>
+    <br />
+    <a href="{% url 'index' %}">Home</a>
+</body>
+{% endblock %}

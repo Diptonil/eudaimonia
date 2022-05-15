@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Edit Profile
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'authentication/profile-edit.css' %}" />
+<!--Datepicker-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css"
+    integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"
+    integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+
+<body>
+    <div class="container-edit">
+        <form method="post" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <div class="container-left">
+                <div><span class="labels">Birthday </span>{{ form.birth_date }}</div>
+                <div><span class="labels">Bio </span>{{ form.bio }}</div>
+            </div>
+            <div class="container-right">
+                <img src="{{ profile.image.url }}" alt="" />
+                <br />
+                {{ form.image }}
+                <input type="submit" value="Save" id="btn" />
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(function () {
+        $("#birth-date").datepicker({
+            format: 'dd/mm/yyyy',
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,168 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | New Entry
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+
+<body class="writing">
+    <div id="writing-pad">
+        <div class="card">
+            <form id="test" method="post">
+                {% csrf_token %}
+                <input type="text" id="eName" placeholder="Title" required />
+                <input onclick="popupMessage()" type="submit" value="Save" />
+            </form>
+        </div>
+        <div class="select-bar">
+            <div class="flex">
+                <span class="icons">
+                    <select onchange="execCmdWithArg('fontName', this.value);">
+                        <option value="Arial">Arial</option>
+                        <option value="Comic Sans MS">Comic Sans </option>
+                        <option value="Courier">Courier</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                    <select onchange="execCmdWithArg('fontSize', this.value);">
+                        <option value="3">12px</option>
+                        <option value="1">4px</option>
+                        <option value="2">8px</option>
+                        <option value="4">16px</option>
+                        <option value="5">20px</option>
+                        <option value="6">24px</option>
+                        <option value="7">28px</option>
+                    </select>
+                    <input type="color" onchange="execCmdWithArg('foreColor', this.value);"></i>
+                    <i onclick="executeCmd('bold', this)" class="ri-bold" title="Bold"></i>
+                    <i onclick="executeCmd('italic', this)" class="ri-italic" title="Italic"></i>
+                    <i onclick="executeCmd('Underline', this)" class="ri-underline" title="Underline"></i>
+                    <i onclick="executeCmd('indent', null)" title="Indent" class="ri-indent-increase"></i>
+                    <i onclick="executeCmd('outdent', null)" title="Outdent" class="ri-indent-decrease"></i>
+                    <span class="dropdown">
+                        <i class="ri-align-left" title="Alignment">
+                            <div class="dropdown-content">
+                                <h6 onclick="executeCmdD('justifyLeft', this)" class="highlight dd"><i
+                                        class="ri-align-left"></i>Left</h6>
+                                <h6 onclick="executeCmdD('justifyCenter', this)" class="dd"><i
+                                        class="ri-align-center"></i>Center</h6>
+                                <h6 onclick="executeCmdD('justifyRight', this)" class="dd"><i
+                                        class="ri-align-right"></i>Right</h6>
+                                <h6 onclick="executeCmdD('justifyFull', this)" class="dd"><i
+                                        class="ri-align-justify"></i>Justify</h6>
+                            </div>
+                        </i>
+
+                    </span>
+                    <i onclick="executeCmd('insertOrderedList', null)" class="ri-list-ordered" title="Ordered list"></i>
+                    <i onclick="executeCmd('insertUnorderedList', null)" class="ri-list-unordered"
+                        title="Unordered list"></i>
+                    <i onclick="executeCmd('subscript', this)" title="Subscript" class="ri-subscript-2"></i>
+                    <i onclick="executeCmd('superscript', this)" title="Superscript" class="ri-superscript-2"></i>
+                </span>
+
+                <span class="icons">
+                    <label for="file"><i class="ri-image-add-fill" title="Add image"></i></label>
+                    <input type="file" id="file" accept="image">
+                    <i class="ri-more-fill"></i>
+
+                </span>
+            </div>
+        </div>
+        <div class="card">
+            <iframe name="textField" placeholder="Your entry"></iframe>
+            <div id="display-img"></div>
+        </div>
+
+    </div>
+
+    <div class="popup">
+        <p>Your entry has been saved.</p>
+    </div>
+</body>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+    $(document).ready(function () {
+        $("#test").submit(function (event) {
+            var iframeDoc;
+            const val = document.querySelector('#eName').value;
+            if (window.frames && window.frames.textField &&
+                (iframeDoc = window.frames.textField.document)) {
+                var iframeBody = iframeDoc.body;
+                var content = iframeBody.innerHTML;
+            }
+            $.ajax({
+                type: "POST",
+                url: "",
+                data: { 'csrfmiddlewaretoken': "{{  csrf_token  }}", 'content': content, 'title': val },
+                success: function (response) {
+                    if (response == 1) {
+                        window.location = "{% url 'all_entries' %}";
+                    }
+                },
+            });
+            return false;
+        });
+    });
+
+    function popupMessage() {
+        var popup = document.querySelector('.popup');
+        popup.classList.add('popup-active');
+        setTimeout(() => {
+            popup.classList.remove('popup-active')
+        }, 6000);
+    }
+
+    const image = document.querySelector('#file');
+    var uploaded = "";
+    image.addEventListener('change', function () {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            uploaded = reader.result;
+            console.log(uploaded)
+            document.querySelector("#display-img").style.backgroundImage = `url(${uploaded}))`;
+        });
+        reader.readAsDataURL(this.files[0]);
+    })
+
+    textField.document.designMode = 'On';
+
+    function executeCmdnull(command) {
+        textField.document.execCommand(command, false, null);
+
+    }
+
+    function executeCmd(command, element) {
+        textField.document.execCommand(command, false, null);
+        element.classList.toggle("highlight");
+    }
+
+    function executeCmdD(command, element) {
+        var elements = document.querySelectorAll('.dd')
+        var i = 0
+        length = elements.length;
+        for (i; i < length; i++) {
+            if (elements[i].classList.contains('highlight')) {
+                elements[i].classList.remove('highlight');
+            }
+        }
+        textField.document.execCommand(command, false, null);
+        console.log(length)
+        element.classList.add('highlight');
+    }
+
+    function execCmdWithArg(command, arg) {
+        textField.document.execCommand(command, false, arg);
+
+    }
+
+
+</script>
+{% endblock %}

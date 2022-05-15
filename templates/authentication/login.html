@@ -1,0 +1,73 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Log In
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'authentication/signup-login.css' %}">
+
+<body class="si" id="dim">
+
+    <div class="card card-l">
+        <br>
+        <h1>Log In</h1>
+
+        <br>
+        <form id="login" autocomplete="off" method="post">
+            {% csrf_token %}
+            <div class="form-control">
+                {{ form.username }}
+            </div>
+            <div class="form-control">
+                {{ form.password }}
+                <span class="eye-problem"><i class="far fa-eye" id="togglePassword"
+                        style="margin-left: -5%;display:inline; vertical-align: middle; z-index: 9999"
+                        aria-hidden="true"></i></span>
+                <h5><a href="{% url 'password_reset' %}">Forgot Password?</a></h5>
+
+
+
+                <input type="submit" value="Submit" class="btn">
+
+                {% if form.errors %}
+                {% for field in form %}
+                {% for error in field.errors %}
+                <div class="alert">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %}
+                {% endfor %}
+                {% endif %}
+
+                {% if messages %}
+                <ul class="alert">
+                    {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <p>Don't have an account yet? <a href="{% url 'signup' %}">Sign Up here!</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#id_password');
+
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | {{ entry.title }}
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+
+<body>
+    <div id="post">
+
+        <div >
+
+        </div>
+
+        <div class="write-up">
+            <div id="eName">{{ entry.title }}
+            </div>
+        
+        <h6>{{ entry.date }}</h6>
+        <div class="card">
+            <div id="entry">
+                {{ entry.entry|safe }}
+            </div>
+        </div>
+    </div>
+    </div>
+    <form method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <input type="submit" value="Export as pdf" />
+    </form>
+    <a href="{% url 'disable' id=entry.id %}">Delete Entry</a>
+    {% if star %}
+    <a href="{% url 'star' id=entry.id %}">Unighlight Entry</a>
+    {% else %}
+    <a href="{% url 'star' id=entry.id %}">Highlight Entry</a>
+    {% endif %}
+</body>
+{% endblock %}

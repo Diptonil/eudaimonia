@@ -1,0 +1,154 @@
+/*Landing page*/
+
+/*showcase*/
+
+button {
+    border-radius: 0px;
+    margin: 10px 0;
+    color: var(--primarycolor);
+    background: none;
+    font-size: 20px;
+    border: 2px solid var(--primarycolor);
+    height: 50px;
+    width: 250px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--primarycolor);
+    color: var(--sec)
+}
+
+.showcase {
+    height: 670px;
+    width: 100%;
+    background-image: url("/static/images/background.jpg");
+    background-color: #9c5a4a;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.showcase-text p{
+    font-weight: 200;
+    color: var(--primarycolor);
+}
+
+.showcase-text {
+    color: var(--primarycolor);
+    max-width: 700px;
+    float: left;
+    padding-top: 200px;
+    justify-content: left;
+}
+
+.showcase-text h1{
+    font-size: 40pt;
+    font-weight: 400;
+    color: var(--primarycolor);
+}
+.showcase-text a{
+    color: var(--primarycolor);
+}
+
+.showcase-text div a:hover{
+    text-decoration: underline;
+}
+
+/*End of showcasetext*/
+
+/*Features*/
+#features{
+    margin: 30px 0;
+    overflow: hidden;
+}
+
+#features .border{  
+    border-top: 1px solid var(--contrast); 
+    height: 400px;
+}
+
+#features h1{
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+#features p{
+    font-size: 20px;
+}
+
+#features heading{
+    font-size: 50px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.right{
+    display: grid;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-bottom: 20px;
+    grid-template-columns: 40% 60%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    float: right;
+    text-align: left;
+}
+
+.left{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    float: left;
+    text-align: right;
+    overflow-x: visible;
+}
+
+#bg1{
+    height: 500px;
+    width: 800px;
+    background-image: url("/static/images/pastelbg.jpg");
+    background-attachment: fixed;
+}
+
+#bg2{
+    height: 450px;
+    width: 900px;
+    background-image: url("/static/images/pastelbg.jpg");
+    background-attachment: fixed;
+    
+}
+
+#bg3{
+    height: 500px;
+    width: 900px;
+    background-image: url("/static/images/pastelbg.jpg");
+    background-attachment: fixed;
+}
+/*End of features*/
+
+
+/*Footer*/
+#footer{
+    margin-top: 100px;
+    height: 200px;
+}
+/*End of Footer*/
+/*End of Landing page*/
+
+
+/*
+ADDED BY BRUCE WAYNE
+- Do not delete it
+- In case the CSS is wrong, improve it by moving the CSS rules somewhere else (in compliance to the standard working procedure)
+- Contact BRUCE WAYNE upon making any changes so that he may make a note of it
+*/
+
+#showcase-text-quote-by
+{   
+    text-align: right;
+    margin-right: 50px;
+}

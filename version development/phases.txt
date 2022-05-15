@@ -1,0 +1,5 @@
+1:
+FEATURES: Basic entries, military grade 256-bit AES encryption, email reminders
+
+2:
+FEATURES: Frequency mapper, ML model for music recommendations, customisable email reminders, anonymous sharing

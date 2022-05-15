@@ -1,0 +1,27 @@
+ARTEMIS:
+
+# Enable dark mode
+# Theme
+# Logo and favicon
+# Structure sidebar
+# Entry page - lists
+# The templates for profile, profile_update and post
+# Make everything diary-oriented
+# Animation for selective CSS according to time
+# Error templates
+# Rearrange HTML according to SEO norms
+
+
+BATMAN:
+
+# Selective CSS according to time
+# Form for photo entries
+# Make field for photo entries
+# Lay out content in the templates
+# Navigation and URL mapping
+# Tests
+
+
+HUMAN TORCH:
+
+-

@@ -1,0 +1,87 @@
+1:
+core, venv initialised
+static, templates, history.txt created
+requirements.txt, manage.py generated
+
+
+2:
+authentication, journal initialised
+--
+Interntionalization settings - done
+Hashing settings - done
+Database settings - done
+SECRET_KEY settings - done
+GMail SMTP settings - done
+
+
+3:
+BACKEND:
+    Forgot password
+    Logout
+    Entry of both username or email at login
+    Display of all entries
+FRONTEND:
+    Forgot password icon
+    Restructured static files and templates
+    Alert and success messages at authentication
+--
+Cache settings - done
+Admin and Manager settings - done
+
+
+4:
+BACKEND:
+    Password validators - FAULTY
+    Quicker loading of static resources
+    Media file uploads
+    Military Grade 256 bit AES Cryptographical Support
+    Profile display and updation
+    Global Search
+    Trash Recovery
+    Starred Entries
+    PDF Export - FAULTY
+FRONTEND:
+    Logo
+    Navbar
+    Restructured static files and templates
+    Alert and success messages at authentication
+    Templates of error pages: 400, 403, 404, 500
+--
+Storage settings - done
+Staticfiles serve settings - done
+
+
+5:
+BACKEND:
+    MODEL UNIT TESTS: EntryModelTest (7), ProfileModelTest (5)
+    VIEW UNIT TESTS: IndexPageTest (4), SignupPageTest (4), LoginPageTest (4), ActivationTest (4), ServicesPageTest (4),
+        ProfilePageTest (4), ProfileEditPageTest (4), PasswordChangePageTest (4), SettingsPageTest (4)
+    FORM UNIT TESTS: SignupFormTest (4), LoginFormTest (3), ProfileFormTest (2), PasswordChangeFormTest (-),
+        PasswordResetFormTest (-), 
+    FUNCTIONAL SCENARIO TESTS: IndexPageTest (4), SignupPageTest (4), LoginPageTest (4), ServicesPageTest (4), ProfileTest (4),
+        PasswordResetTest (0)
+    Feature Description added
+    reCaptcha configured - NOT USED
+    Procfile created
+    CI/ CD Workflow incorporated - NOT USED
+    All active services declared
+    AllEntries favourites incorporated
+FRONTEND:
+    Content Updation: Index, Signup
+    Feature Description configured
+    AllEntries, Profile, ProfileEdit themed up
+--
+Cache settings - done
+Development settings - done
+Staging settings - done
+Production settings - done
+Base settings - done
+CURRENT UNIT TEST COUNT: 49
+CURRENT UNIT TEST COVERAGE: 83%
+CURRENT FUNCTIONALITY TEST COUNT: 20
+
+
+6:
+BACKEND:
+FRONTEND:
+--

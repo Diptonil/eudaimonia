@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html5>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/base.css' %}" />
+    <!--For icons-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <!--For 'far fa-eye'-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <!--AJAX-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- reCaptcha
+        <script src='https://www.google.com/recaptcha/api.js?render={{ key }}'></script>
+    -->
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+{% if display %}
+<div id="sidebar-active"></div>
+<div class="sidebar" id="mySidebar" onmouseleave="closeSidebar()">
+    <div>
+
+    </div>
+    <a href="{% url 'entry' %}"><i class="ri ri-add-box-fill"></i>New Entry</a>
+    <a href="{% url 'all_entries' %}"><i class="ri ri-database-fill"></i>All Entries</a>
+    <a href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-half-line"></i>Starred Entries</a>
+    <div class="section">
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"><span>
+                    <label>
+    </div>
+</div>
+<div class="nav-dropdown" id="myDropdown">
+    <div>
+        <img src="{{ profile.image.url }}" alt="" class="profile-pic">
+        <h5>{{ user.username }}</h5>
+    </div>
+    <a href="{% url 'profile' %}"><i class="ri ri-profile-line"></i>Profile</a>
+    <a href="{% url 'settings' %}"><i class="ri ri-settings-5-line"></i>Settings</a>
+    <a href="{% url 'logout' %}"><i class="ri ri-logout-box-r-line"></i>Log Out</a>
+    <div class="section">
+
+    </div>
+</div>
+
+<div class="navbar-m navbar">
+    <div class="flex">
+        <i class="ri-menu-line" onmouseover="openSidebar()"></i>
+        <h1 class="webname">Eudaimonia</h1>
+        <div onclick="openDropdownOnclick()"><img src="{{ profile.image.url }}" class="profile-pic">
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% block body %}
+{% endblock %}
+
+{% if display %}
+<script>
+    function openDropdownOnclick() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    window.onclick = function (event) {
+        if (!event.target.matches('.profile-pic')) {
+            var dropdowns = document.getElementsByClassName("nav-dropdown");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+    function openSidebar() {
+        document.getElementById("mySidebar").style.width = "320px";
+        document.getElementById("sidebar-active").style.display = "block";
+    }
+
+    function closeSidebar() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("sidebar-active").style.display = "none";
+    }
+</script>
+{% endif %}
+
+{% block scripts %}
+{% endblock %}
+
+</html>
