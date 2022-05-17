@@ -15,7 +15,6 @@ ALLOWED_HOSTS = ['localhost', '*']
 
 # Admins are notified by email of request and security issues, in production.
 ADMINS = [('Batman', 'diptonilr@gmail.com')]
-
 # Managers are notified by email of broken links and 404 errors, in production.
 MANAGERS = [("Your Mom's Journal", 'yourmomsjournal@gmail.com')]
 
@@ -40,6 +39,9 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -93,10 +95,19 @@ if 'test' in sys.argv:
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'TIMEOUT': 0,
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis-10569.c301.ap-south-1-1.ec2.cloud.redislabs.com:10569',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'PASSWORD': 'NyAN7qRQFv79BlUAPwAtGu4McHHlypWV'
+        },
+        'KEY_PREFIX': 'cache'
     }
 }
+CACHE_TTL = 10 * 60
+CACHE_MIDDLEWARE_SECONDS = CACHE_TTL
+CACHE_MIDDLEWARE_ALIAS = 'cache'
+CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -71,7 +71,6 @@ FRONTEND:
     Feature Description configured
     AllEntries, Profile, ProfileEdit themed up
 --
-Cache settings - done
 Development settings - done
 Staging settings - done
 Production settings - done
@@ -87,7 +86,9 @@ BACKEND:
     Exception capturing
     Log generation
     README created
+    Cache configured
 FRONTEND:
 --
+Cache settings - done
 Sentry settings - done
 Logging settings - done
