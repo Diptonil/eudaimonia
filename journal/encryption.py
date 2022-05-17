@@ -1,5 +1,6 @@
 import base64
 import hashlib
+
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 
@@ -13,6 +14,7 @@ def encrypt(raw, key):
 
     def pad(s):
         return s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
+
     raw = base64.b64encode(pad(raw).encode('utf8'))
     iv = get_random_bytes(AES.block_size)
     cipher = AES.new(key=key, mode=AES.MODE_CFB, iv=iv)
@@ -24,6 +26,7 @@ def decrypt(enc, key):
 
     def unpad(s):
         return s[:-ord(s[-1:])]
+
     enc = base64.b64decode(enc)
     iv = enc[:AES.block_size]
     cipher = AES.new(key=key, mode=AES.MODE_CFB, iv=iv)

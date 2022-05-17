@@ -1,17 +1,18 @@
+from datetime import date
+
 from django.db import models
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from datetime import date
 
 
-# Use settings.AUTH_USER_MODEL for OnetoOneFields, ForeignKeys, etc. In all other cases of database querying, use get_user_model()
 def user_directory_path(instance, filename):
     print(instance)
     return 'profiles/{0}/{1}'.format(str(instance), filename)
 
 
 class Profile(models.Model):
+    
     PERSONAL = 'Personal'
     TRAVELOGUE = 'Travelogue'
     COOKBOOK = 'Cookbook'

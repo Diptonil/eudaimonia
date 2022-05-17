@@ -8,7 +8,6 @@ class SignupForm(UserCreationForm):
     email = forms.EmailField(required=True)
 
     class Meta:
-
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
@@ -27,6 +26,8 @@ class SignupForm(UserCreationForm):
         username = self.cleaned_data.get('username')
         email = self.cleaned_data.get('email')
         if username is not None:
+            if '@' in username:
+                self.add_error('username', 'The \'@\' character is not allowed.')
             if (username[0] == ('.' or '_')) or (username[-1] == ('.' or '_')):
                 self.add_error('username', "Usernames cannot have periods or underscores at the beginning or end.")
             if User.objects.filter(username=username).exists():
@@ -38,13 +39,13 @@ class SignupForm(UserCreationForm):
 
 class LoginForm(forms.Form):
 
-    username = forms.CharField(required=True)
+    user_identifier = forms.CharField(required=True)
     password = forms.CharField(widget=forms.PasswordInput(), required=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['password'].widget.attrs.update({'name': "password", 'placeholder': "Password", "autocomplete": "false"})
-        self.fields['username'].widget.attrs.update({'name': "username", 'placeholder': "Username or Email", "autocomplete": "off"})
+        self.fields['user_identifier'].widget.attrs.update({'name': "username", 'placeholder': "Username or Email", "autocomplete": "off"})
 
 
 class ProfileForm(forms.Form):

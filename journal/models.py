@@ -8,6 +8,7 @@ def user_directory_path(instance, filename):
 
 
 class Entry(models.Model):
+    
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=64)
     entry = models.TextField()

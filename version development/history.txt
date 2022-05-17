@@ -83,5 +83,9 @@ CURRENT FUNCTIONALITY TEST COUNT: 20
 
 6:
 BACKEND:
+    Exception capturing
+    Log generation
 FRONTEND:
 --
+Sentry settings - done
+Logging settings - done
