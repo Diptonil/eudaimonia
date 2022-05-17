@@ -83,8 +83,10 @@ CURRENT FUNCTIONALITY TEST COUNT: 20
 
 6:
 BACKEND:
+    Refactored development code
     Exception capturing
     Log generation
+    README created
 FRONTEND:
 --
 Sentry settings - done

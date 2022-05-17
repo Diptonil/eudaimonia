@@ -24,7 +24,7 @@ class SignupFormTest(TestCase):
         self.form.data['username'] = 'Test User'
         self.assertEqual(len(self.form.errors), 1)
         self.assertFalse(self.form.is_valid())
-        self.assertIn('Special characters except periods and underscores are not allowed.', str(self.form.errors['username'].as_data()))
+        self.assertIn('Enter a valid username.', str(self.form.errors['username'].as_data()))
 
     def test_form_invalidity_by_at_in_email(self):
         self.form.data['email'] = 'test@test'
@@ -37,15 +37,15 @@ class LoginFormTest(TestCase):
 
     def setUp(self):
         get_user_model().objects.create_user('TestUser', email='test@user.com', password='Password%420')
-        self.form1 = LoginForm(data={'username': 'TestUser', 'password': 'Password%420'})
-        self.form2 = LoginForm(data={'username': 'test@user.com', 'password': 'Password%420'})
+        self.form1 = LoginForm(data={'user_identifier': 'TestUser', 'password': 'Password%420'})
+        self.form2 = LoginForm(data={'user_identifier': 'test@user.com', 'password': 'Password%420'})
 
     def test_form_validity(self):
         self.assertTrue(self.form1.is_valid())
         self.assertTrue(self.form2.is_valid())
 
     def test_form_invalidity_by_no_entries(self):
-        wrong_form = LoginForm(data={'username': '', 'password': ''})
+        wrong_form = LoginForm(data={'user_identifier': '', 'password': ''})
         self.assertEqual(len(wrong_form.errors), 2)
         self.assertFalse(wrong_form.is_valid())
 
@@ -56,7 +56,7 @@ class LoginFormTest(TestCase):
 class ProfileFormTest(TestCase):
 
     def setUp(self):
-        path = Path('C:/Users/rupam/Desktop/Wayne.private/Programming/Python/Projects/Django/your-mom-s-journal/tests/Test Resources/Leonard Cohen.webp')
+        path = Path('C:/Users/rupam/Desktop/Wayne.private/Programming/Python/Projects/Django/eudaimonia/tests/Test Resources/Leonard Cohen.webp')
         get_user_model().objects.create_user('TestUse', email='test@user.com', password='Password%420')
         f = path.open('rb')
         image = File(f, name=path.name)
