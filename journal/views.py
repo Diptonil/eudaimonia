@@ -11,11 +11,11 @@ from django.conf import settings
 from django.core.cache import cache
 from django.core.cache.backends.base import DEFAULT_TIMEOUT
 
+import constants
 from authentication.models import Profile
 from .encryption import encrypt, decrypt
 from .forms import EntrySearchForm
 from .models import Entry
-from ..constants import CURRENT_USER_CACHE_KEY, ALL_ENTRIES_STARRED_CACHE_KEY, ALL_ENTRIES_UNFILTERED_CACHE_KEY, VALUE_CACHE_KEY
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
@@ -28,7 +28,7 @@ def journal_page_view(request):
 
 @login_required
 def entry_page_view(request):
-    cache.delete(ALL_ENTRIES_UNFILTERED_CACHE_KEY)
+    cache.delete(constants.ALL_ENTRIES_UNFILTERED_CACHE_KEY)
     profile_model = Profile.objects.get(user=request.user)
     # Hide 53 and 69 as environment variables!
     if request.POST.get('content') is not None and (request.method == 'POST'):
@@ -65,25 +65,25 @@ def post_page_view(request, id):
 @login_required
 def all_entries_page_view(request, star=None):
     entry_search_form = EntrySearchForm()
-    if cache.get(ALL_ENTRIES_UNFILTERED_CACHE_KEY):
-        entries = cache.get(ALL_ENTRIES_UNFILTERED_CACHE_KEY)
+    if cache.get(constants.ALL_ENTRIES_UNFILTERED_CACHE_KEY):
+        entries = cache.get(constants.ALL_ENTRIES_UNFILTERED_CACHE_KEY)
     else:
         entries = Entry.objects.filter(user=request.user).filter(activated=True)
-        cache.set(ALL_ENTRIES_UNFILTERED_CACHE_KEY, entries)
+        cache.set(constants.ALL_ENTRIES_UNFILTERED_CACHE_KEY, entries)
     if star is not None:
-        if cache.get(ALL_ENTRIES_STARRED_CACHE_KEY):
-            entries = cache.get(ALL_ENTRIES_STARRED_CACHE_KEY)
+        if cache.get(constants.ALL_ENTRIES_STARRED_CACHE_KEY):
+            entries = cache.get(constants.ALL_ENTRIES_STARRED_CACHE_KEY)
         else:
             entries = entries.filter(starred=True)
-            cache.set(ALL_ENTRIES_STARRED_CACHE_KEY, entries)
-    if cache.get(CURRENT_USER_CACHE_KEY):
-        profile_model = cache.get(CURRENT_USER_CACHE_KEY)
+            cache.set(constants.ALL_ENTRIES_STARRED_CACHE_KEY, entries)
+    if cache.get(constants.CURRENT_USER_CACHE_KEY):
+        profile_model = cache.get(constants.CURRENT_USER_CACHE_KEY)
     else:
         profile_model = Profile.objects.get(user=request.user)
-        cache.set(CURRENT_USER_CACHE_KEY, profile_model)
+        cache.set(constants.CURRENT_USER_CACHE_KEY, profile_model)
     results = None
     if request.POST.get('stars') is not None and (request.method == 'POST'):
-        cache.delete(ALL_ENTRIES_STARRED_CACHE_KEY)
+        cache.delete(constants.ALL_ENTRIES_STARRED_CACHE_KEY)
         entry = Entry.objects.get(id=request.POST.get('id'))
         if(str(request.POST.get('favourite')) == 'true'):
             entry.starred = True
@@ -119,8 +119,8 @@ def disable_view(request, id):
     entry_model = Entry.objects.get(id=id)
     entry_model.activated = False
     entry_model.save()
-    cache.delete(ALL_ENTRIES_UNFILTERED_CACHE_KEY)
-    cache.delete(ALL_ENTRIES_STARRED_CACHE_KEY)
+    cache.delete(constants.ALL_ENTRIES_UNFILTERED_CACHE_KEY)
+    cache.delete(constants.ALL_ENTRIES_STARRED_CACHE_KEY)
     return redirect('all_entries')
 
 
@@ -129,7 +129,7 @@ def star_view(request, id):
     entry_model = Entry.objects.get(id=id)
     entry_model.starred = not entry_model.starred
     entry_model.save()
-    cache.delete(ALL_ENTRIES_STARRED_CACHE_KEY)
+    cache.delete(constants.ALL_ENTRIES_STARRED_CACHE_KEY)
     return redirect('post', id=id)
 
 

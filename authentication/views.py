@@ -1,4 +1,3 @@
-from functools import cache
 import logging
 
 from django.contrib import messages
@@ -15,13 +14,16 @@ from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.core.mail import EmailMessage
 from django.conf import settings
+from django.core.cache import cache
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
 
+import constants
 from authentication.models import Profile
 from .forms import SignupForm, LoginForm, ProfileForm
 from .tokens import account_activation_token
-from ..constants import CURRENT_USER_CACHE_KEY
 
 logger = logging.getLogger('main')
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 
 def index_page_view(request):
@@ -152,7 +154,7 @@ def password_change_page_view(request):
 @login_required
 def logout_page_view(request):
     logout(request)
-    cache.delete(CURRENT_USER_CACHE_KEY)
+    cache.delete(constants.CURRENT_USER_CACHE_KEY)
     return redirect('index')
 
 
@@ -163,11 +165,11 @@ def settings_page_view(request):
 
 @login_required
 def profile_page_view(request):
-    if cache.get(CURRENT_USER_CACHE_KEY):
-        profile_model = cache.get(CURRENT_USER_CACHE_KEY)
+    if cache.get(constants.CURRENT_USER_CACHE_KEY):
+        profile_model = cache.get(constants.CURRENT_USER_CACHE_KEY)
     else:
         profile_model = Profile.objects.get(user=request.user)
-        cache.set(CURRENT_USER_CACHE_KEY, profile_model)
+        cache.set(constants.CURRENT_USER_CACHE_KEY, profile_model)
     if profile_model.bio is None:
         profile_model.bio = ''
     if profile_model.birth_date is None:
@@ -178,11 +180,11 @@ def profile_page_view(request):
 @login_required
 def profile_edit_page_view(request):
     profile_form = ProfileForm()
-    if cache.get(CURRENT_USER_CACHE_KEY):
-        profile_model = cache.get(CURRENT_USER_CACHE_KEY)
+    if cache.get(constants.CURRENT_USER_CACHE_KEY):
+        profile_model = cache.get(constants.CURRENT_USER_CACHE_KEY)
     else:
         profile_model = Profile.objects.get(user=request.user)
-        cache.set(CURRENT_USER_CACHE_KEY, profile_model)
+        cache.set(constants.CURRENT_USER_CACHE_KEY, profile_model)
     model_bio = profile_model.bio
     model_birth_date = profile_model.birth_date
     if model_bio is not None:
