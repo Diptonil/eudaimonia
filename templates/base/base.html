@@ -23,18 +23,24 @@
 {% if display %}
 <div id="sidebar-active"></div>
 <div class="sidebar" id="mySidebar" onmouseleave="closeSidebar()">
-    <div>
+    <div id="darkmode">
+        <i class="ri ri-contrast-2-line"></i>
+        Darkmode
+    </div>
 
+
+
+    <div class="navigate">
+        <a href="{% url 'journal' %}"><i class="ri ri-home-2-line"></i>Home</a>
+        <a href="{% url 'entry' %}"><i class="ri ri-add-box-line"></i>New Entry</a>
+        <a href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>All Entries</a>
+        <a href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>Starred Entries</a>
     </div>
-    <a href="{% url 'entry' %}"><i class="ri ri-add-box-fill"></i>New Entry</a>
-    <a href="{% url 'all_entries' %}"><i class="ri ri-database-fill"></i>All Entries</a>
-    <a href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-half-line"></i>Starred Entries</a>
-    <div class="section">
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"><span>
-                    <label>
-    </div>
+
+    <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"><span>
+<label>
 </div>
 <div class="nav-dropdown" id="myDropdown">
     <div>
@@ -52,7 +58,7 @@
 <div class="navbar-m navbar">
     <div class="flex">
         <i class="ri-menu-line" onmouseover="openSidebar()"></i>
-        <h1 class="webname">Eudaimonia</h1>
+        <img class="logo" src="{% static 'images/eudaimonia-blue.png' %}" alt="">
         <div onclick="openDropdownOnclick()"><img src="{{ profile.image.url }}" class="profile-pic">
         </div>
     </div>

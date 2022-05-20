@@ -8,9 +8,11 @@ Eudaimonia | Sign Up
 {% block body %}
 <link rel="stylesheet" href="{% static 'authentication/signup-login.css' %}">
 
-<body class="si" id="dim">
-    <div class="card card-s">
-        <h1>Sign Up</h1>
+<body class="si">
+        <div class="big-text">Sign Up</div>
+        <img class="webname" src="{% static 'images/eudaimonia-white.png' %}" alt="">
+        <svg id="visual" viewBox="0 0 1300 750" width="1300" height="750" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="1300" height="750" fill="#301DAD"></rect><path d="M730 750L709.7 708.3C689.3 666.7 648.7 583.3 624.8 500C601 416.7 594 333.3 601.8 250C609.7 166.7 632.3 83.3 643.7 41.7L655 0L1300 0L1300 41.7C1300 83.3 1300 166.7 1300 250C1300 333.3 1300 416.7 1300 500C1300 583.3 1300 666.7 1300 708.3L1300 750Z" fill="#ffffff" stroke-linecap="round" stroke-linejoin="miter"></path></svg>
+        <div class="card card-s">
         <div id="signup">
             <h4 id="courtesy-text">Welcome to Eudaimonia! Create you account and begin journaling right away!</h4>
             <h4 id="guideline-text">Usernames must not have special characters except periods or underscores.</h4>
@@ -61,6 +63,7 @@ Eudaimonia | Sign Up
                 <p>Already have an account? <a href="{% url 'login' %}">Log in now!</a></p>
             </form>
         </div>
+    
     </div>
 </body>
 {% endblock %}

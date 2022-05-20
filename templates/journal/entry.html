@@ -9,7 +9,9 @@ Eudaimonia | New Entry
 <link rel="stylesheet" href="{% static 'journal/journal.css' %}">
 
 <body class="writing">
+    <div class="grid">
     <div id="writing-pad">
+        
         <div class="card">
             <form id="test" method="post">
                 {% csrf_token %}
@@ -66,8 +68,8 @@ Eudaimonia | New Entry
                 </span>
 
                 <span class="icons">
-                    <label for="file"><i class="ri-image-add-fill" title="Add image"></i></label>
-                    <input type="file" id="file" accept="image">
+                    <label for="button"><i class="ri-image-add-fill" title="Add image"></i></label>
+                    <input type="file" id="button" accept="image">
                     <i class="ri-more-fill"></i>
 
                 </span>
@@ -75,9 +77,13 @@ Eudaimonia | New Entry
         </div>
         <div class="card">
             <iframe name="textField" placeholder="Your entry"></iframe>
-            <div id="display-img"></div>
+            
         </div>
+        
 
+    </div>
+    <img src="" id="display-img">
+            <img >
     </div>
 
     <div class="popup">
@@ -120,16 +126,11 @@ Eudaimonia | New Entry
         }, 6000);
     }
 
-    const image = document.querySelector('#file');
-    var uploaded = "";
-    image.addEventListener('change', function () {
-        const reader = new FileReader();
-        reader.addEventListener("load", () => {
-            uploaded = reader.result;
-            console.log(uploaded)
-            document.querySelector("#display-img").style.backgroundImage = `url(${uploaded}))`;
-        });
-        reader.readAsDataURL(this.files[0]);
+    let img=document.getElementById('display-img');
+    let button = document.getElementById('button');
+    button.addEventListener('change', function () {
+        img.src= URL.createObjectURL(this.files[0])
+        img.style.display='block';
     })
 
     textField.document.designMode = 'On';

@@ -8,12 +8,6 @@ html {
     user-select: none;
 }
 /*profile*/
-:root{
-    --light: #fffeff;
-    --dark: #194c3c;
-    --gray: #b5b7b9;
-    --gb-dark: #818e9a;
-}
 
 .banner{
     position: absolute;
@@ -124,24 +118,52 @@ html {
     z-index: 2;
     background-color: white;
     padding: 10px 25px;
-    min-height: 90vh;
     max-height: fit-content;
-    max-width: 1000px;
+    max-width: 950px;
+    margin: auto;
+    margin-right: 0;
+    margin-top: 70px ;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.707);
+}
+
+.write-up{
+    border-radius: 5px;
+    z-index: 2;
+    background-color: white;
+    padding: 10px 25px;
+    max-height: fit-content;
+    min-height: 400px;
+    max-width: 850px;
     margin: auto;
     margin-top: 70px ;
-    box-shadow: 2px 2px 8px rgb(0, 0, 0);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.707);
+}
+
+#display-img{
+    float: left;
+    width: 270px ;
+    height: auto;
+    margin-top: 70px ;
+    display: none;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.705);
 }
 
 iframe{
     border: none;
     border-top: 1px solid rgba(0, 0, 0, 0.521);
-    width: 950px;
-    height: 500px;
+    width: 900px;
+    height: 70vh;
     margin-top: 20px;
 }
 
-/*title of the entry*/
+.grid{
+    display: grid;
+    grid-template-columns: 80% 10%;
+    height: 100%;
+    gap: 10px;
+}
 
+/*title of the entry*/
 
 #writing-pad > .card > #entry{
     font-size: 15px;
@@ -240,18 +262,21 @@ input[type="color"]{
 
 .card input[type= 'submit']{
     border: none;
-    background-color: #33b4ff;
-    border-radius: 5px;
+    background-color: #ffffff;
     margin: 0px;
+    margin-top: 5px;
     padding: 10px  20px;
-    color: white;
+    font-style: bold;
+    color: var(--accent);
+    border: 2px solid var(--accent);
     display: inline;
     float: right;
     cursor: pointer;
 }
 
 .card input[type= 'submit']:hover{
-    background-color: #2b9ddf;
+    background-color: var(--accent);
+    color: #ffffff;
 }
 
 input[type="file"]{
@@ -272,11 +297,7 @@ input[type="file"]{
     padding-left: 5px;
 }
 
-#display-img{
-    width: 500px ;
-    height: 500px;
 
-}
 
 /*End of select-bar*/
 /*End of entry page*/
@@ -298,6 +319,57 @@ input[type="file"]{
     background-size: cover
 }
 
+.bookmark1{
+    padding-top:  10;
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 836px;
+    overflow: hidden;
+    height: 40px;
+    width: 40px;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.651);
+    background-color: var(--accent);
+}
+
+.bookmark2{
+    padding-top:  10;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 210px;
+    margin-left: 836px;
+    height: 40px;
+    width: 40px;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.651);
+    background-color: var(--accent);
+}
+
+.bookmark1  a ,.bookmark2  a{
+    color: var(--accent);
+}
+
+.bookmark1:hover , .bookmark2:hover {
+    padding-right: 5px ;
+    width: 150px;
+    transition: 1s;
+
+}
+
+.bookmark1:hover a, .bookmark2:hover a{
+    color: rgba(255, 255, 255, 0.799);
+}
+
+.ri:hover + .hide{
+    display: block;
+}
+
+
+.bookmark1  .ri ,.bookmark2  .ri{
+    font-size: 20px;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 0.577);
+}
+
+
 
 .journal-info{
     position: absolute;
@@ -314,13 +386,13 @@ input[type="file"]{
     bottom: 70px;
     right: 40px;
     font-family: 'Merriweather', serif;
-    /*font-family: 'League Gothic', sans-serif;*/
     text-transform:uppercase;
     font-size: 45px;
     text-align: right;
 }
 
 .profilebg{
+    cursor: pointer;
     height: 600px;
     border-radius: 0 20px 20px 0;
 }
@@ -366,10 +438,10 @@ button[type = "submit"]{
     cursor: pointer;
 }
 
-form{
-    position: fixed;
-    right: 20%;
-    top: 17%;
+#search{
+    position: absolute;
+    right: 10%;
+    top: 7%;
     z-index: 3;
 }
 
@@ -497,3 +569,56 @@ th{
 
 
 /*End of All entries*/
+
+
+/*Post*/
+.write-up{
+    border-radius: 5px;
+    z-index: 2;
+    background-color: white;
+    padding: 20px 25px;
+    max-height: fit-content;
+    min-height: 400px;
+    max-width: 850px;
+    margin: auto;
+    margin-top: 50px ;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.707);
+}
+
+.write-up h6{
+    font-size: 13px;
+    color: rgb(41, 41, 41);
+    padding: 5px;
+}
+
+.post-options{
+    max-width: 850px;
+    margin: auto;
+    padding-top: 80px;
+}
+
+.post-options a{
+    padding: 10px;
+    margin-right: 40px;
+    color: var(--accent);
+    float: right;
+}
+
+.post-options a:hover{
+    text-decoration: underline;
+    color: black;
+}
+
+#export{
+    font-size: 15px;
+    border: none;
+    background-color: white;
+    display: inline-block;
+    color: var(--accent);
+    cursor: pointer;
+}
+
+#export:hover{
+    text-decoration: underline;
+    color: black;
+}

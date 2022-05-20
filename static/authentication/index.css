@@ -1,132 +1,198 @@
 /*Landing page*/
 
+/*The Quotation*/
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
 /*showcase*/
 
 button {
     border-radius: 0px;
     margin: 10px 0;
-    color: var(--primarycolor);
+    color: var(--accent);
     background: none;
     font-size: 20px;
-    border: 2px solid var(--primarycolor);
+    border: 2px solid var(--accent);
     height: 50px;
     width: 250px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: var(--primarycolor);
-    color: var(--sec)
+    background-color: var(--accent);
+    color: var(--primarycolor)
+}
+
+#container-in{
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url("../images/pastelbg.jpg");
+    overflow: hidden;
+    width: 98.7vw;
+    position: absolute;
+    height: 100vh;
 }
 
 .showcase {
-    height: 670px;
+    z-index: 1;
+    height: fit-content;
     width: 100%;
-    background-image: url("/static/images/background.jpg");
-    background-color: #9c5a4a;
-    background-attachment: fixed;
-    background-size: cover;
 }
 
-.showcase-text p{
-    font-weight: 200;
-    color: var(--primarycolor);
-}
+
+
 
 .showcase-text {
-    color: var(--primarycolor);
+    margin-right: 15%;
+    z-index: 3;
     max-width: 700px;
-    float: left;
+    float: right;
     padding-top: 200px;
     justify-content: left;
 }
 
+#quote{
+    z-index: 2;
+    font-size: 300pt;
+    color: #27188a52;
+    position: absolute;
+    margin-top: 7%;
+    margin-left: 59%;
+    font-family: 'Courgette', cursive;
+}
+
+#showcase-text-quote{
+    line-height: 70px;
+    font-size: 90px;
+    text-align: right;
+    
+}
+
 .showcase-text h1{
-    font-size: 40pt;
+    padding: 10px 0;
+    line-height: 55px;
+    width: 550px;
+    height: auto;
+    text-align: right;
+    font-size: 35px;
     font-weight: 400;
-    color: var(--primarycolor);
 }
-.showcase-text a{
-    color: var(--primarycolor);
+
+.showcase h2{
+    text-align: right;
+    margin-right: 0;
+    padding: 0;
+    margin-top: 60px;
+    color: var(--accent);
+    font-size: 23px;
 }
+
+.full-text{
+    height: 100vh;
+}
+
+.content {
+    margin-top: 110vh;
+    max-width: 70%;
+}
+
+.showcase-text-left a{
+    color: black;
+}
+
+.showcase-text-left{
+    color: black;
+    margin-left: 0px;
+    padding-top: 50px;
+    max-width: 65%;
+}
+
+.showcase-text-left p{
+    font-size: 19px;
+    line-height: 30px;
+}
+
 
 .showcase-text div a:hover{
     text-decoration: underline;
 }
 
+
 /*End of showcasetext*/
 
 /*Features*/
+
 #features{
-    margin: 30px 0;
-    overflow: hidden;
+    height: 250vh;
+    position: relative;
+    background-color: #fafafafa;
+    background-image: url(../images/blueill.png);
+    padding-left: 100px;
 }
 
-#features .border{  
-    border-top: 1px solid var(--contrast); 
+.cover h1{
+    font-size: 40px;
+    font-weight:lighter;
+}
+
+.cover p{
+    font-size: 17px;
+    line-height: 25px;
+}
+
+.cover a{
+    font-size: 23px;
+    line-height: 70px;
+    color: var(--accent);
+
+}
+
+.cover a:hover{
+    color: black;
+    text-decoration: underline;
+}
+
+#feature1{
+    background-color: white;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    width: 550px;
     height: 400px;
 }
 
-#features h1{
-    font-size: 50px;
-    margin-bottom: 30px;
+#feature2{
+    background-color: white;
+    margin-top: 330px;
+    margin-left: 53%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
 }
 
-#features p{
-    font-size: 20px;
+#feature3{
+    background-color: white;
+    margin-top: 730px;
+    margin-left: 10%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 530px;
+    height: 360px;
 }
 
-#features heading{
-    font-size: 50px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-
-.right{
-    display: grid;
-    padding-left: 100px;
-    padding-right: 100px;
-    margin-bottom: 20px;
-    grid-template-columns: 40% 60%;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    float: right;
-    text-align: left;
-}
-
-.left{
-    display: grid;
-    grid-template-columns: 60% 40%;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    float: left;
-    text-align: right;
-    overflow-x: visible;
-}
-
-#bg1{
-    height: 500px;
-    width: 800px;
-    background-image: url("/static/images/pastelbg.jpg");
-    background-attachment: fixed;
-}
-
-#bg2{
-    height: 450px;
-    width: 900px;
-    background-image: url("/static/images/pastelbg.jpg");
-    background-attachment: fixed;
-    
-}
-
-#bg3{
-    height: 500px;
-    width: 900px;
-    background-image: url("/static/images/pastelbg.jpg");
-    background-attachment: fixed;
+#feature4{
+    background-color: white;
+    margin-top: 1300px;
+    margin-left: 30%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
 }
 /*End of features*/
 

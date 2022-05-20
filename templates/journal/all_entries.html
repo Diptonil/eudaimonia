@@ -24,18 +24,10 @@ Eudaimonia | Your Entries
 
         </div>
         <div class="book-right">
-            <!--
-            <span   class="dropdown-menu">
-                <div>View Entries</div>
-                <div class="dropdown-content">
-                        <h6>All Entries</h6>
-                        <h6>Starred Entries</h6>
-                </div>
-                </span>-->
             <div class="filler">
 
             </div>
-            <form method="post">
+            <form id="search" method="post">
                 {% csrf_token %}
                 {{ form.search }}
                 <button type="submit"><i class="ri-search-line"></i></button>

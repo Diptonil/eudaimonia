@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
 :root{
+    --accent: #301dad;
     --primarycolor: #ffffff;
     --sec: rgb(0, 0, 0);
     --contrast: rgb(255, 255, 255);
@@ -14,8 +15,6 @@ input{
 
 * {
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
-    /*font-family: 'Merriweather', serif;*/
     font-weight: 400;
     padding: 0;
     margin: 0;
@@ -31,7 +30,6 @@ ul {
 
 a {
     text-decoration: none;
-    font-family: 'Lato', sans-serif;
     color: var(--sec);
 }
 
@@ -61,6 +59,15 @@ img {
 
 /*Utilities*/
 
+.logo{
+    height: 40px;
+    width: auto;
+}
+
+.webname{
+    height: 50px;
+    width: auto;
+}
 
 .btn {
     display: inline-block;
@@ -167,18 +174,15 @@ input:checked + .slider:before {
 .navbar {
     z-index: 10;
     color: var(--sec);
-    height: 50px;
+    height: 60px;
+    overflow-y: hidden;
     position: fixed;
     top: 0;
     width: 100%;
 }
 
-.webname{
-    color: var(--sec);
-    font-weight: bold;
-    font-size: 20px;
-    font-family: 'Merriweather', serif;;
-}
+
+
 
 .navbar ul {
     display: flex;
@@ -193,7 +197,8 @@ input:checked + .slider:before {
 }
 
 .navbar a:hover {
-    border-bottom: 2px var(--sec) solid;
+    color: var(--accent);
+    border-bottom: 2px var(--accent) solid;
 }
 
 /*End of Navbar*/
@@ -203,6 +208,7 @@ input:checked + .slider:before {
 
 /*Navbar main*/
 .navbar-m {
+    box-shadow:  3px 1px 10px rgba(0, 0, 0, 0.337);
     padding-top: 2px;
     background-color: var(--primarycolor);
     height: 50px;
@@ -220,6 +226,10 @@ input:checked + .slider:before {
 }
 
 /*Sidebar*/
+.navigate{
+    padding-top: 15px ;
+}
+
 .sidebar{
     height: 100vh;
     width: 0;
@@ -227,18 +237,26 @@ input:checked + .slider:before {
     z-index: 20;
     top: 0;
     left: 0;
+    border-radius: 25px;
     background: var(--primarycolor);
     overflow-x: hidden;
     overflow-y: hidden;
     transition: 0.5s;
-    padding-top: 40px;
+    padding-top: 0px;
 
 }
 
 .sidebar .switch{
     position: absolute;
-    bottom: 30px;
-    right: 20px;
+    top: 50px;
+    right: 45px;
+}
+
+#darkmode{
+    font-size: 17px;
+    padding: 55px 0px 40px 35px;
+    box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.337);
+    border-radius: 20px;
 }
 
 .sidebar input{
@@ -252,23 +270,24 @@ input:checked + .slider:before {
 
 
 .sidebar a{
+    border-radius: 20px;
     padding: 8px 8px 8px ;
-    margin-left: 30px;
+    margin: 15px 30px;
     text-decoration: none;
     font-size: 18px;
-    color: rgb(129, 129, 129);
+    color: rgb(46, 46, 46);
     display: block;
     transition: 0.3s;
 }
 
-.sidebar .section{
-    margin-top: 20px;
-    height: 90%;
-    background-color: rgb(233, 233, 233);
+.sidebar a:hover{
+    background-color:#301dad2a;
+    color: var(--accent);
+    
 }
 
-.sidebar a:hover{
-    color: rgb(0, 0, 0);
+.navigate .ri, .darkmode .ri{
+    margin-right: 10px ;
 }
 
 #sidebar-active{

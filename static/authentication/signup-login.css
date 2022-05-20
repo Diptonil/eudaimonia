@@ -4,11 +4,6 @@
 
 
 /*card and form input*/
-.card h1{
-    font-style: bold;
-    font-size: 35px;
-    color: rgb(82, 41, 41);
-}
 
 .card h4{
     padding-bottom: 20px;
@@ -47,10 +42,11 @@
 .card input[type='email'],
 .card input[type='password'],
 .card textarea{
-    margin-top: 10px;
     background-color: none;
     border: 0;
     color: var(--sec);
+    margin: auto;
+    margin-top: 5px;
     border-bottom: 1px solid rgb(207, 207, 207);
     width: 100%;
     padding-bottom: 10px;
@@ -70,78 +66,92 @@
 }
 
 .card input {
-    width: 100%;
+    margin-left: 52px;
+    width: 70%;
 
 }
 
 input[type=submit]:hover {
-    background-color: var(--sec);
-    color: var(--contrast);
+    background-color: var(--accent);
+    color: white;
 }
 
 input[type=submit]{
-    margin-top: 40px;
+    margin-top: 30px;
     margin-bottom: 3px;
 }
 /*End of card input and form*/
 
 /*Signup page*/
 
-.si{
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/images/background.jpg"); 
-    background-color: rgb(98, 132, 155);
-    
-}
-
-#dim{
-    height: 100px;
-    background-color: rgba(0, 0, 0, 0.4);
+.si{ 
+    width: 100vw;
+    height: 100vh;
 }
 
 .card-s{
-    padding: 20px;
-    z-index: 3;
     position: absolute;
-    width: 420px;
-    height: auto;
+    z-index: 3;
+    width: 600px;
+    height: fit-content;
     overflow-y: auto;
-    background-color: #ffffff;
     border: none;
-    box-shadow: 4px 2px 10px rgba(0, 0, 0, 0.541);
-    top: 50px;
+    top: 120px;
+    padding: 40px 100px;
     bottom: 50px;
-    left: 0;
-    right: 0;
+    right: 100px;
     margin: auto;
 }
 
+.big-text{
+    position: fixed;
+    font-size: 170px;
+    font-weight: 800;
+    width: 400px;
+    text-align: right;
+    color: #ffffff;
+    line-height: 170px;
+    top: 5px;
+    left: 230px;
+    font-family: 'Lato';
+}
+
+.si .webname{
+    position: fixed;
+    bottom: 10px;
+    left: 30px;
+    color: #ffffff;
+}
+
 .card-l{
+    position: absolute;
     padding: 20px;
     z-index: 3;
-    position: absolute;
-    width: 420px;
+    width: 600px;
     height: fit-content;
     overflow-y: auto;
-    background-color: #ffffff;
     border: none;
-    box-shadow: 4px 2px 10px rgba(0, 0, 0, 0.541);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 100px;
+    padding: 40px 100px;
+    bottom: 50px;
+    right: 100px;
     margin: auto;
 }
 
 .alert{
     text-align: center;
     margin-top: 7px;
-    margin-bottom: 20px;
+    margin-bottom: 7px;
     color: red;
 }
 
 strong
 {
     color: red;
+}
+
+form h5{
+    margin-left: 10px;
 }
 
 .success
@@ -164,7 +174,7 @@ form i
 
     z-index: 9999;
 	position: absolute;
-	right: 45px;
-    margin-top: 15px;;
+	right: 135px;
+    margin-top: 5px;;
 }
 /*end of singup page*/
