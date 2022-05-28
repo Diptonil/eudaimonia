@@ -1,21 +1,19 @@
-from django.utils import timezone
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 
 def user_directory_path(instance, filename):
-    return 'entries/{0}/{1}'.format(str(instance), filename)
+    return 'posts/{0}/{1}'.format(str(instance), filename)
 
 
-class Entry(models.Model):
+class Post(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=64)
-    entry = models.TextField()
+    post = models.TextField()
     date = models.DateTimeField(default=timezone.now)
     image = models.ImageField(upload_to=user_directory_path, blank=True)
-    activated = models.BooleanField(default=True)
-    starred = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('-date',)

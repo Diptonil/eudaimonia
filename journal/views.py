@@ -47,6 +47,7 @@ def entry_page_view(request):
 
 @login_required
 def post_page_view(request, id):
+    profile_model = Profile.objects.get(user=request.user)
     entry_model = Entry.objects.get(id=id)
     star = entry_model.starred
     content = entry_model.entry[2:-1]
@@ -59,7 +60,7 @@ def post_page_view(request, id):
         soup = BeautifulSoup(content, features='html5lib')
         print(soup.get_text().replace('    ', '').replace('\n', ''))
         return redirect('pdf', text=soup.get_text().replace('\t', ' ').replace('\n', ''), filename='{0}.pdf'.format(entry_model.title))
-    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star})
+    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model})
 
 
 @login_required
@@ -145,7 +146,7 @@ def autocomplete(request):
 
 
 def journal_navbar(request):
-    display = ('journal/' in request.path) or ('profile/' in request.path) or ('settings/' in request.path)
+    display = ('journal/' in request.path) or ('profile/' in request.path) or ('dashboard/' in request.path)
     recaptcha_key = None
     if 'signup/' in request.path:
         recaptcha_key = settings.RECATCHA_PUBLIC_KEY

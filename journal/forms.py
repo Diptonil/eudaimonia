@@ -2,7 +2,7 @@ from django import forms
 
 
 class EntrySearchForm(forms.Form):
-    
+
     search = forms.CharField(required=False)
 
     def __init__(self, *args, **kwargs):

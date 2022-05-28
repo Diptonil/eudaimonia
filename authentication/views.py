@@ -47,7 +47,7 @@ def login_page_view(request):
                 user = authenticate(username=user.username, password=login_form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                return redirect('journal')
+                return redirect('dashboard')
             else:
                 messages.warning(request, 'The given combination of credentials do not exist. Please recheck your entry.')
                 logger.warning('Login unsuccesful.')
@@ -160,7 +160,8 @@ def logout_page_view(request):
 
 @login_required
 def settings_page_view(request):
-    return render(request, 'extras/settings.html')
+    profile_model = Profile.objects.get(user=request.user)
+    return render(request, 'extras/settings.html', {'profile': profile_model})
 
 
 @login_required
