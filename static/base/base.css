@@ -2,15 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
-:root{
+body{
     --accent: #301dad;
     --primarycolor: #ffffff;
+    --primary-dark: #f2f2f2fa;
     --sec: rgb(0, 0, 0);
-    --contrast: rgb(255, 255, 255);
+    --sec-light: rgb(46, 46, 46)
 }
 
+body{
+    background-color: var(--primarycolor);
+}
+
+
 input{
-    color: black;
+    color: var(--sec);
+    
 }
 
 * {
@@ -73,9 +80,9 @@ img {
     display: inline-block;
     padding: 10px 30px;
     cursor: pointer;
-    border: 2px solid black;
+    border: 2px solid var(--accent);
     background-color: var(--primarycolor);
-    color: var(--sec);
+    color: var(--accent);
     border-radius: 10px;
     width: 50%;
 }
@@ -161,8 +168,8 @@ input:checked + .slider:before {
 
 /*Navbar*/
 .scrolling-active{
-    background-color: var(--primarycolor);
-    color: var(--contrast);
+    background-color: white;
+    color: white;
     box-shadow: 0 -2px 5px black;
 }
 
@@ -173,7 +180,7 @@ input:checked + .slider:before {
 
 .navbar {
     z-index: 10;
-    color: var(--sec);
+    color: black;
     height: 60px;
     overflow-y: hidden;
     position: fixed;
@@ -190,15 +197,15 @@ input:checked + .slider:before {
 }
 
 .navbar a {
-    color: var(--sec);
+    color: black;
     font-size: 15px;
     padding: 10px;
     margin: 0 5px;
 }
 
 .navbar a:hover {
-    color: var(--accent);
-    border-bottom: 2px var(--accent) solid;
+    color: #301dad;
+    border-bottom: 2px #301dad solid;
 }
 
 /*End of Navbar*/
@@ -220,7 +227,7 @@ input:checked + .slider:before {
 }
 
 .ri-menu-line{
-    color: black ;
+    color: var(--sec) ;
     font-size: 30px;
     cursor: pointer;
 }
@@ -270,12 +277,13 @@ input:checked + .slider:before {
 
 
 .sidebar a{
+    white-space: nowrap;
     border-radius: 20px;
     padding: 8px 8px 8px ;
     margin: 15px 30px;
     text-decoration: none;
     font-size: 18px;
-    color: rgb(46, 46, 46);
+    color: var(--sec-light);
     display: block;
     transition: 0.3s;
 }
@@ -284,6 +292,11 @@ input:checked + .slider:before {
     background-color:#301dad2a;
     color: var(--accent);
     
+}
+
+.active{
+    background-color:#301dad2a;
+    color: var(--accent);
 }
 
 .navigate .ri, .darkmode .ri{

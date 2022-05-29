@@ -205,16 +205,22 @@ button:hover {
 /*End of Footer*/
 /*End of Landing page*/
 
-
-/*
-ADDED BY BRUCE WAYNE
-- Do not delete it
-- In case the CSS is wrong, improve it by moving the CSS rules somewhere else (in compliance to the standard working procedure)
-- Contact BRUCE WAYNE upon making any changes so that he may make a note of it
-*/
-
 #showcase-text-quote-by
 {   
     text-align: right;
-    margin-right: 50px;
+    margin-right: 40px;
+}
+
+
+/*Services*/
+
+.services{
+    max-width: 1100px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.test-heading{
+    color: var(--accent);
+    font-size: 30px;
 }

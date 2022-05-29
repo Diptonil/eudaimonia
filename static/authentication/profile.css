@@ -1,0 +1,164 @@
+/*profile-edit*/
+
+body{
+    margin-top: 40px;
+}
+
+.container-edit{
+    border: 1px solid rgb(85, 139, 153);
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 900px;
+    margin-left: 30%;
+}
+
+.container-left > div {
+    display: grid;
+    grid-template-columns: 20% auto;
+
+}
+
+.container-left > div > span {
+    text-align: right;
+    padding-top: 13px;
+    padding-right: 10px;
+}
+
+input[type='text'],
+textarea{
+    margin: 10px;
+    background-color: none;
+    color: var(--sec);
+    border: 1px solid rgb(207, 207, 207);
+    width: 85%;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    mix-blend-mode: multiply;
+    font-size: 16px;
+}
+
+input[type= 'submit']{
+    border: none;
+    background-color: var(--primarycolor);
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 1px solid var(--accent);
+    padding: 10px  20px;
+    color: var(--accent);
+    display: inline;
+    cursor: pointer;
+}
+
+input[type= 'submit']:hover{
+    background-color: var(--accent);
+    color: var(--primarycolor);
+}
+
+img{
+    margin-top: 20px ;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    display: flex;
+}
+
+form{
+    display: flex;
+}
+
+.container-left{
+    width: 75%;
+}
+
+.container-right{
+    width: auto;
+    padding-left: 20px ;
+    border-left: 1px solid var(--primary-dark);
+    float: right;
+}
+
+/*End of Profile-edit
+
+
+
+/*profile*/
+
+.banner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #301dad6b;
+    width: 75%;
+    height: 45%;
+}
+
+
+.card-profile img{
+    position: absolute;
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    z-index: 2;
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 5px solid var(--primarycolor);
+    object-fit: cover;
+    display: flex;
+}
+
+.card-profile .details-container{
+    position: relative;
+    justify-content: center;
+    padding: 45px 20px;
+    padding-bottom: 60px;
+    margin-top: 35%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 55%;
+    height: fit-content;
+}
+
+.details{
+    text-align: center;
+}
+
+.card-profile h4{
+    font-size: 30px;
+    margin-bottom: 4px;
+}
+
+.card-profile h5{
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(89, 117, 128);
+    margin-bottom: 14px;
+}
+
+.card-profile h3{
+    font-size: 17px;
+}
+
+.other-deets{
+    border-top: 1px solid rgb(89, 117, 128);
+    padding: 0 20px;
+}
+
+.edit{
+    float: right;
+    color: var(--accent);
+    cursor: pointer;
+}
+.edit:hover{
+    text-decoration: underline;
+    font-style: italic;
+}
+
+
+.inline{
+    display: flex;
+}
+/*end of profile*/

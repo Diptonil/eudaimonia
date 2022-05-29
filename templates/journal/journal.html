@@ -1,4 +1,7 @@
 {% extends 'base/base.html' %}
+{% block nav_home%}
+    class="active"
+{% endblock %}
 {% load static %}
 
 {% block title %}
@@ -10,22 +13,40 @@ Eudaimonia | Your Journal
 
 <body class="journal-body">
     <div class="bookmark1">
-        <a href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>all entries</a>
+        <a href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>all entries  </a>
         
     </div>
     <div class="bookmark2">
         
-        <a href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>starred entries</a>
+        <a href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>starred entries  </a>
     </div>
     <div id="journal" onclick="location.href='{% url 'entry' %}'">
-        <div>
-            <img class="profilebg" src="{% static 'images/pastelbg.jpg' %}" alt="">
+        <div id="jname">{{ user.username }}'s  journal</div>
+    </div>
+
+    <div class="section">
+        <div class="row">
+            <div class="column">
+                <div class="dummy"></div>
+                <div class="stickynote" style="background-color: #CCF3EE;">
+                    <h3>Lorem, ipsum dolor.</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
+                </div>
+            </div>
+            <div class="column">
+                <div style="background-color: #F9CEEE;" class="stickynote">
+                    <h3>Lorem, ipsum dolor.</h3>
+                    <img src="../../static/images/pastelbg.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
+                </div>
+                <div  class="stickynote" style="background-color: #F9FFA4;">
+                    <h3>Lorem, ipsum dolor.</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
+                </div>
+            </div>
         </div>
-        <div id="jname">Your mom's <br>journal</div>
-        <div class="journal-info">
-            <a href="{% url 'entry' %}">New Entry<i class="ri ri-add-box-line"></i></a>
-            <br />
-        </div>
+
     </div>
 
     <script>

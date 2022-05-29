@@ -7,7 +7,7 @@
 
 .card h4{
     padding-bottom: 20px;
-    color: black;
+    color: var(--sec);
 }
 
 .card h1, .card h4{
@@ -30,7 +30,7 @@
 }
 
 .card p a:hover{
-    color: #664451;
+    color: var(--accent);
     text-decoration: underline;
 }
 
@@ -47,7 +47,7 @@
     color: var(--sec);
     margin: auto;
     margin-top: 5px;
-    border-bottom: 1px solid rgb(207, 207, 207);
+    border-bottom: 1px solid var(--primary-dark);
     width: 100%;
     padding-bottom: 10px;
     padding-left: 5px;
@@ -73,7 +73,7 @@
 
 input[type=submit]:hover {
     background-color: var(--accent);
-    color: white;
+    color: var(--primarycolor);
 }
 
 input[type=submit]{
@@ -109,7 +109,7 @@ input[type=submit]{
     font-weight: 800;
     width: 400px;
     text-align: right;
-    color: #ffffff;
+    color: var(--primarycolor);
     line-height: 170px;
     top: 5px;
     left: 230px;
@@ -120,7 +120,7 @@ input[type=submit]{
     position: fixed;
     bottom: 10px;
     left: 30px;
-    color: #ffffff;
+    color: var(--primarycolor);
 }
 
 .card-l{
@@ -166,7 +166,7 @@ form i
 {
     margin-left: -30px;
     cursor: pointer;
-    color: rgba(109, 109, 109, 0.918);
+    color: var(--sec-light);
 }
 
 .eye-problem

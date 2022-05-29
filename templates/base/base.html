@@ -31,10 +31,10 @@
 
 
     <div class="navigate">
-        <a href="{% url 'journal' %}"><i class="ri ri-home-2-line"></i>Home</a>
-        <a href="{% url 'entry' %}"><i class="ri ri-add-box-line"></i>New Entry</a>
-        <a href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>All Entries</a>
-        <a href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>Starred Entries</a>
+        <a {% block nav_home%}{% endblock %} href="{% url 'journal' %}"><i class="ri ri-home-2-line"></i>Home</a>
+        <a {% block nav_entry%}{% endblock %} href="{% url 'entry' %}"><i class="ri ri-add-box-line"></i>New Entry</a>
+        <a {% block nav_all_entries%}{% endblock %} href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>All Entries</a>
+        <a {% block nav_star%}{% endblock %} href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>Starred Entries</a>
     </div>
 
     <label class="switch">

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Passions+Conflict&family=Tangerine:wght@400;700&display=swap');
+
+
+
 @media print {
     html,
     body {
@@ -7,87 +11,6 @@
 html {
     user-select: none;
 }
-/*profile*/
-
-.banner{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background-color: rgb(89, 117, 128);
-    width: 75%;
-    height: 45%;
-}
-
-
-.card-profile img{
-    position: absolute;
-    height: 180px;
-    width: 180px;
-    border-radius: 50%;
-    z-index: 2;
-    top: 30%;
-    left: 0;
-    right: 0;
-    margin: auto;
-    border: 5px solid white;
-    object-fit: cover;
-    display: flex;
-}
-
-.card-profile .details-container{
-    position: relative;
-    justify-content: center;
-    padding: 45px 20px;
-    padding-bottom: 60px;
-    margin-top: 35%;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: 55%;
-    height: fit-content;
-}
-
-.details{
-    text-align: center;
-}
-
-.card-profile h4{
-    font-size: 30px;
-    margin-bottom: 4px;
-}
-
-.card-profile h5{
-    font-weight: 600;
-    font-size: 15px;
-    color: rgb(89, 117, 128);
-    margin-bottom: 14px;
-}
-
-.card-profile h3{
-    font-size: 17px;
-}
-
-.other-deets{
-    border-top: 1px solid rgb(89, 117, 128);
-    padding: 0 20px;
-}
-
-.edit{
-    float: right;
-    color: #33b4ff;
-    cursor: pointer;
-}
-.edit:hover{
-    text-decoration: underline;
-    font-style: italic;
-}
-
-
-.inline{
-    display: flex;
-}
-/*end of profile*/
 
 /*post*/
 #entry{
@@ -106,7 +29,7 @@ html {
 
 /*Entry page*/
 .writing{
-    background-image: url("/static/images/pastelbg.jpg");
+    background-color: var(--primary-dark);
     background-position: fixed;
     background-repeat: no-repeat;
 }
@@ -116,27 +39,27 @@ html {
 #writing-pad{
     border-radius: 5px;
     z-index: 2;
-    background-color: white;
+    background-color: var(--primarycolor);
     padding: 10px 25px;
     max-height: fit-content;
     max-width: 950px;
     margin: auto;
     margin-right: 0;
     margin-top: 70px ;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.707);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.378);
 }
 
 .write-up{
     border-radius: 5px;
     z-index: 2;
-    background-color: white;
+    background-color: var(--primarycolor);
     padding: 10px 25px;
     max-height: fit-content;
     min-height: 400px;
     max-width: 850px;
     margin: auto;
     margin-top: 70px ;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.707);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.378);
 }
 
 #display-img{
@@ -145,7 +68,7 @@ html {
     height: auto;
     margin-top: 70px ;
     display: none;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.705);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.378);
 }
 
 iframe{
@@ -173,7 +96,7 @@ iframe{
     background-color: none;
     border: 0;
     color: var(--sec);
-    border-bottom: 1px solid rgb(207, 207, 207);
+    border-bottom: 1px solid var(--primary-dark);
     width: 100%;
     padding-bottom: 10px;
     padding-left: 5px;
@@ -187,7 +110,7 @@ iframe{
 }
 
 .highlight{
-    background-color: rgb(219, 219, 219);
+    background-color: var(--primary-dark);
 }
 
 .select-bar .flex{
@@ -220,7 +143,7 @@ input[type="color"]{
 }
 
 .icons i:hover{
-    background-color: rgb(219, 219, 219);
+    background-color: var(--primary-dark);
 }
 
 .dropdown-content > i{
@@ -228,11 +151,12 @@ input[type="color"]{
 }
 
 .dropdown-content{
-    padding: 10px 10px 10px 5px;
+    padding: 15px 15px 15px 15px;
+    border-radius: 20px;
     display: none;
     position: absolute;
-    background-color: #f3f0f0;
-    width: 100px;
+    background-color: var(--primarycolor);
+    width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -262,7 +186,7 @@ input[type="color"]{
 
 .card input[type= 'submit']{
     border: none;
-    background-color: #ffffff;
+    background-color: var(--primarycolor);
     margin: 0px;
     margin-top: 5px;
     padding: 10px  20px;
@@ -276,7 +200,7 @@ input[type="color"]{
 
 .card input[type= 'submit']:hover{
     background-color: var(--accent);
-    color: #ffffff;
+    color: var(--primarycolor);
 }
 
 input[type="file"]{
@@ -291,7 +215,7 @@ input[type="file"]{
     background-color: none;
     border: 0;
     color: var(--sec);
-    border-bottom: 1px solid rgb(207, 207, 207);
+    border-bottom: 1px solid var(--primary-dark);
     width: 90%;
     padding-bottom: 10px;
     padding-left: 5px;
@@ -321,41 +245,51 @@ input[type="file"]{
 
 .bookmark1{
     padding-top:  10;
-    position: absolute;
-    margin-top: 130px;
-    margin-left: 836px;
+    position: fixed;
+    top: 130px;
+    left: 700px;
     overflow: hidden;
     height: 40px;
     width: 40px;
     box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.651);
     background-color: var(--accent);
+    transition: 1s ease;
 }
 
 .bookmark2{
     padding-top:  10;
     overflow: hidden;
-    position: absolute;
-    margin-top: 210px;
-    margin-left: 836px;
+    position: fixed;
+    top: 210px;
+    left: 700px;
     height: 40px;
     width: 40px;
     box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.651);
     background-color: var(--accent);
+    transition: 1s ease;
 }
 
 .bookmark1  a ,.bookmark2  a{
+    white-space: nowrap;
     color: var(--accent);
 }
 
-.bookmark1:hover , .bookmark2:hover {
+.bookmark2:hover {
     padding-right: 5px ;
+    padding-left: 5px;
     width: 150px;
-    transition: 1s;
+
+}
+
+
+.bookmark1:hover{
+    padding-right: 5px ;
+    width: 120px;
 
 }
 
 .bookmark1:hover a, .bookmark2:hover a{
-    color: rgba(255, 255, 255, 0.799);
+    color: var(--primary-dark);
 }
 
 .ri:hover + .hide{
@@ -366,7 +300,7 @@ input[type="file"]{
 .bookmark1  .ri ,.bookmark2  .ri{
     font-size: 20px;
     vertical-align: middle;
-    color: rgba(255, 255, 255, 0.577);
+    color: var(--primary-dark);
 }
 
 
@@ -382,13 +316,15 @@ input[type="file"]{
 #jname{
     width: 500px;
     line-height: 40px;
-    position: absolute;
-    bottom: 70px;
-    right: 40px;
-    font-family: 'Merriweather', serif;
-    text-transform:uppercase;
-    font-size: 45px;
-    text-align: right;
+    position: fixed;
+    bottom: 35%;
+    letter-spacing: 5px;
+    color: #ffffffc1;
+    font-family: 'Passions Conflict', cursive;
+    /*font-family: 'Tangerine', cursive;*/
+    text-transform: lowercase;
+    font-size: 50px;
+    text-align: center;
 }
 
 .profilebg{
@@ -403,18 +339,59 @@ input[type="file"]{
 }
 
 #journal{
-    position: relative;
-    background-color: #7ccdfc;
-    border-left: 40px solid rgba(0, 0, 0, 0.596);
-    margin: auto;
-    margin-top: 80px;
-    margin-right: 700px;
+    cursor: pointer;
+    position: fixed;
+    background: rgb(114,96,227);
+background: linear-gradient(60deg, rgba(114,96,227,1) 0%, rgba(86,69,200,1) 37%, rgba(70,53,186,1) 100%);
+    border-left: 40px solid rgba(0, 0, 0, 0.504);
+    top: 80px;
+    left: 150px;
     border-radius: 0 20px 20px 0;
     width: 550px;
     height: 600px;
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.651);
 }
-/*End of Profile*/
+
+
+/*Stickynote*/
+.section{
+    margin-top: 100px;
+    float: right;
+    width: 50%;
+    height: fit-content;
+}
+
+.row {
+    display: flex;
+    padding: 0 40px;
+}
+
+.column {
+    flex: 25%;
+    padding: 4px 4px;
+}
+
+.dummy{
+    width: 300px;
+    height: 180px;
+}
+
+.stickynote{
+    width: 310px;
+    padding: 20px;
+    margin: 30px 0;
+    min-height: 300px;
+    height: fit-content;
+    overflow: hidden;
+    max-height: 550px;
+    border-top-right-radius:  30px; 
+    box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.126);
+}
+
+
+
+
+/*End of journal*/
 
 /*All Entries*/
 input[type = "text"]{
@@ -478,7 +455,7 @@ thead tr th{
     font-size: large;
     font-style: bold;
     z-index: 3;
-    border-bottom: 1px solid rgba(63, 63, 63, 0.445);
+    border-bottom: 1px solid var(--sec-light);
 }
 
 tbody tr th i{
@@ -575,7 +552,7 @@ th{
 .write-up{
     border-radius: 5px;
     z-index: 2;
-    background-color: white;
+    background-color: var(--primarycolor);
     padding: 20px 25px;
     max-height: fit-content;
     min-height: 400px;
@@ -587,7 +564,7 @@ th{
 
 .write-up h6{
     font-size: 13px;
-    color: rgb(41, 41, 41);
+    color: var(--sec-light);
     padding: 5px;
 }
 
@@ -606,13 +583,13 @@ th{
 
 .post-options a:hover{
     text-decoration: underline;
-    color: black;
+    color: var(--sec);
 }
 
 #export{
     font-size: 15px;
     border: none;
-    background-color: white;
+    background-color: var(--primarycolor);
     display: inline-block;
     color: var(--accent);
     cursor: pointer;
@@ -620,5 +597,5 @@ th{
 
 #export:hover{
     text-decoration: underline;
-    color: black;
+    color: var(--sec);
 }
