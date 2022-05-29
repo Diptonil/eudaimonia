@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'authentication',
     'journal',
+    'dashboard',
 ]
 
 MIDDLEWARE = [

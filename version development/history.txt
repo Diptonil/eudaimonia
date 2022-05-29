@@ -88,6 +88,7 @@ BACKEND:
     README created
     Cache configured
 FRONTEND:
+    Theme done: Login, Signup, Landing
 --
 Cache settings - done
 Sentry settings - done

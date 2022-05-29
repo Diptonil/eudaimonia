@@ -12,7 +12,7 @@ def user_directory_path(instance, filename):
 
 
 class Profile(models.Model):
-    
+
     PERSONAL = 'Personal'
     TRAVELOGUE = 'Travelogue'
     COOKBOOK = 'Cookbook'

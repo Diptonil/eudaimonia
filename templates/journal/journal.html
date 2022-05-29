@@ -13,12 +13,21 @@ Eudaimonia | Your Journal
 
 <body class="journal-body">
     <div class="bookmark1">
+<<<<<<< HEAD
         <a href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>all entries  </a>
         
     </div>
     <div class="bookmark2">
         
         <a href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>starred entries  </a>
+=======
+        <a href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>All</a>
+
+    </div>
+    <div class="bookmark2">
+
+        <a href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>Starred</a>
+>>>>>>> 1f96398e2a11a61f9754c9bb83f304d1ba55b41d
     </div>
     <div id="journal" onclick="location.href='{% url 'entry' %}'">
         <div id="jname">{{ user.username }}'s  journal</div>
@@ -51,14 +60,14 @@ Eudaimonia | Your Journal
 
     <script>
         function openBookmark() {
-        document.getElementById("mySidebar").style.width = "320px";
-        document.getElementById("sidebar-active").style.display = "block";
-    }
+            document.getElementById("mySidebar").style.width = "320px";
+            document.getElementById("sidebar-active").style.display = "block";
+        }
 
-    function closeBookmark() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("sidebar-active").style.display = "none";
-    }
+        function closeBookmark() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("sidebar-active").style.display = "none";
+        }
     </script>
 </body>
 {% endblock %}

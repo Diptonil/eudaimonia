@@ -2,9 +2,10 @@
 <div id="top"></div>
 <span>
 <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green" />
-<img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=Selenium&logoColor=white" />
 <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
 <img src="https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white" />
+<img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=Selenium&logoColor=white" />
+<img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white">
 <img src="https://img.shields.io/badge/Snyk-4C4A73?style=for-the-badge&logo=snyk&logoColor=white" />
 <img src="https://img.shields.io/badge/Sentry-black?style=for-the-badge&logo=Sentry&logoColor=#362D59" />
 <img src="https://img.shields.io/badge/Cloudinary-blue?style=for-the-badge&logo=Cloudways&logoColor=#2C39BD" />
@@ -43,9 +44,10 @@ The future scole of the project would be to extend its use-cases, improving the 
 The major frameworks, tools, services and APIs used for the making of this project is hereby listed:
 
 * [Django](https://www.djangoproject.com/): The fullstack framework used for building the web application.
-* [Selenium](https://www.selenium.dev): The browser automation framework used for validation testing.
 * [PostgreSQL](https://www.postgresql.org/): The relational database used primarily.
 * [RedisDB](https://redis.io/): The in-memory data store used for caching.
+* [Selenium](https://www.selenium.dev): The browser automation framework used for validation testing.
+* [Jira](https://www.atlassian.com/software/jira): The collaboration and software development tool used to simplify worflow.
 * [Sentry](https://sentry.io/): The exception management service used for fatal error logging.
 * [Snyk](https://snyk.io/): The security management service used for source code security vulnerability checks.
 * [Cloudinary](https://cloudinary.com/): The primary file storage service.

@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Your Dashboard
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+
+<body>
+    <br /><br /><br />
+    <form id="search" method="post">
+        {% csrf_token %}
+        {{ form.search }}
+        <button type="submit"><i class="ri-search-line"></i></button>
+    </form>
+    <div class="infinite-container">
+        {% for post in page_obj %}
+        <div style="border-style: solid;" class="infinite-item">
+            <a href="{% url 'story' id=post.id %}">
+                <h2>{{ post.title }}</h2>
+            </a>
+            <b>{{ post.date }}</b>
+            <p>{{ post.post|truncatechars:300 }}...</p>
+        </div>
+        <br /><br /><br />
+        {% endfor %}
+    </div>
+
+    <p class="loading">Loading...</p>
+
+    {% if page_obj.has_next %}
+    <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+    {% endif %}
+
+    <script src="/static/infinite scroll js/jquery.waypoints.min.js"></script>
+    <script src="/static/infinite scroll js/infinite.min.js"></script>
+    <script>
+        var infinite = new Waypoint.Infinite({
+            element: $('.infinite-container')[0],
+            offset: 'bottom-in-view',
+            onBeforePageLoad: function () {
+                $('.loading').show();
+            },
+            onAfterPageLoad: function () {
+                $('.loading').hide();
+            }
+        });
+        document.getElementsByClassName("infinite-item").onclick = function () {
+
+        }
+    </script>
+</body>
+{% endblock %}

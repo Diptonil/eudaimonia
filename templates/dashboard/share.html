@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Share Anonymously
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+
+<body>
+    <br /><br /><br />
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-control">
+            {{ form.title }}
+        </div>
+        <div class="form-control">
+            {{ form.post }}
+        </div>
+        <div class="form-control">
+            {{ form.image }}
+        </div>
+        <br /><br /><br />
+        <!--HTML for the accepting the picture-->
+        <input type="submit" value="Submit" class="btn">
+
+        {% if form.errors %}
+        {% for field in form %}
+        {% for error in field.errors %}
+        <div class="alert">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% endif %}
+    </form>
+</body>
+{% endblock %}
