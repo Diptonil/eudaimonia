@@ -188,6 +188,12 @@ def profile_edit_page_view(request):
         cache.set(constants.CURRENT_USER_CACHE_KEY, profile_model)
     model_bio = profile_model.bio
     model_birth_date = profile_model.birth_date
+    model_favourite_movie_genres = [obj[0] for obj in profile_model.fav_movie_genres.values_list('field')]
+    model_disliked_movie_genres = [obj[0] for obj in profile_model.unfav_movie_genres.values_list('field')]
+    model_favourite_music_genres = [obj[0] for obj in profile_model.fav_music_genres.values_list('field')]
+    model_disliked_music_genres = [obj[0] for obj in profile_model.unfav_music_genres.values_list('field')]
+    print(model_favourite_movie_genres)
+    print(model_favourite_music_genres)
     if model_bio is not None:
         profile_form.fields['bio'].widget.attrs['placeholder'] = model_bio
     if model_birth_date is not None:
@@ -208,7 +214,8 @@ def profile_edit_page_view(request):
                 profile_model.birth_date = birth_date
             profile_model.save()
             return redirect('profile')
-    return render(request, 'authentication/profile_edit.html', {'form': profile_form, 'profile': profile_model})
+    return_dict = {'form': profile_form, 'profile': profile_model, 'fav_mov': model_favourite_movie_genres, 'unfav_mov': model_disliked_movie_genres, 'fav_mus': model_favourite_music_genres, 'unfav_mus': model_disliked_music_genres}
+    return render(request, 'authentication/profile_edit.html', return_dict)
 
 
 def demo_page_view(request):

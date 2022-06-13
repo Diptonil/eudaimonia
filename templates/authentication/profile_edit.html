@@ -20,6 +20,27 @@ Eudaimonia | Edit Profile
             <div class="container-left">
                 <div><span class="labels">Birthday </span>{{ form.birth_date }}</div>
                 <div><span class="labels">Bio </span>{{ form.bio }}</div>
+                <div><span class="labels">Preferred Movie Genres </span>
+                    {% for item in fav_mov %}
+                    {{ item }}
+                    {% endfor %}
+                </div>
+                <div><span class="labels">Unfavourite Movie Genres </span>
+                    {% for item in unfav_mov %}
+                    {{ item }}
+                    {% endfor %}
+                </div>
+                <div><span class="labels">Preferred Music Genres </span>
+                    {% for item in fav_mus %}
+                    {{ item }}
+                    {% endfor %}
+                </div>
+                <div><span class="labels">Unfavourite Music Genres </span>
+                    {% for item in unfav_mus %}
+                    {{ item }}
+                    {% endfor %}
+                </div>
+                <a>Alter Recommendation Preferences</a>
             </div>
             <div class="container-right">
                 <img src="{{ profile.image.url }}" alt="" />
@@ -29,6 +50,7 @@ Eudaimonia | Edit Profile
             </div>
         </form>
     </div>
+    <div>Choosing a genre for both preferred and unfavourite fields may nullify or disrupt recommendations.</div>
 </body>
 {% endblock %}
 

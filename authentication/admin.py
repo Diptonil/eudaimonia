@@ -1,5 +1,7 @@
 from django.contrib import admin
 
-from .models import Profile
+from authentication.models import Profile, MovieField, MusicField
 
 admin.site.register(Profile)
+admin.site.register(MovieField)
+admin.site.register(MusicField)
