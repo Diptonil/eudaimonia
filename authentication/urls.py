@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views
+from authentication import views
 
 urlpatterns = [
     path('', view=views.index_page_view, name='index'),
@@ -11,6 +11,7 @@ urlpatterns = [
     path('demo/', view=views.demo_page_view, name='demo'),
     path('profile/', view=views.profile_page_view, name='profile'),
     path('profile/edit/', view=views.profile_edit_page_view, name='profile_edit'),
+    path('profile/edit/recommendations/<pk>/', view=views.RecommendationPageView.as_view(), name='recommendations_edit'),
     path('profile/settings/', view=views.settings_page_view, name='settings'),
     path("password_reset/", view=views.password_reset_page_view, name="password_reset"),
     path('password_change/', view=views.password_change_page_view, name='password_change'),

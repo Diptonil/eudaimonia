@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Edit Profile
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <div>Preferred Movie Genres: {{ form.fav_movie_genres }}</div><br />
+        <div>Least Preferred Movie Genres: {{ form.unfav_movie_genres }}</div><br />
+        <div>Preferred Music Genres: {{ form.fav_music_genres }}</div><br />
+        <div>Least Preferred Music Genres: {{ form.unfav_music_genres }}</div><br />
+        <input type="submit" value="Edit" />
+        <p>While editing your preferences, hold Ctrl for multiple choices.</p>
+    </form>
+</body>
+{% endblock %}

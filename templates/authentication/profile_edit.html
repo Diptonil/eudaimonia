@@ -40,7 +40,7 @@ Eudaimonia | Edit Profile
                     {{ item }}
                     {% endfor %}
                 </div>
-                <a>Alter Recommendation Preferences</a>
+                <a href="{% url 'recommendations_edit' pk=profile.pk %}">Alter Recommendation Preferences</a>
             </div>
             <div class="container-right">
                 <img src="{{ profile.image.url }}" alt="" />
