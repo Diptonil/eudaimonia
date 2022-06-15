@@ -3,6 +3,7 @@ import logging
 from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
@@ -16,11 +17,12 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.core.cache import cache
 from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.views.generic import UpdateView
 
 import constants
 from authentication.models import Profile
-from .forms import SignupForm, LoginForm, ProfileForm
-from .tokens import account_activation_token
+from authentication.forms import SignupForm, LoginForm, ProfileForm, RecommendationForm
+from authentication.tokens import account_activation_token
 
 logger = logging.getLogger('main')
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
@@ -188,6 +190,12 @@ def profile_edit_page_view(request):
         cache.set(constants.CURRENT_USER_CACHE_KEY, profile_model)
     model_bio = profile_model.bio
     model_birth_date = profile_model.birth_date
+    model_favourite_movie_genres = [obj[0] for obj in profile_model.fav_movie_genres.values_list('field')]
+    model_disliked_movie_genres = [obj[0] for obj in profile_model.unfav_movie_genres.values_list('field')]
+    model_favourite_music_genres = [obj[0] for obj in profile_model.fav_music_genres.values_list('field')]
+    model_disliked_music_genres = [obj[0] for obj in profile_model.unfav_music_genres.values_list('field')]
+    print(model_favourite_movie_genres)
+    print(model_favourite_music_genres)
     if model_bio is not None:
         profile_form.fields['bio'].widget.attrs['placeholder'] = model_bio
     if model_birth_date is not None:
@@ -208,7 +216,18 @@ def profile_edit_page_view(request):
                 profile_model.birth_date = birth_date
             profile_model.save()
             return redirect('profile')
-    return render(request, 'authentication/profile_edit.html', {'form': profile_form, 'profile': profile_model})
+    return_dict = {'form': profile_form, 'profile': profile_model, 'fav_mov': model_favourite_movie_genres, 'unfav_mov': model_disliked_movie_genres, 'fav_mus': model_favourite_music_genres, 'unfav_mus': model_disliked_music_genres}
+    return render(request, 'authentication/profile_edit.html', return_dict)
+
+
+class RecommendationPageView(UpdateView):
+
+    model = Profile
+    form_class = RecommendationForm
+    template_name = 'authentication/recommendation_edit.html'
+
+    def get_success_url(self) -> str:
+        return reverse('profile_edit')
 
 
 def demo_page_view(request):

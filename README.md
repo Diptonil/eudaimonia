@@ -2,6 +2,7 @@
 <div id="top"></div>
 <span>
 <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green" />
+<img src="https://img.shields.io/badge/django%20rest-ff1709?style=for-the-badge&logo=django&logoColor=white" />
 <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
 <img src="https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white" />
 <img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=Selenium&logoColor=white" />
@@ -34,7 +35,7 @@ Eudaimonia is a scalable and dynamic web application that serves to make journal
 <li> Provides additional services such as customization of their writing panels, data recovery, etc.</li>
 </ul>
 The application was made with the intents of providing a market-ready service that can be utilized for personal development as well as providing features that other similar websites charge money for.
-The future scole of the project would be to extend its use-cases, improving the UI significantly and adding in more features that provides the software a competitive edge over all existing products in the web.
+The future scope of the project would be to extend its use-cases, improving the UI significantly and adding in more features that provides the software a competitive edge over all existing products in the web.
 
 <p align="right">(<a href="#top">Top</a>)</p>
 
@@ -44,10 +45,11 @@ The future scole of the project would be to extend its use-cases, improving the 
 The major frameworks, tools, services and APIs used for the making of this project is hereby listed:
 
 * [Django](https://www.djangoproject.com/): The fullstack framework used for building the web application.
+* [Django REST](https://www.django-rest-framework.org): The API framework used to build the film and music recommendation system.
 * [PostgreSQL](https://www.postgresql.org/): The relational database used primarily.
 * [RedisDB](https://redis.io/): The in-memory data store used for caching.
 * [Selenium](https://www.selenium.dev): The browser automation framework used for validation testing.
-* [Jira](https://www.atlassian.com/software/jira): The collaboration and software development tool used to simplify worflow.
+* [Jira](https://www.atlassian.com/software/jira): The collaboration and software development tool used to simplify workflow.
 * [Sentry](https://sentry.io/): The exception management service used for fatal error logging.
 * [Snyk](https://snyk.io/): The security management service used for source code security vulnerability checks.
 * [Cloudinary](https://cloudinary.com/): The primary file storage service.
@@ -103,7 +105,7 @@ We have Selenium integration for functional tests. A default webdriver is includ
 - A test period of around five minutes can be alloted for an interrupt-free functioning of the test suite.
 - Google Chrome is the web browser being used.
 - Sufficient memory resources can be allocated for the test execution (multiple instances of the same browser will be run simutaneously).
-- 
+ 
 To run Selenium validation tests:
 ```sh
 python tests\scenario_testing.py
@@ -119,6 +121,7 @@ There are subsequent upgrades to be made to the project to reach the final stage
 - [x] Configure initial particulars and services.
 - [x] Develop authentication and authorization scheme.
 - [x] Develop AES-256 encryption algorithm implementation.
+- [x] Develop dashboard feature for anonymous sharing.
 - [ ] Implement the base theme of the website.
 - [ ] Develop sentiment-analysis API.
 - [ ] Develop frequency and habit analysis models.
@@ -135,7 +138,7 @@ The collaborators involved in this project are:
 - Diptonil Roy
 - Divyansh Agrawal
 
-The resources utilized for this project are:
+The technical resources utilized for this project are:
 
 - [Font Awesome](https://fontawesome.com)
 - [Image Shields](https://shields.io)
@@ -144,5 +147,9 @@ The resources utilized for this project are:
 - [Google reCaptcha](https://www.google.com/recaptcha/about/)
 - [Argon2 Hashing Technique](https://argon2.online/)
 - [AES-256 Encryption](https://www.nist.gov/publications/advanced-encryption-standard-aes)
+
+The academic and theoretical resources and articles utilized for this project are:
+- [The Genre Theory in Film](https://www.cooperscoborn.org.uk/wp-content/uploads/2018/10/Genre-identify-all-of-the-theories-about-genre.pdf): A simplified and abstract version of the paper has been utilised, keeping in mind the nuances that any user may be capable of comprehending. The distillation of the genres would be considered in the implementation of the recommendation system.
+- []
 
 <p align="right">(<a href="#top">Top</a>)</p>

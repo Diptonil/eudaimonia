@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+from authentication.models import Profile
+
 
 class SignupForm(UserCreationForm):
 
@@ -61,5 +63,8 @@ class ProfileForm(forms.Form):
         self.fields['image'].widget.attrs.update({'style': "margin-top: 30px"})
 
 
-class DemoForm(forms.Form):
-    pass
+class RecommendationForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ['fav_movie_genres', 'unfav_movie_genres', 'fav_music_genres', 'unfav_music_genres']
