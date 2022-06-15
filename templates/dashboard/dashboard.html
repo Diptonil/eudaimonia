@@ -1,4 +1,8 @@
 {% extends 'base/base.html' %}
+{% block nav_dashboard%}
+    class="active"
+{% endblock %}
+
 {% load static %}
 
 {% block title %}
@@ -6,34 +10,71 @@ Eudaimonia | Your Dashboard
 {% endblock %}
 
 {% block body %}
-<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
 
-<body>
-    <br /><br /><br />
-    <form id="search" method="post">
-        {% csrf_token %}
-        {{ form.search }}
-        <button type="submit"><i class="ri-search-line"></i></button>
-    </form>
-    <div class="infinite-container">
-        {% for post in page_obj %}
-        <div style="border-style: solid;" class="infinite-item">
-            <a href="{% url 'story' id=post.id %}">
-                <h2>{{ post.title }}</h2>
-            </a>
-            <b>{{ post.date }}</b>
-            <p>{{ post.post|truncatechars:300 }}...</p>
+<body id="dashboard">
+    <div class="dashboard-container">
+        <div class="dashboard-nav">
+            <form id="search" method="post">
+                {% csrf_token %}
+                {{ form.search }}
+                <button class="search-button"   type="submit"><i class="ri-search-line"></i></button>
+            </form>
+            
+            <div class="mini-nav">
+                <a {% block nav_share%}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></i></a>
+                <a {% block nav_story%}{% endblock %} href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i></i></a>
+            </div>
+
+            <br /><br /><br />
         </div>
-        <br /><br /><br />
-        {% endfor %}
+        <div class="infinite-container">
+            <div class="row">
+                <!--Divide the data into two sets and make one set go to one column and the other to other. Right now the posts are being repeated on both column.
+                Also add a conditional to display "Read More" only when the data is truncated. 
+
+                P.S. Why can't I use the forms, urls and views.py? I'll soon explore them and see how you are manipulating the template data there if that's okay so that I can do these little stuff myself.
+                -->
+                <div class="column">
+                    {% for post in page_obj %}
+                    <div class="infinite-item">
+                        <a href="{% url 'story' id=post.id %}">
+                            <h2>{{ post.title }}</h2>
+                        </a>
+                        <h5>{{ post.date }}</h5>
+                        <p>{{ post.post|truncatechars:1500 }} 
+                            <a class="read-more" href="{% url 'story' id=post.id %}">Read more</a> </p>
+                        <div class="react">
+                            <i onclick="liked(this)" class="ri ri-heart-line"></i>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="column">
+                    {% for post in page_obj %}
+                    <div class="infinite-item">
+                        <a href="{% url 'story' id=post.id %}">
+                            <h2>{{ post.title }}</h2>
+                        </a>
+                        <b>{{ post.date }}</b>
+                        <p>{{ post.post|truncatechars:1500 }}</p>
+                        <br>
+                        <br>
+                        <div class="react">
+                            <i onclick="liked(this)" class="ri ri-heart-line"></i>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <p class="loading">Loading...</p>
+    
+        {% if page_obj.has_next %}
+        <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
     </div>
-
-    <p class="loading">Loading...</p>
-
-    {% if page_obj.has_next %}
-    <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">Next</a>
-    {% endif %}
-
     <script src="/static/infinite scroll js/jquery.waypoints.min.js"></script>
     <script src="/static/infinite scroll js/infinite.min.js"></script>
     <script>
@@ -50,6 +91,19 @@ Eudaimonia | Your Dashboard
         document.getElementsByClassName("infinite-item").onclick = function () {
 
         }
+
+        function liked(heart) {
+        if (heart.classList.contains('ri-heart-line')) {
+            heart.classList.remove('ri-heart-line');
+            heart.classList.add('ri-heart-fill');
+
+        }
+        else {
+            heart.classList.remove('ri-heart-fill');
+            heart.classList.add('ri-heart-line');
+        }
+    }
+
     </script>
 </body>
 {% endblock %}

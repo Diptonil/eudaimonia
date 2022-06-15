@@ -1,4 +1,9 @@
 {% extends 'base/base.html' %}
+
+{% block nav_share%}
+    class="active"
+{% endblock %}
+
 {% load static %}
 
 {% block title %}
@@ -6,34 +11,61 @@ Eudaimonia | Share Anonymously
 {% endblock %}
 
 {% block body %}
-<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
 
-<body>
+<body class="story">
     <br /><br /><br />
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-control">
-            {{ form.title }}
-        </div>
-        <div class="form-control">
-            {{ form.post }}
-        </div>
-        <div class="form-control">
-            {{ form.image }}
-        </div>
-        <br /><br /><br />
-        <!--HTML for the accepting the picture-->
+    <div class="share-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-control">
+                {{ form.title }}
+            </div>
+            <div class="text form-control">
+                <textarea oninput="auto_height(this)" name="textarea" id="text" placeholder="Share your thoughts..."></textarea>
+                <!--
+                    Connect the textarea thing asthe input data instead.
+                    {{ form.post }}-->
+            </div>
+            <!-- 
+                and this as well. The new input button includes the id
+            <div class="form-control">
+                {{ form.image }}
+            </div>-->
+            <img src="" id="display-img">
+            <img >
+            <br>
+            <input type="file" id="button" accept="image">
         <input type="submit" value="Submit" class="btn">
 
-        {% if form.errors %}
-        {% for field in form %}
-        {% for error in field.errors %}
-        <div class="alert">
-            <strong>{{ error|escape }}</strong>
-        </div>
-        {% endfor %}
-        {% endfor %}
-        {% endif %}
-    </form>
+            {% if form.errors %}
+            {% for field in form %}
+            {% for error in field.errors %}
+            <div class="alert">
+                <strong>{{ error|escape }}</strong>
+            </div>
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
+        </form>
+    </div>
 </body>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    
+    let img=document.getElementById('display-img');
+    let button = document.getElementById('button');
+    button.addEventListener('change', function () {
+        img.src= URL.createObjectURL(this.files[0])
+        img.style.display='block';
+    })
+
+    function auto_height(elem) { 
+    elem.style.height = "1px";
+    elem.style.height = (elem.scrollHeight)+"px";
+}
+
+</script>
 {% endblock %}

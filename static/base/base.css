@@ -5,9 +5,9 @@
 body{
     --accent: #301dad;
     --primarycolor: #ffffff;
-    --primary-dark: #f2f2f2fa;
+    --primary-dark: #f6f6f6;
     --sec: rgb(0, 0, 0);
-    --sec-light: rgb(46, 46, 46)
+    --sec-light: #3e3e3e;
 }
 
 body{

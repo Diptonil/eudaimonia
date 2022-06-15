@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+
 {% load static %}
 
 {% block title %}
@@ -6,15 +7,20 @@ Eudaimonia | {{ story.title }}
 {% endblock %}
 
 {% block body %}
-<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
 
-<body>
-    <br /><br /><br />
-    <h1>{{ story.title }}</h1>
-    <b>{{ story.date }}</b>
-    {% if story.image %}
-    <img src="{{ story.image.url }}" />
-    {% endif %}
-    <p>{{ story.post }}</p>
+<body  class="story">
+    <br><br><br>
+        <div class="story-container">
+            <h1>{{ story.title }}</h1>
+            <b>{{ story.date }}</b>
+            {% if story.image %}
+            <img src="{{ story.image.url }}" />
+            {% endif %}
+            <p>{{ story.post }}</p>
+            <div class="react">
+                <i class="ri ri-heart-line"></i>
+            </div>
+        </div>
 </body>
 {% endblock %}
