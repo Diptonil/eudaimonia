@@ -580,7 +580,7 @@ th{
     background-color: var(--primarycolor);
     padding: 20px 25px;
     max-height: fit-content;
-    min-height: 400px;
+    height: fit-content;
     max-width: 850px;
     margin: auto;
     margin-top: 50px ;
@@ -623,4 +623,9 @@ th{
 #export:hover{
     text-decoration: underline;
     color: var(--sec);
+}
+
+#myChart{
+    margin: auto;
+    margin-top: 100px;
 }
