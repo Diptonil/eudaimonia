@@ -165,7 +165,6 @@ def autocomplete(request):
 
 
 def stats_page_view(request):
-    emotions_model = EmotionsStat.objects.filter(user=request.user)
     emotion_data = dict()
     emotion_data['joy'] = float(EmotionsStat.objects.aggregate(Sum('joy'))['joy__sum'])
     emotion_data['anger'] = float(EmotionsStat.objects.aggregate(Sum('anger'))['anger__sum'])
