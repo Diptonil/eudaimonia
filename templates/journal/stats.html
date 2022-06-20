@@ -9,8 +9,17 @@ Eudaimonia | User Statistics
 <link rel="stylesheet" href="{% static 'journal/stats.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <body>
-<canvas id="myChart" style="width:100%; max-width:800px"></canvas>
-<canvas id="myBar" style="width:100%;max-width:600px"></canvas>
+  <div id="loader"></div>  
+  <canvas id="myChart" style="width:100%; max-width:800px"></canvas>
+  <canvas id="myBar" style="width:100%;max-width:600px"></canvas>
+
+
+  <script>
+    var loader = document.getElementById("loader");
+    window.addEventListener("load", function(){
+      loader.style.display= "none";
+    })
+  </script>
 
 
 <script>
@@ -65,7 +74,12 @@ new Chart("myChart", {
         data: yValues
       }]
     },
+
     options: {
+      title: {
+      display: true,
+      text: "Frequency Mapper"
+    },
       legend: {display: false},
       scales: {
         yAxes: [{ticks: {min: 6, max:16}}],
