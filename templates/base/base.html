@@ -31,14 +31,21 @@
 
 
     <div class="navigate">
-        <a {% block nav_dashboard%}{% endblock %} href="{% url 'dashboard' %}"><i class="ri ri-dashboard-line"></i></i>Dashboard</a>
-        <a {% block nav_share%}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></i>New Post</a>
-        <a {% block nav_story%}{% endblock %} href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i></i>Your Posts</a>
+        <a {% block nav_dashboard%}{% endblock %} href="{% url 'dashboard' %}"><i
+                class="ri ri-dashboard-line"></i></i>Dashboard</a>
+        <a {% block nav_share%}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></i>New
+            Post</a>
+        <a {% block nav_story%}{% endblock %} href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i></i>Your
+            Posts</a>
         <hr />
-        <a {% block nav_home%}{% endblock %} href="{% url 'journal' %}"><i class="ri ri-book-2-line"></i>Your Journal</a>
-        <a {% block nav_entry%}{% endblock %} href="{% url 'entry' %}"><i class="ri ri-sticky-note-line" ></i>New Entry</a>
-        <a {% block nav_all_entries%}{% endblock %} href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>All Entries</a>
-        <a {% block nav_star%}{% endblock %} href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>Starred Entries</a>
+        <a {% block nav_home%}{% endblock %} href="{% url 'journal' %}"><i class="ri ri-book-2-line"></i>Your
+            Journal</a>
+        <a {% block nav_entry%}{% endblock %} href="{% url 'entry' %}"><i class="ri ri-sticky-note-line"></i>New
+            Entry</a>
+        <a {% block nav_all_entries%}{% endblock %} href="{% url 'all_entries' %}"><i
+                class="ri ri-database-line"></i>All Entries</a>
+        <a {% block nav_star%}{% endblock %} href="{% url 'star_entries' star='star' %}"><i
+                class="ri ri-star-line"></i>Starred Entries</a>
     </div>
 
     <label class="switch">
@@ -77,7 +84,6 @@
     function openDropdownOnclick() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
-
     window.onclick = function (event) {
         if (!event.target.matches('.profile-pic')) {
             var dropdowns = document.getElementsByClassName("nav-dropdown");

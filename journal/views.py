@@ -2,6 +2,7 @@ import hashlib
 import json
 import io
 
+import requests
 from reportlab.pdfgen import canvas
 from django.http import FileResponse, JsonResponse
 from django.shortcuts import redirect, render, HttpResponse
@@ -13,9 +14,9 @@ from django.core.cache.backends.base import DEFAULT_TIMEOUT
 
 import constants
 from authentication.models import Profile
-from .encryption import encrypt, decrypt
-from .forms import EntrySearchForm
-from .models import Entry
+from journal.encryption import encrypt, decrypt
+from journal.forms import EntrySearchForm
+from journal.models import Entry, EmotionsStat
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
@@ -35,6 +36,23 @@ def entry_page_view(request):
         title = str(request.POST.get('title'))
         content = str(request.POST.get('content'))
         content.replace('&nbsp;', '')
+        headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
+        request0 = requests.post('http://127.0.0.1:7000/get_mood/', json={'CORPUS': content}, headers=headers)
+        response = request0.json()
+        print(response, content)
+        print(request0)
+        joy = response.get('joy', 0)
+        disgust = response.get("disgust", 0)
+        print(disgust)
+        sadness = response.get('sadness', 0)
+        surprise = response.get('surprise', 0)
+        negative = response.get('negative', 0)
+        positive = response.get('positive', 0)
+        trust = response.get('trust', 0)
+        anticipation = response.get('anticipation', 0)
+        fear = response.get('fear', 0)
+        anger = response.get('anger', 0)
+        EmotionsStat.objects.create(user=request.user, joy=joy, disgust=disgust, sadness=sadness, surprise=surprise, negative=negative, positive=positive, trust=trust, fear=fear, anger=anger, anticipation=anticipation)
         encryption_key = get_user_model().objects.get(username=request.user.username).password[53:69]
         encryption_key = hashlib.sha256(encryption_key.encode()).digest()
         content = encrypt(content, encryption_key)
