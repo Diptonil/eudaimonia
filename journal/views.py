@@ -81,6 +81,8 @@ def post_page_view(request, id):
     model_favourite_movie_genres = [obj[0] for obj in profile_model.fav_movie_genres.values_list('field')]
     model_unfavourite_movie_genres = [obj[0] for obj in profile_model.unfav_movie_genres.values_list('field')]
     model = predict_movies(model_favourite_movie_genres, model_unfavourite_movie_genres, response)
+    res = [i for i in model if i != ' \n']
+    res = [i for i in res if i != 'X']
     emotion_data['joy'] = response.get('joy', 0)
     emotion_data['anger'] = response.get("anger", 0)
     emotion_data['sadness'] = response.get("sadness", 0)
@@ -96,7 +98,7 @@ def post_page_view(request, id):
         soup = BeautifulSoup(content, features='html5lib')
         print(soup.get_text().replace('    ', '').replace('\n', ''))
         return redirect('pdf', text=soup.get_text().replace('\t', ' ').replace('\n', ''), filename='{0}.pdf'.format(entry_model.title))
-    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data, 'model': model})
+    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data, 'model': res})
 
 
 @login_required
