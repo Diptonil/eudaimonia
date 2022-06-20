@@ -31,14 +31,14 @@
 
     <div class="navigate">
         <a {% block nav_dashboard%}{% endblock %} href="{% url 'dashboard' %}"><i
-                class="ri ri-dashboard-line"></i></i>Dashboard</a>
-        <a {% block nav_share %}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></i>New
+                class="ri ri-dashboard-line"></i>Dashboard</a>
+        <a {% block nav_share %}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i>New
             Post</a>
-        <a {% block nav_story %}{% endblock %} href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i></i>Your
+        <a {% block nav_story %}{% endblock %} href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i>Your
             Posts</a>
         <hr />
-        <a {% block nav_home %}{% endblock %} href="{% url 'journal' %}"><i class="ri ri-book-2-line"></i>Your
-            Journal</a>
+        <a {% block nav_home %}{% endblock %} href="{% url 'journal' %}"><i class="ri ri-book-2-line">Your
+                Journal</a>
         <a {% block nav_entry %}{% endblock %} href="{% url 'entry' %}"><i class="ri ri-sticky-note-line"></i>New
             Entry</a>
         <a {% block nav_all_entries %}{% endblock %} href="{% url 'all_entries' %}"><i

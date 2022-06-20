@@ -43,6 +43,7 @@ def entry_page_view(request):
         response = request0.json()
         print(response, content)
         print(request0)
+        model = predict_movies(list(profile_model.fav_movie_genres), list(profile_model.unfav_movie_genres), response)
         joy = response.get('joy', 0)
         disgust = response.get("disgust", 0)
         sadness = response.get('sadness', 0)
@@ -61,7 +62,7 @@ def entry_page_view(request):
         print(content)
         print(decrypt(content, encryption_key))
         return HttpResponse(json.dumps(1), content_type='application/json')
-    return render(request, 'journal/entry.html', {'profile': profile_model})
+    return render(request, 'journal/entry.html', {'profile': profile_model, 'model': model})
 
 
 @login_required
@@ -194,7 +195,7 @@ def stats_page_view(request):
     return render(request, 'journal/stats.html', {'emotion_data': emotion_data})
 
 
-def recommendation_page_view(request):
+def recommendation_page_view(request, id):
     profile_model = Profile.objects.get(user=request.user).fav_movie_genres
     print(profile_model)
     #recommendations = predict_movies()
