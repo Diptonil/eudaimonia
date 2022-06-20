@@ -1,6 +1,8 @@
 import hashlib
 import json
 import io
+import time
+from datetime import datetime as dt
 
 import requests
 from reportlab.pdfgen import canvas
@@ -178,6 +180,33 @@ def stats_page_view(request):
     emotion_data['anticipation'] = float(emotion_queryset.aggregate(Sum('anticipation'))['anticipation__sum'])
     emotion_data['fear'] = float(emotion_queryset.aggregate(Sum('fear'))['fear__sum'])
     return render(request, 'journal/stats.html', {'emotion_data': emotion_data})
+
+
+def zen_page_view(request):
+    hosts_path = "/etc/hosts"
+    redirect = "127.0.0.1"
+    website_list = ["www.facebook.com", "facebook.com", "dub119.mail.live.com", "www.dub119.mail.live.com", "www.gmail.com", "gmail.com"]
+    while True:
+        if dt(dt.now().year, dt.now().month, dt.now().day, 8) < dt.now() < dt(dt.now().year, dt.now().month, dt.now().day, 16):
+            print("Working hours...")
+            with open(hosts_path, 'r+') as file:
+                content = file.read()
+                for website in website_list:
+                    if website in content:
+                        pass
+                    else:
+                        # mapping hostnames to your localhost IP address
+                        file.write(redirect + " " + website + "\n")
+        else:
+            with open(hosts_path, 'r+') as file:
+                content = file.readlines()
+                file.seek(0)
+                for line in content:
+                    if not any(website in line for website in website_list):
+                        file.write(line)
+                file.truncate()
+            print("Fun hours...")
+        time.sleep(5)
 
 
 def journal_navbar(request):
