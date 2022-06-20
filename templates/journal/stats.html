@@ -7,32 +7,17 @@ Eudaimonia | User Statistics
 
 {% block body %}
 <link rel="stylesheet" href="{% static 'journal/stats.css' %}">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <body>
 
-  <script>
-    var loader = document.getElementById("loader");
-    window.addEventListener("load", function () {
-      loader.style.display = "none";
-    })
-  </script>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
-  <div id="loader"></div>
-
-
-  <canvas id="myChart" style="width:100%; max-width:800px"></canvas>
-  <canvas id="myBar" style="width:100%;max-width:600px"></canvas>
-
-
-
-
-
-  <script>
-    var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
-    var yValues = [{{ emotion_data.joy }}, { { emotion_data.disgust } }, { { emotion_data.sadness } }, { { emotion_data.surprise } },
-    { { emotion_data.positive } }, { { emotion_data.negative } }, { { emotion_data.trust } },
-    { { emotion_data.anticipation } }, { { emotion_data.fear } }, { { emotion_data.anger } }];
+<script>
+var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
+    var yValues = [{{ emotion_data.joy }}, {{ emotion_data.disgust }}, {{ emotion_data.sadness }}, {{ emotion_data.surprise }},
+    {{ emotion_data.positive }}, {{ emotion_data.negative }}, {{ emotion_data.trust }},
+    {{ emotion_data.anticipation }}, {{ emotion_data.fear }}, {{ emotion_data.anger }}];
     var barColors = [
       "#1572A1",
       "#9AD0EC",
@@ -46,104 +31,26 @@ Eudaimonia | User Statistics
       "#709FB0"
     ];
 
-    new Chart("myChart", {
-      type: "pie",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-        title: {
-          display: true,
-          text: "Overall Mood Analysis"
-        }
-      }
-    });
-  </script>
-
-  <script>
-    var xValues = [20, 21];
-    var yValues = [0.457, 2.2];
-
-    new Chart("myBar", {
-      type: "line",
-      data: {
-        labels: xValues,
-        datasets: [{
-          fill: false,
-          lineTension: 0,
-          backgroundColor: "rgba(0,0,255,1.0)",
-          borderColor: "rgba(0,0,255,0.1)",
-          data: yValues
-        }]
-      },
-
-      options: {
-        title: {
-          display: true,
-          text: "Frequency Mapper"
-        },
-        legend: { display: false },
-        scales: {
-          yAxes: [{ ticks: { min: 0, max: 5 } }],
-        }
-      });
-  </script>
-
+new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "World Wide Wine Production 2018"
+    }
+  }
+});
+</script>
 </body>
+
 {% endblock %}
 
 
 
-
-
-<!--
-{% block scripts %}
-<script>
-    $(document).ready(function () {
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Joy', 'Disgust', 'Sadness', 'Surprise', 'Positive', 'Negative', 'Trust', 'Anticipation', 'Fear', 'Anger'] //loop through queryset, 
-                datasets: [{
-                    label: '# of users',
-                    data: [{{ emotion_data.joy }}, {{ emotion_data.disgust }}, {{ emotion_data.sadness }}, {{ emotion_data.surpise }},
-        {{ emotion_data.positive }}, {{ emotion_data.negative }}, {{ emotion_data.trust }},
-        {{ emotion_data.anticipation }}, {{ emotion_data.fear }}, {{ emotion_data.anger }}
-                    ],
-        backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-    ],
-        borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-    ],
-        borderWidth: 1
-            }]
-        },
-        options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-});
-</script>
-
-{%endblock scripts%}
--->

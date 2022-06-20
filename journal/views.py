@@ -177,8 +177,7 @@ def stats_page_view(request):
     emotion_data['trust'] = float(emotion_queryset.aggregate(Sum('trust'))['trust__sum'])
     emotion_data['anticipation'] = float(emotion_queryset.aggregate(Sum('anticipation'))['anticipation__sum'])
     emotion_data['fear'] = float(emotion_queryset.aggregate(Sum('fear'))['fear__sum'])
-    frequency_mapper = FrequencyStatistics.objects.filter(user=request.user)
-    return render(request, 'journal/stats.html', {'emotion_data': emotion_data, 'frequency_mapper': frequency_mapper})
+    return render(request, 'journal/stats.html', {'emotion_data': emotion_data})
 
 
 def journal_navbar(request):
