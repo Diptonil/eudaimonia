@@ -9,10 +9,6 @@ Eudaimonia | User Statistics
 <link rel="stylesheet" href="{% static 'journal/stats.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <body>
-  <div id="loader"></div>  
-  <canvas id="myChart" style="width:100%; max-width:800px"></canvas>
-  <canvas id="myBar" style="width:100%;max-width:600px"></canvas>
-
 
   <script>
     var loader = document.getElementById("loader");
@@ -20,6 +16,15 @@ Eudaimonia | User Statistics
       loader.style.display= "none";
     })
   </script>
+
+  <div id="loader"></div>  
+
+
+  <canvas id="myChart" style="width:100%; max-width:800px"></canvas>
+  <canvas id="myBar" style="width:100%;max-width:600px"></canvas>
+
+
+
 
 
 <script>
@@ -59,8 +64,8 @@ new Chart("myChart", {
 </script>
 
 <script>
-  var xValues = [50,60,70,80,90,100,110,120,130,140,150];
-  var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+  var xValues = [20, 21];
+  var yValues = [0.457, 2.2];
   
   new Chart("myBar", {
     type: "line",
@@ -82,7 +87,7 @@ new Chart("myChart", {
     },
       legend: {display: false},
       scales: {
-        yAxes: [{ticks: {min: 6, max:16}}],
+        yAxes: [{ticks: {min: 0, max:5}}],
       }
     }
   });
