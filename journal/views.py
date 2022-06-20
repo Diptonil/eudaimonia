@@ -1,8 +1,6 @@
 import hashlib
 import json
 import io
-import time
-from datetime import datetime as dt
 
 import requests
 from reportlab.pdfgen import canvas
@@ -16,7 +14,8 @@ from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.db.models import Sum
 
 import constants
-from authentication.models import Profile, FrequencyStatistics
+from authentication.models import Profile
+from journal.recommendation_model import predict_movies
 from journal.encryption import encrypt, decrypt
 from journal.forms import EntrySearchForm
 from journal.models import Entry, EmotionsStat
@@ -195,31 +194,11 @@ def stats_page_view(request):
     return render(request, 'journal/stats.html', {'emotion_data': emotion_data})
 
 
-def zen_page_view(request):
-    hosts_path = "/etc/hosts"
-    redirect = "127.0.0.1"
-    website_list = ["www.facebook.com", "facebook.com", "dub119.mail.live.com", "www.dub119.mail.live.com", "www.gmail.com", "gmail.com"]
-    while True:
-        if dt(dt.now().year, dt.now().month, dt.now().day, 8) < dt.now() < dt(dt.now().year, dt.now().month, dt.now().day, 16):
-            print("Working hours...")
-            with open(hosts_path, 'r+') as file:
-                content = file.read()
-                for website in website_list:
-                    if website in content:
-                        pass
-                    else:
-                        # mapping hostnames to your localhost IP address
-                        file.write(redirect + " " + website + "\n")
-        else:
-            with open(hosts_path, 'r+') as file:
-                content = file.readlines()
-                file.seek(0)
-                for line in content:
-                    if not any(website in line for website in website_list):
-                        file.write(line)
-                file.truncate()
-            print("Fun hours...")
-        time.sleep(5)
+def recommendation_page_view(request):
+    profile_model = Profile.objects.get(user=request.user).fav_movie_genres
+    print(profile_model)
+    #recommendations = predict_movies()
+    return render(request, 'journal/recommendations.html')
 
 
 def journal_navbar(request):

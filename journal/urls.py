@@ -11,6 +11,7 @@ urlpatterns = [
     path('entry/star/<id>/', view=views.star_view, name='star'),
     path('entry/all/', view=views.all_entries_page_view, name='all_entries'),
     path('entry/all/<star>/', view=views.all_entries_page_view, name='star_entries'),
+    path('entry/<id>/recommendation', view=views.recommendation_page_view, name='recommend'),
     path('entry/<id>/', view=views.post_page_view, name='post'),
     path('autocomplete/', view=views.autocomplete, name='autocomplete'),
 ]
