@@ -145,6 +145,10 @@ def autocomplete(request):
     return render(request, 'journal/all_entries.html')
 
 
+def stats_page_view(request):
+    return render(request, 'journal/stats.html')
+
+
 def journal_navbar(request):
     display = ('journal/' in request.path) or ('profile/' in request.path) or ('dashboard/' in request.path)
     recaptcha_key = None

@@ -1,9 +1,10 @@
 from django.urls import path
 
-from . import views
+from journal import views
 
 urlpatterns = [
     path('', view=views.journal_page_view, name='journal'),
+    path('stats', view=views.stats_page_view, name='stats'),
     path('entry/', view=views.entry_page_view, name='entry'),
     path('entry/pdf/<text>/<filename>/', view=views.pdf_convert, name='pdf'),
     path('entry/delete/<id>/', view=views.disable_view, name='disable'),
