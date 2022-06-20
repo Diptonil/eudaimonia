@@ -1,0 +1,10 @@
+{% load wagtailadmin_tags %}
+
+<button class="zen-mode activate button button-small button-secondary button--icon">
+    Zen {% icon name="collapse-up" wrapped=1 %}
+</button>
+<button class="zen-mode exit button button-small button-secondary button--icon hidden">
+    Exit {% icon name="collapse-down" wrapped=1 %}
+</button>
+
+{% include "wagtailadmin/edit_handlers/multi_field_panel.html" %}
