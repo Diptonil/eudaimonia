@@ -43,7 +43,6 @@ def entry_page_view(request):
         response = request0.json()
         print(response, content)
         print(request0)
-        model = predict_movies(list(profile_model.fav_movie_genres), list(profile_model.unfav_movie_genres), response)
         joy = response.get('joy', 0)
         disgust = response.get("disgust", 0)
         sadness = response.get('sadness', 0)
@@ -62,7 +61,7 @@ def entry_page_view(request):
         print(content)
         print(decrypt(content, encryption_key))
         return HttpResponse(json.dumps(1), content_type='application/json')
-    return render(request, 'journal/entry.html', {'profile': profile_model, 'model': model})
+    return render(request, 'journal/entry.html', {'profile': profile_model})
 
 
 @login_required
@@ -79,6 +78,7 @@ def post_page_view(request, id):
     headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
     request0 = requests.post('http://127.0.0.1:7000/get_mood/', json={'CORPUS': content}, headers=headers)
     response = request0.json()
+    model = predict_movies(list(profile_model.fav_movie_genres), list(profile_model.unfav_movie_genres), response)
     emotion_data['joy'] = response.get('joy', 0)
     emotion_data['anger'] = response.get("anger", 0)
     emotion_data['sadness'] = response.get("sadness", 0)
@@ -94,7 +94,7 @@ def post_page_view(request, id):
         soup = BeautifulSoup(content, features='html5lib')
         print(soup.get_text().replace('    ', '').replace('\n', ''))
         return redirect('pdf', text=soup.get_text().replace('\t', ' ').replace('\n', ''), filename='{0}.pdf'.format(entry_model.title))
-    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data})
+    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data, 'model': model})
 
 
 @login_required
