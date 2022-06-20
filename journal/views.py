@@ -11,6 +11,7 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.core.cache import cache
 from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.db.models import Sum
 
 import constants
 from authentication.models import Profile
@@ -164,7 +165,19 @@ def autocomplete(request):
 
 
 def stats_page_view(request):
-    return render(request, 'journal/stats.html')
+    emotions_model = EmotionsStat.objects.filter(user=request.user)
+    emotion_data = dict()
+    emotion_data['joy'] = float(EmotionsStat.objects.aggregate(Sum('joy'))['joy__sum'])
+    emotion_data['anger'] = float(EmotionsStat.objects.aggregate(Sum('anger'))['anger__sum'])
+    emotion_data['sadness'] = float(EmotionsStat.objects.aggregate(Sum('sadness'))['sadness__sum'])
+    emotion_data['disgust'] = float(EmotionsStat.objects.aggregate(Sum('disgust'))['disgust__sum'])
+    emotion_data['surprise'] = float(EmotionsStat.objects.aggregate(Sum('surprise'))['surprise__sum'])
+    emotion_data['negative'] = float(EmotionsStat.objects.aggregate(Sum('negative'))['negative__sum'])
+    emotion_data['positive'] = float(EmotionsStat.objects.aggregate(Sum('positive'))['positive__sum'])
+    emotion_data['trust'] = float(EmotionsStat.objects.aggregate(Sum('trust'))['trust__sum'])
+    emotion_data['anticipation'] = float(EmotionsStat.objects.aggregate(Sum('anticipation'))['anticipation__sum'])
+    emotion_data['fear'] = float(EmotionsStat.objects.aggregate(Sum('fear'))['fear__sum'])
+    return render(request, 'journal/stats.html', {'emotion_data': emotion_data})
 
 
 def journal_navbar(request):
