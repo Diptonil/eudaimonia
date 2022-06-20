@@ -8,84 +8,85 @@ Eudaimonia | User Statistics
 {% block body %}
 <link rel="stylesheet" href="{% static 'journal/stats.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
 <body>
-  <div id="loader"></div>  
+  <div id="loader"></div>
   <canvas id="myChart" style="width:100%; max-width:800px"></canvas>
   <canvas id="myBar" style="width:100%;max-width:600px"></canvas>
 
 
   <script>
     var loader = document.getElementById("loader");
-    window.addEventListener("load", function(){
-      loader.style.display= "none";
+    window.addEventListener("load", function () {
+      loader.style.display = "none";
     })
   </script>
 
 
-<script>
-var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
-var yValues = [{{ emotion_data.joy }}, {{ emotion_data.disgust }}, {{ emotion_data.sadness }}, {{ emotion_data.surprise }},
-        {{ emotion_data.positive }}, {{ emotion_data.negative }}, {{ emotion_data.trust }},
-        {{ emotion_data.anticipation }}, {{ emotion_data.fear }}, {{ emotion_data.anger }}];
-var barColors = [
-  "#1572A1",
-  "#9AD0EC",
-  "#EFDAD7",
-  "#E3BEC6",
-  "#FFDFD3",
-  "#FEC8D8",
-  "#D291BC",
-  "#957DAD",
-  "#046582",
-  "#709FB0"
-];
+  <script>
+    var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
+    var yValues = [{{ emotion_data.joy }}, { { emotion_data.disgust } }, { { emotion_data.sadness } }, { { emotion_data.surprise } },
+    { { emotion_data.positive } }, { { emotion_data.negative } }, { { emotion_data.trust } },
+    { { emotion_data.anticipation } }, { { emotion_data.fear } }, { { emotion_data.anger } }];
+    var barColors = [
+      "#1572A1",
+      "#9AD0EC",
+      "#EFDAD7",
+      "#E3BEC6",
+      "#FFDFD3",
+      "#FEC8D8",
+      "#D291BC",
+      "#957DAD",
+      "#046582",
+      "#709FB0"
+    ];
 
-new Chart("myChart", {
-  type: "pie",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: "Overall Mood Analysis"
-    }
-  }
-});
-</script>
-
-<script>
-  var xValues = [50,60,70,80,90,100,110,120,130,140,150];
-  var yValues = [7,8,8,9,9,9,10,11,14,14,15];
-  
-  new Chart("myBar", {
-    type: "line",
-    data: {
-      labels: xValues,
-      datasets: [{
-        fill: false,
-        lineTension: 0,
-        backgroundColor: "rgba(0,0,255,1.0)",
-        borderColor: "rgba(0,0,255,0.1)",
-        data: yValues
-      }]
-    },
-
-    options: {
-      title: {
-      display: true,
-      text: "Frequency Mapper"
-    },
-      legend: {display: false},
-      scales: {
-        yAxes: [{ticks: {min: 6, max:16}}],
+    new Chart("myChart", {
+      type: "pie",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Overall Mood Analysis"
+        }
       }
-    }
-  });
+    });
+  </script>
+
+  <script>
+    var xValue = [20, 21];
+    var yValue = [0.457, 2.2];
+
+    new Chart("myBar", {
+      type: "line",
+      data: {
+        labels: xValue,
+        datasets: [{
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgba(0,0,255,1.0)",
+          borderColor: "rgba(0,0,255,0.1)",
+          data: yValue
+        }]
+      },
+
+      options: {
+        title: {
+          display: true,
+          text: "Frequency Mapper"
+        },
+        legend: { display: false },
+        scales: {
+          yAxes: [{ ticks: { min: 0, max: 5 } }],
+        }
+      }
+    });
   </script>
 
 </body>

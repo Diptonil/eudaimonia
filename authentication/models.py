@@ -56,3 +56,10 @@ class Profile(models.Model):
 
     class Meta:
         ordering = ('join_date',)
+
+
+class FrequencyStatistics(models.Model):
+
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    active_time = models.DecimalField(max_digits=20, decimal_places=10)
+    date = models.DateField(default=date.today)

@@ -1,4 +1,6 @@
 import logging
+import time
+from datetime import date
 
 from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
@@ -20,10 +22,12 @@ from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.views.generic import UpdateView
 
 import constants
-from authentication.models import Profile
+from authentication.models import Profile, FrequencyStatistics
 from authentication.forms import SignupForm, LoginForm, ProfileForm, RecommendationForm
 from authentication.tokens import account_activation_token
 
+logout_time = 0
+login_time = 0
 logger = logging.getLogger('main')
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
@@ -42,9 +46,12 @@ def login_page_view(request):
                 use_username = False
             else:
                 use_username = True
+            global login_time
             if use_username:
+                login_time = time.time()
                 user = authenticate(username=login_form.cleaned_data['user_identifier'], password=login_form.cleaned_data['password'])
             else:
+                login_time = time.time()
                 user = get_user_model().objects.get(email=login_form.cleaned_data['user_identifier'])
                 user = authenticate(username=user.username, password=login_form.cleaned_data['password'])
             if user is not None:

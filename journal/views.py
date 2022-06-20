@@ -14,7 +14,7 @@ from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.db.models import Sum
 
 import constants
-from authentication.models import Profile
+from authentication.models import Profile, FrequencyStatistics
 from journal.encryption import encrypt, decrypt
 from journal.forms import EntrySearchForm
 from journal.models import Entry, EmotionsStat
@@ -166,21 +166,23 @@ def autocomplete(request):
 
 def stats_page_view(request):
     emotion_data = dict()
-    emotion_data['joy'] = float(EmotionsStat.objects.aggregate(Sum('joy'))['joy__sum'])
-    emotion_data['anger'] = float(EmotionsStat.objects.aggregate(Sum('anger'))['anger__sum'])
-    emotion_data['sadness'] = float(EmotionsStat.objects.aggregate(Sum('sadness'))['sadness__sum'])
-    emotion_data['disgust'] = float(EmotionsStat.objects.aggregate(Sum('disgust'))['disgust__sum'])
-    emotion_data['surprise'] = float(EmotionsStat.objects.aggregate(Sum('surprise'))['surprise__sum'])
-    emotion_data['negative'] = float(EmotionsStat.objects.aggregate(Sum('negative'))['negative__sum'])
-    emotion_data['positive'] = float(EmotionsStat.objects.aggregate(Sum('positive'))['positive__sum'])
-    emotion_data['trust'] = float(EmotionsStat.objects.aggregate(Sum('trust'))['trust__sum'])
-    emotion_data['anticipation'] = float(EmotionsStat.objects.aggregate(Sum('anticipation'))['anticipation__sum'])
-    emotion_data['fear'] = float(EmotionsStat.objects.aggregate(Sum('fear'))['fear__sum'])
-    return render(request, 'journal/stats.html', {'emotion_data': emotion_data})
+    emotion_queryset = EmotionsStat.objects.filter(user=request.user)
+    emotion_data['joy'] = float(emotion_queryset.aggregate(Sum('joy'))['joy__sum'])
+    emotion_data['anger'] = float(emotion_queryset.aggregate(Sum('anger'))['anger__sum'])
+    emotion_data['sadness'] = float(emotion_queryset.aggregate(Sum('sadness'))['sadness__sum'])
+    emotion_data['disgust'] = float(emotion_queryset.aggregate(Sum('disgust'))['disgust__sum'])
+    emotion_data['surprise'] = float(emotion_queryset.aggregate(Sum('surprise'))['surprise__sum'])
+    emotion_data['negative'] = float(emotion_queryset.aggregate(Sum('negative'))['negative__sum'])
+    emotion_data['positive'] = float(emotion_queryset.aggregate(Sum('positive'))['positive__sum'])
+    emotion_data['trust'] = float(emotion_queryset.aggregate(Sum('trust'))['trust__sum'])
+    emotion_data['anticipation'] = float(emotion_queryset.aggregate(Sum('anticipation'))['anticipation__sum'])
+    emotion_data['fear'] = float(emotion_queryset.aggregate(Sum('fear'))['fear__sum'])
+    frequency_mapper = FrequencyStatistics.objects.filter(user=request.user)
+    return render(request, 'journal/stats.html', {'emotion_data': emotion_data, 'frequency_mapper': frequency_mapper})
 
 
 def journal_navbar(request):
-    display = ('journal/' in request.path) or ('profile/' in request.path) or ('dashboard/' in request.path)
+    display = ('journal/' in request.path) or ('profile/' in request.path) or ('dashboard/' in request.path) or ('stats/' in request.path)
     recaptcha_key = None
     if 'signup/' in request.path:
         recaptcha_key = settings.RECATCHA_PUBLIC_KEY
