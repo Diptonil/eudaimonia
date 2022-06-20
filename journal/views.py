@@ -78,7 +78,9 @@ def post_page_view(request, id):
     headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
     request0 = requests.post('http://127.0.0.1:7000/get_mood/', json={'CORPUS': content}, headers=headers)
     response = request0.json()
-    model = predict_movies(list(profile_model.fav_movie_genres), list(profile_model.unfav_movie_genres), response)
+    model_favourite_movie_genres = [obj[0] for obj in profile_model.fav_movie_genres.values_list('field')]
+    model_unfavourite_movie_genres = [obj[0] for obj in profile_model.unfav_movie_genres.values_list('field')]
+    model = predict_movies(model_favourite_movie_genres, model_unfavourite_movie_genres, response)
     emotion_data['joy'] = response.get('joy', 0)
     emotion_data['anger'] = response.get("anger", 0)
     emotion_data['sadness'] = response.get("sadness", 0)
@@ -193,13 +195,6 @@ def stats_page_view(request):
     emotion_data['anticipation'] = float(emotion_queryset.aggregate(Sum('anticipation'))['anticipation__sum'])
     emotion_data['fear'] = float(emotion_queryset.aggregate(Sum('fear'))['fear__sum'])
     return render(request, 'journal/stats.html', {'emotion_data': emotion_data})
-
-
-def recommendation_page_view(request, id):
-    profile_model = Profile.objects.get(user=request.user).fav_movie_genres
-    print(profile_model)
-    #recommendations = predict_movies()
-    return render(request, 'journal/recommendations.html')
 
 
 def journal_navbar(request):
