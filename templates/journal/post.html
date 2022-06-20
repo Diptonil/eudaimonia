@@ -40,6 +40,43 @@ Eudaimonia | {{ entry.title }}
         </div>
     </div>
     </div>
-   
+    
+    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+    <script>
+        var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
+            var yValues = [{{ emotion_data.joy }}, {{ emotion_data.disgust }}, {{ emotion_data.sadness }}, {{ emotion_data.surprise }},
+            {{ emotion_data.positive }}, {{ emotion_data.negative }}, {{ emotion_data.trust }},
+            {{ emotion_data.anticipation }}, {{ emotion_data.fear }}, {{ emotion_data.anger }}];
+            var barColors = [
+            "#1572A1",
+            "#9AD0EC",
+            "#EFDAD7",
+            "#E3BEC6",
+            "#FFDFD3",
+            "#FEC8D8",
+            "#D291BC",
+            "#957DAD",
+            "#046582",
+            "#709FB0"
+            ];
+        
+        new Chart("myChart", {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+            }]
+        },
+        options: {
+            title: {
+            display: true,
+            text: "Overall Mood Analysis"
+            }
+        }
+        });
+        </script>
 </body>
 {% endblock %}

@@ -74,7 +74,9 @@ button .ri-search-line{
     margin-top: 120px;
 }
 
-
+.post-title{
+    font-size: 25px;
+}
 
 /*
 .infinite-item:nth-child(2n+1) {
@@ -104,21 +106,30 @@ button .ri-search-line{
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.11);
 }
 */
+body{
+    background-image: linear-gradient(to right top, #acefff, #a2e5ff, #a8d9ff, #bbcaff, #d5b8ff);
+}
 
 
 .infinite-item{
+    transition: transform .3s;
     border-radius: 5px;
     background-color: var(--primarycolor);
     border: none;
-    margin: 14px 0;
-    padding: 10px;
+    margin: 18px 0;
+    padding: 30px;
     height: fit-content;
     overflow: hidden;
     max-height: 750px;
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.11);
 }
 
+.infinite-item:hover{
+    transform: scale(1.03);
+}
+
 .infinite-item p{
+    font-size: 17px;
     line-height: 23px;
 }
 

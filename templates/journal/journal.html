@@ -9,9 +9,14 @@ Eudaimonia | Your Journal
 {% endblock %}
 
 {% block body %}
-<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
 
+<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
 <body class="journal-body">
+    <canvas class="background"></canvas>
+
+
+
     <div class="bookmark1">
         <a href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>all entries  </a>
         
@@ -24,32 +29,44 @@ Eudaimonia | Your Journal
         <div id="jname">{{ user.username }}'s  journal</div>
     </div>
 
+
+    <script src="path/to/particles.min.js"></script>
+
+    <!--
     <div class="section">
         <div class="row">
             <div class="column">
                 <div class="dummy"></div>
-                <div class="stickynote" style="background-color: #CCF3EE;">
+               
+                <div class="stickynote" style="background-color: #c9c1fc;">
                     <h3>Lorem, ipsum dolor.</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
                 </div>
             </div>
             <div class="column">
-                <div style="background-color: #F9CEEE;" class="stickynote">
+                <div style="background-color: #c9c1fc;" class="stickynote">
                     <h3>Lorem, ipsum dolor.</h3>
                     <img src="../../static/images/pastelbg.jpg" alt="">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
                 </div>
-                <div  class="stickynote" style="background-color: #F9FFA4;">
+                <div  class="stickynote" style="background-color: #c9c1fc;">
                     <h3>Lorem, ipsum dolor.</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
                 </div>
             </div>
+            
         </div>
 
     </div>
+-->
 
     <script>
+
+window.onload= function() {Particles.init({
+    selector: '.background'});
+};
+
         function openBookmark() {
             document.getElementById("mySidebar").style.width = "320px";
             document.getElementById("sidebar-active").style.display = "block";

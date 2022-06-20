@@ -257,8 +257,15 @@ input[type="file"]{
 
 /*Journal page*/
 .journal-body{
-    background-repeat: no-repeat;
-    background-size: cover
+    color: black;
+}
+
+.background {
+    position:absolute;
+    display:block;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 
 .bookmark1{

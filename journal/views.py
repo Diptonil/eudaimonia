@@ -46,7 +46,6 @@ def entry_page_view(request):
         print(request0)
         joy = response.get('joy', 0)
         disgust = response.get("disgust", 0)
-        print(disgust)
         sadness = response.get('sadness', 0)
         surprise = response.get('surprise', 0)
         negative = response.get('negative', 0)
@@ -76,12 +75,26 @@ def post_page_view(request, id):
     encryption_key = hashlib.sha256(encryption_key.encode()).digest()
     content = decrypt(content, encryption_key)
     entry_model.entry = content
+    emotion_data = dict()
+    headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
+    request0 = requests.post('http://127.0.0.1:7000/get_mood/', json={'CORPUS': content}, headers=headers)
+    response = request0.json()
+    emotion_data['joy'] = response.get('joy', 0)
+    emotion_data['anger'] = response.get("anger", 0)
+    emotion_data['sadness'] = response.get("sadness", 0)
+    emotion_data['disgust'] = response.get("disgust", 0)
+    emotion_data['surprise'] = response.get("surprise", 0)
+    emotion_data['negative'] = response.get("negative", 0)
+    emotion_data['positive'] = response.get("positive", 0)
+    emotion_data['trust'] = response.get("trust", 0)
+    emotion_data['anticipation'] = response.get("anticipation", 0)
+    emotion_data['fear'] = response.get("fear", 0)
     if request.method == 'POST':
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(content, features='html5lib')
         print(soup.get_text().replace('    ', '').replace('\n', ''))
         return redirect('pdf', text=soup.get_text().replace('\t', ' ').replace('\n', ''), filename='{0}.pdf'.format(entry_model.title))
-    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model})
+    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data})
 
 
 @login_required
