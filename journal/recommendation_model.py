@@ -39,8 +39,15 @@ def predict_movies(liked, disliked, mood):
     data = response.text
     soup = SOUP(data, "lxml")
     titles = soup.find_all("a", attrs={"href": re.compile(r'\/title\/tt+\d*\/')}, limit=7)
-    print(titles)
-    return titles
+    list_of_inner_text = [x.text for x in titles]
+    final_text = list()
+    for text in list_of_inner_text:
+        if ('X' != text):
+            final_text.append(text)
+        elif (' \n' != text):
+            final_text.append(text)
+    print(final_text)
+    return final_text
 
 
 def predict_music():
