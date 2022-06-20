@@ -26,12 +26,87 @@ button:hover {
 #container-in{
     background-attachment: fixed;
     background-size: cover;
-    background-image: url("../images/pastelbg.jpg");
     overflow: hidden;
     width: 98.7vw;
     position: absolute;
     height: 100vh;
 }
+
+/*animation*/
+
+.animation-area {
+    background-image: linear-gradient(to bottom, #3400df, #6500e3, #8708e7, #a315eb, #bd23ef);
+    width: 100%;
+    height: 100vh;
+  }
+  .box-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .box-area li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 20s linear infinite;
+    bottom: -150px;
+  }
+  .box-area li:nth-child(1) {
+    left: 86%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+  }
+  .box-area li:nth-child(2) {
+    left: 12%;
+    width: 30px;
+    height: 30px;
+    animation-delay: 1.5s;
+    animation-duration: 10s;
+  }
+  .box-area li:nth-child(3) {
+    left: 70%;
+    width: 100px;
+    height: 100px;
+    animation-delay: 5.5s;
+  }
+  .box-area li:nth-child(4) {
+    left: 42%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 15s;
+  }
+  .box-area li:nth-child(5) {
+    left: 65%;
+    width: 40px;
+    height: 40px;
+    animation-delay: 0s;
+  }
+  .box-area li:nth-child(6) {
+    left: 15%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3.5s;
+  }
+  @keyframes animate {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-800px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+
 
 .showcase {
     z-index: 1;
@@ -43,6 +118,7 @@ button:hover {
 
 
 .showcase-text {
+    color: var(--primarycolor);
     margin-right: 15%;
     z-index: 3;
     max-width: 700px;
@@ -54,25 +130,25 @@ button:hover {
 #quote{
     z-index: 2;
     font-size: 300pt;
-    color: #27188a52;
+    color: #edeafc52;
     position: absolute;
     margin-top: 7%;
     margin-left: 59%;
     font-family: 'Courgette', cursive;
 }
 
+/*
 .animate-charcter
 {
-    background: rgb(135,118,240);
+    /*background: rgb(135,118,240);
 background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%, rgba(29,8,171,1) 49%, rgba(17,1,124,1) 71%, rgba(15,0,113,1) 89%, rgba(12,0,93,1) 100%);
-/*
     background-image: linear-gradient(
         -225deg,
         #231557 0%,
-        #44107a 29%,
-        #136aff 67%,
-        #aa00ff 100%
-    );*/
+        #641bb1 29%,
+        #1d0075 67%,
+        #000129 100%
+    );
     background-size: auto auto;
     background-clip: border-box;
     background-size: 200% auto;
@@ -81,7 +157,7 @@ background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%
     text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: textclip 3s linear infinite;
+    animation: textclip 3s infinite;
     display: inline-block;
     font-size: 190px;
 }
@@ -93,9 +169,10 @@ background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%
     30% {
         background-position: 200% 100%;
     }
-}
+}*/
 
 #showcase-text-quote{
+    color: var(--primarycolor);
     line-height: 70px;
     font-size: 90px;
     text-align: right;
@@ -103,6 +180,7 @@ background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%
 }
 
 .showcase-text h1{
+    color: var(--primarycolor);
     padding: 10px 0;
     line-height: 55px;
     width: 550px;
@@ -117,7 +195,7 @@ background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%
     margin-right: 0;
     padding: 0;
     margin-top: 60px;
-    color: var(--accent);
+    color: var(--primarycolor);
     font-size: 23px;
 }
 

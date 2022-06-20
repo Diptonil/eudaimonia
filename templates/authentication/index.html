@@ -14,10 +14,10 @@ Eudaimonia | Welcome
             <img class="logo" src="{% static 'images/eudaimonia-blue.png' %}" alt="">
             <div>
                 <ul>
-                    <li><a href="{% url 'services' %}">Feature Description</a></li>
-                    <li><a href="{% url 'demo' %}">Try Mood Improver</a></li>
-                    <li><a  href="{% url 'login' %}" >Log In</a></li>
-                    <li><a href="{% url 'signup' %}" >Sign Up</a></li>
+                    <li><a class="nav-item" href="{% url 'services' %}">Feature Description</a></li>
+                    <li><a class="nav-item" href="{% url 'demo' %}">Try Mood Improver</a></li>
+                    <li><a class="nav-item" href="{% url 'login' %}" >Log In</a></li>
+                    <li><a class="nav-item" href="{% url 'signup' %}" >Sign Up</a></li>
                     
                 </ul>
             </div>
@@ -25,9 +25,17 @@ Eudaimonia | Welcome
     </div>
 
     <div class="showcase" id="home">
-        <div id="container-in">
+        <div id="container-in" class="animation-area" >
+            <ul class="box-area">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             <div id="quote">"</div>
-            <div class="animate-charcter showcase-text">
+            <div class=" showcase-text">
                 <h1 id="showcase-text-quote">I write</h1>
                 <h1>because I don't know what I think until I read what I say.</h1>
                 <h2 id="showcase-text-quote-by">- Flannery O'Connor</h2>
@@ -104,12 +112,14 @@ Eudaimonia | Welcome
 <script>
     let navbar = document.getElementById('myNavbar')
     window.onscroll = function () {
+        var navEl = document.getElementsByClassName('nav-item');
         "use strict"
         if (document.body.scrollTop >= 200 || document.documentElement.scrollTop >= 200) {
             navbar.classList.add("scrolling-active")
         }
         else {
             navbar.classList.remove("scrolling-active")
+            navEl.style.color = "white";
         }
     }
 </script>
