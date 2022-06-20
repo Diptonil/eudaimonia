@@ -12,6 +12,7 @@ Eudaimonia | User Statistics
 <body>
 
 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<canvas id="myBar" style="width:100%;max-width:600px"></canvas>
 
 <script>
 var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
@@ -43,7 +44,36 @@ new Chart("myChart", {
   options: {
     title: {
       display: true,
-      text: "World Wide Wine Production 2018"
+      text: "Overall Mood Analysis"
+    }
+  }
+});
+</script>
+
+<script>
+var xValues = [20, 21];
+var yValues = [0.89, 2.12];
+
+new Chart("myBar", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Frequency Mapper"
+    },
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 0, max:5}}],
     }
   }
 });
