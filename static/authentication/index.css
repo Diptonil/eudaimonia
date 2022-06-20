@@ -15,6 +15,7 @@ button {
     height: 50px;
     width: 250px;
     cursor: pointer;
+    transition: 0.4s;
 }
 
 button:hover {
@@ -58,6 +59,40 @@ button:hover {
     margin-top: 7%;
     margin-left: 59%;
     font-family: 'Courgette', cursive;
+}
+
+.animate-charcter
+{
+    background: rgb(135,118,240);
+background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%, rgba(29,8,171,1) 49%, rgba(17,1,124,1) 71%, rgba(15,0,113,1) 89%, rgba(12,0,93,1) 100%);
+/*
+    background-image: linear-gradient(
+        -225deg,
+        #231557 0%,
+        #44107a 29%,
+        #136aff 67%,
+        #aa00ff 100%
+    );*/
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 3s linear infinite;
+    display: inline-block;
+    font-size: 190px;
+}
+
+@keyframes textclip {
+    0% {
+        background-position: 150% 200%;
+    }
+    30% {
+        background-position: 200% 100%;
+    }
 }
 
 #showcase-text-quote{
@@ -130,6 +165,8 @@ button:hover {
 }
 
 .cover h1{
+    position: relative;
+    display: inline-block;
     font-size: 40px;
     font-weight:lighter;
 }
@@ -152,6 +189,7 @@ button:hover {
 }
 
 #feature1{
+    transition: transform .3s;
     background-color: white;
     z-index: 3;
     position: absolute;
@@ -163,6 +201,7 @@ button:hover {
 }
 
 #feature2{
+    transition: transform .3s;
     background-color: white;
     margin-top: 330px;
     margin-left: 53%;
@@ -174,6 +213,7 @@ button:hover {
 }
 
 #feature3{
+    transition: transform .3s;
     background-color: white;
     margin-top: 730px;
     margin-left: 10%;
@@ -185,6 +225,7 @@ button:hover {
 }
 
 #feature4{
+    transition: transform .3s;
     background-color: white;
     margin-top: 1300px;
     margin-left: 30%;
@@ -194,6 +235,32 @@ button:hover {
     width: 550px;
     height: 370px;
 }
+
+#feature1:hover, 
+#feature2:hover,
+#feature3:hover,
+#feature4:hover{
+    transform: scale(1.06);
+}
+/*
+.cover h1:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.cover h1:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+*/
 /*End of features*/
 
 

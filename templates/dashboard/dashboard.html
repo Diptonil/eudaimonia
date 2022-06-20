@@ -1,6 +1,15 @@
 {% extends 'base/base.html' %}
-{% block nav_dashboard%}
+{% block nav_dashboard %}
+{% if not my_shares %}
     class="active"
+{% endif %}
+{% endblock %}
+
+
+{% block nav_my_share%}
+{% if my_shares %}
+    class="active"
+{% endif %}
 {% endblock %}
 
 {% load static %}
@@ -22,58 +31,35 @@ Eudaimonia | Your Dashboard
             </form>
             
             <div class="mini-nav">
-                <a {% block nav_share%}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></i></a>
-                <a {% block nav_story%}{% endblock %} href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i></i></a>
+                <a href="{% url 'dashboard' %}" style="color: #301dad;"><i class="ri ri-dashboard-line"></i></a>
+                <a {% block nav_share%}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></a>
+                <a {% block nav_story%}{% endblock %} href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i></a>
             </div>
 
             <br /><br /><br />
         </div>
         <div class="infinite-container">
-            <div class="row">
-                <!--Divide the data into two sets and make one set go to one column and the other to other. Right now the posts are being repeated on both column.
-                Also add a conditional to display "Read More" only when the data is truncated. 
-
-                P.S. Why can't I use the forms, urls and views.py? I'll soon explore them and see how you are manipulating the template data there if that's okay so that I can do these little stuff myself.
-                -->
-                <div class="column">
                     {% for post in page_obj %}
-                    <div class="infinite-item">
+                    <div onload="getHeight(this)" class="infinite-item">
                         <a href="{% url 'story' id=post.id %}">
                             <h2>{{ post.title }}</h2>
                         </a>
                         <h5>{{ post.date }}</h5>
-                        <p>{{ post.post|truncatechars:1500 }} 
+                        <p>{{ post.post|truncatechars:1300 }} 
                             <a class="read-more" href="{% url 'story' id=post.id %}">Read more</a> </p>
-                        <div class="react">
+                        <!--<div class="react">
                             <i onclick="liked(this)" class="ri ri-heart-line"></i>
-                        </div>
+                        </div>-->
                     </div>
                     {% endfor %}
-                </div>
-                <div class="column">
-                    {% for post in page_obj %}
-                    <div class="infinite-item">
-                        <a href="{% url 'story' id=post.id %}">
-                            <h2>{{ post.title }}</h2>
-                        </a>
-                        <b>{{ post.date }}</b>
-                        <p>{{ post.post|truncatechars:1500 }}</p>
-                        <br>
-                        <br>
-                        <div class="react">
-                            <i onclick="liked(this)" class="ri ri-heart-line"></i>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
         </div>
 
         <p class="loading">Loading...</p>
-    
-        {% if page_obj.has_next %}
-        <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">Next</a>
-        {% endif %}
+        <div class="column">
+            {% if page_obj.has_next %}
+            <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
+            {% endif %}
+        </div>
     </div>
     <script src="/static/infinite scroll js/jquery.waypoints.min.js"></script>
     <script src="/static/infinite scroll js/infinite.min.js"></script>
@@ -92,6 +78,10 @@ Eudaimonia | Your Dashboard
 
         }
 
+        function getHeight(infiniteElement){
+
+        }
+
         function liked(heart) {
         if (heart.classList.contains('ri-heart-line')) {
             heart.classList.remove('ri-heart-line');
@@ -103,6 +93,8 @@ Eudaimonia | Your Dashboard
             heart.classList.add('ri-heart-line');
         }
     }
+
+
 
     </script>
 </body>

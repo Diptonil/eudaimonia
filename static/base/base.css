@@ -20,7 +20,10 @@ input{
     
 }
 
+
 * {
+    -webkit-user-select: none;
+    user-select: none;
     box-sizing: border-box;
     font-weight: 400;
     padding: 0;
@@ -90,6 +93,26 @@ img {
 .spacebetween{
     justify-content: space-between;
 }
+
+/*Scrollbar
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #291d78; 
+}
+*/
 
 /*Slider*/
 .switch {
@@ -189,23 +212,41 @@ input:checked + .slider:before {
 }
 
 
-
-
 .navbar ul {
     display: flex;
     align-items: right;
 }
 
 .navbar a {
+    position: relative;
+    display: inline-block;
     color: black;
     font-size: 15px;
     padding: 10px;
     margin: 0 5px;
 }
 
+
 .navbar a:hover {
     color: #301dad;
-    border-bottom: 2px #301dad solid;
+}
+
+.navbar a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: var(--accent);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.navbar a:hover:after { 
+    width: 100%; 
+    left: 0; 
 }
 
 /*End of Navbar*/

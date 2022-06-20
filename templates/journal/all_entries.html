@@ -1,8 +1,17 @@
 {% extends 'base/base.html' %}
 
 {% block nav_all_entries%}
+{% if not star %}
     class="active"
+{% endif %}
 {% endblock %}
+
+{% block nav_star%}
+{% if star %}
+    class="active"
+{% endif %}
+{% endblock %}
+
 {% load static %}
 
 {% block title %}
@@ -55,14 +64,14 @@ Eudaimonia | Your Entries
                     {% for entry in entries %}
                     <tr>
                         {% if star %}
-                        <th>><a href="{% url 'post' id=entry.id %}">{{ entry.title }}</a></th>
+                        <th><a href="{% url 'post' id=entry.id %}">{{ entry.title }}</a></th>
                         {% else %}
                         {% if entry.starred %}
                         <th><i onclick="starred(this, {{ entry.id }})" class="ri-star-fill "></i><a
-                                href="{% url 'post' id=entry.id %}">{{ entry.title }}</a></th>
+                                href="{% url 'post' id=entry.id %}"> {{ entry.title }}</a></th>
                         {% else %}
                         <th><i onclick="starred(this, {{ entry.id }})" class="ri-star-line "></i><a
-                                href="{% url 'post' id=entry.id %}">{{ entry.title }}</a></th>
+                                href="{% url 'post' id=entry.id %}"> {{ entry.title }}</a></th>
                         {% endif %}
                         {% endif %}
                         <th>{{ entry.date }}

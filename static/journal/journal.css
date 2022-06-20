@@ -12,6 +12,24 @@ html {
     user-select: none;
 }
 
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #291d78; 
+}
+
 /*post*/
 #entry{
     font-size: 15px;
@@ -417,7 +435,7 @@ button[type = "submit"]{
 
 #search{
     position: absolute;
-    right: 10%;
+    right: 30;
     top: 7%;
     z-index: 3;
 }

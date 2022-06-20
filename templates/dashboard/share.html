@@ -16,16 +16,13 @@ Eudaimonia | Share Anonymously
 <body class="story">
     <br /><br /><br />
     <div class="share-container">
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" id="form">
             {% csrf_token %}
             <div class="form-control">
                 {{ form.title }}
             </div>
             <div class="text form-control">
-                <textarea oninput="auto_height(this)" name="textarea" id="text" placeholder="Share your thoughts..."></textarea>
-                <!--
-                    Connect the textarea thing asthe input data instead.
-                    {{ form.post }}-->
+                    {{ form.post }}
             </div>
             <!-- 
                 and this as well. The new input button includes the id
@@ -36,7 +33,9 @@ Eudaimonia | Share Anonymously
             <img >
             <br>
             <input type="file" id="button" accept="image">
-        <input type="submit" value="Submit" class="btn">
+            <br>
+            <br>
+            <input type="submit" value="Submit" class="btn">
 
             {% if form.errors %}
             {% for field in form %}
@@ -65,7 +64,8 @@ Eudaimonia | Share Anonymously
     function auto_height(elem) { 
     elem.style.height = "1px";
     elem.style.height = (elem.scrollHeight)+"px";
-}
+    }
+
 
 </script>
 {% endblock %}

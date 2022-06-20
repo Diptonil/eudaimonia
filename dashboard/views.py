@@ -22,7 +22,7 @@ def dashboard_page_view(request):
                 results = Post.objects.filter(title__icontains=search)
                 paginator = Paginator(results, 5)
                 page_obj = paginator.get_page(request.GET.get('page'))
-    return render(request, 'dashboard/dashboard.html', {'profile': profile_model, 'page_obj': page_obj, 'form': entry_search_form})
+    return render(request, 'dashboard/dashboard.html', {'profile': profile_model, 'page_obj': page_obj, 'form': entry_search_form, 'my_shares': False})
 
 
 @login_required
@@ -64,4 +64,4 @@ def my_share_page_view(request):
                 results = Post.objects.filter(title__icontains=search)
                 paginator = Paginator(results, 5)
                 page_obj = paginator.get_page(request.GET.get('page'))
-    return render(request, 'dashboard/dashboard.html', {'profile': profile_model, 'page_obj': page_obj, 'form': entry_search_form})
+    return render(request, 'dashboard/dashboard.html', {'profile': profile_model, 'page_obj': page_obj, 'form': entry_search_form, 'my_shares': True})
