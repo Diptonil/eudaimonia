@@ -43,8 +43,9 @@ Eudaimonia | {{ entry.title }}
     
     <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
 
-    <a href="">Would you like some Movie Recommendations?</a>
-    {{ model }}
+    {% for el in model %}
+    {{ el }}
+    {% endfor %}
 
     <script>
         var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
