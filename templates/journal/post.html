@@ -50,6 +50,14 @@ Eudaimonia | {{ entry.title }}
         {% endfor %}
     </div>
 
+    <div class="rec-container">
+        {% for el in music_model %}
+        <div class="movie-rec">
+            {{ el }}
+        </div>
+        {% endfor %}
+    </div>
+
     <script>
         var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
             var yValues = [{{ emotion_data.joy }}, {{ emotion_data.disgust }}, {{ emotion_data.sadness }}, {{ emotion_data.surprise }},
