@@ -86,7 +86,7 @@ def post_page_view(request, id):
     music_model = predict_music(model_favourite_music_genres, model_unfavourite_music_genres, response)
     res = [i for i in model if i != ' \n']
     res = [i for i in res if i != 'X']
-    res2 = [i[2:] for i in music_model]
+    res2 = [i[1:] for i in music_model]
     emotion_data['joy'] = response.get('joy', 0)
     emotion_data['anger'] = response.get("anger", 0)
     emotion_data['sadness'] = response.get("sadness", 0)

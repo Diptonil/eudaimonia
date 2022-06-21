@@ -3,11 +3,13 @@
 
 
 @media print {
+
     html,
     body {
         display: none;
     }
 }
+
 html {
     user-select: none;
 }
@@ -17,21 +19,21 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+    box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--accent); 
+    background: var(--accent);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #291d78; 
+    background: #291d78;
 }
 
 /*post*/
-#entry{
+#entry {
     font-size: 15px;
     padding-bottom: 15px;
     margin-bottom: 10px;
@@ -46,7 +48,7 @@ html {
 }
 
 /*Entry page*/
-.writing{
+.writing {
     background-color: var(--primary-dark);
     background-position: fixed;
     background-repeat: no-repeat;
@@ -54,7 +56,7 @@ html {
 
 /*Writing pad*/
 
-#writing-pad{
+#writing-pad {
     border-radius: 5px;
     z-index: 2;
     background-color: var(--primarycolor);
@@ -63,11 +65,11 @@ html {
     max-width: 950px;
     margin: auto;
     margin-right: 0;
-    margin-top: 70px ;
+    margin-top: 70px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.378);
 }
 
-.write-up{
+.write-up {
     border-radius: 5px;
     z-index: 2;
     background-color: var(--primarycolor);
@@ -76,20 +78,20 @@ html {
     min-height: 400px;
     max-width: 850px;
     margin: auto;
-    margin-top: 70px ;
+    margin-top: 70px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.378);
 }
 
-#display-img{
+#display-img {
     float: left;
-    width: 270px ;
+    width: 270px;
     height: auto;
-    margin-top: 70px ;
+    margin-top: 70px;
     display: none;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.378);
 }
 
-iframe{
+iframe {
     border: none;
     border-top: 1px solid rgba(0, 0, 0, 0.521);
     width: 900px;
@@ -97,7 +99,7 @@ iframe{
     margin-top: 20px;
 }
 
-.grid{
+.grid {
     display: grid;
     grid-template-columns: 80% 10%;
     height: 100%;
@@ -106,7 +108,7 @@ iframe{
 
 /*title of the entry*/
 
-#writing-pad > .card > #entry{
+#writing-pad>.card>#entry {
     font-size: 15px;
     padding-bottom: 15px;
     margin-bottom: 10px;
@@ -123,20 +125,20 @@ iframe{
 }
 
 /*Select bar*/
-.select-bar{
+.select-bar {
     height: 40px;
 }
 
-.highlight{
+.highlight {
     background-color: var(--primary-dark);
 }
 
-.select-bar .flex{
+.select-bar .flex {
     margin-right: 5px;
     justify-content: space-between;
 }
 
-.select-bar select{
+.select-bar select {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     background-color: #f8f8f8;
@@ -145,7 +147,7 @@ iframe{
     margin: 0 5px;
 }
 
-input[type="color"]{
+input[type="color"] {
     margin: 0;
     border: none;
     height: 30px;
@@ -153,61 +155,62 @@ input[type="color"]{
     vertical-align: middle;
 }
 
-.icons, label{
+.icons,
+label {
     color: black;
     font-size: 20px;
     cursor: pointer;
     vertical-align: middle;
 }
 
-.icons i:hover{
+.icons i:hover {
     background-color: var(--primary-dark);
 }
 
-.dropdown-content > i{
+.dropdown-content>i {
     display: block;
 }
 
-.dropdown-content{
+.dropdown-content {
     padding: 15px 15px 15px 15px;
     border-radius: 20px;
     display: none;
     position: absolute;
     background-color: var(--primarycolor);
     width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
-.ri-align-left:hover .dropdown-content{
+.ri-align-left:hover .dropdown-content {
     display: block;
 }
 
 
-.dropdown-content i{
+.dropdown-content i {
     font-size: 15px;
     vertical-align: middle;
     padding-right: 10px;
     padding-left: 10px;
 }
 
-.icons i{
+.icons i {
     display: inline-block;
     padding: 5px;
     vertical-align: middle;
 }
 
 .card input:focus,
-.card textarea:focus{
+.card textarea:focus {
     outline: none;
 }
 
-.card input[type= 'submit']{
+.card input[type='submit'] {
     border: none;
     background-color: var(--primarycolor);
     margin: 0px;
     margin-top: 5px;
-    padding: 10px  20px;
+    padding: 10px 20px;
     font-style: bold;
     color: var(--accent);
     border: 2px solid var(--accent);
@@ -216,16 +219,16 @@ input[type="color"]{
     cursor: pointer;
 }
 
-.card input[type= 'submit']:hover{
+.card input[type='submit']:hover {
     background-color: var(--accent);
     color: var(--primarycolor);
 }
 
-input[type="file"]{
+input[type="file"] {
     display: none;
 }
 
-#ename{
+#ename {
     font-size: 20px;
     padding-bottom: 15px;
     margin-bottom: 10px;
@@ -256,20 +259,20 @@ input[type="file"]{
 
 
 /*Journal page*/
-.journal-body{
+.journal-body {
     color: black;
 }
 
 .background {
-    position:absolute;
-    display:block;
+    position: absolute;
+    display: block;
     top: 0;
     left: 0;
     z-index: 0;
 }
 
-.bookmark1{
-    padding-top:  10;
+.bookmark1 {
+    padding-top: 10;
     position: fixed;
     top: 130px;
     left: 700px;
@@ -281,8 +284,8 @@ input[type="file"]{
     transition: 1s ease;
 }
 
-.bookmark2{
-    padding-top:  10;
+.bookmark2 {
+    padding-top: 10;
     overflow: hidden;
     position: fixed;
     top: 210px;
@@ -294,35 +297,38 @@ input[type="file"]{
     transition: 1s ease;
 }
 
-.bookmark1  a ,.bookmark2  a{
+.bookmark1 a,
+.bookmark2 a {
     white-space: nowrap;
     color: var(--accent);
 }
 
 .bookmark2:hover {
-    padding-right: 5px ;
+    padding-right: 5px;
     padding-left: 5px;
     width: 150px;
 
 }
 
 
-.bookmark1:hover{
-    padding-right: 5px ;
+.bookmark1:hover {
+    padding-right: 5px;
     width: 120px;
 
 }
 
-.bookmark1:hover a, .bookmark2:hover a{
+.bookmark1:hover a,
+.bookmark2:hover a {
     color: var(--primary-dark);
 }
 
-.ri:hover + .hide{
+.ri:hover+.hide {
     display: block;
 }
 
 
-.bookmark1  .ri ,.bookmark2  .ri{
+.bookmark1 .ri,
+.bookmark2 .ri {
     font-size: 20px;
     vertical-align: middle;
     color: var(--primary-dark);
@@ -330,7 +336,7 @@ input[type="file"]{
 
 
 
-.journal-info{
+.journal-info {
     position: absolute;
     font-size: 18px;
     bottom: 160px;
@@ -338,7 +344,7 @@ input[type="file"]{
     text-align: right;
 }
 
-#jname{
+#jname {
     width: 500px;
     line-height: 40px;
     position: fixed;
@@ -352,22 +358,22 @@ input[type="file"]{
     text-align: center;
 }
 
-.profilebg{
+.profilebg {
     cursor: pointer;
     height: 600px;
     border-radius: 0 20px 20px 0;
 }
 
-.journal-info a:hover{
+.journal-info a:hover {
     border-bottom: none;
     font-weight: 600;
 }
 
-#journal{
+#journal {
     cursor: pointer;
     position: fixed;
-    background: rgb(114,96,227);
-background: linear-gradient(60deg, rgba(114,96,227,1) 0%, rgba(86,69,200,1) 37%, rgba(70,53,186,1) 100%);
+    background: rgb(114, 96, 227);
+    background: linear-gradient(60deg, rgba(114, 96, 227, 1) 0%, rgba(86, 69, 200, 1) 37%, rgba(70, 53, 186, 1) 100%);
     border-left: 40px solid rgba(0, 0, 0, 0.504);
     top: 80px;
     left: 150px;
@@ -379,7 +385,7 @@ background: linear-gradient(60deg, rgba(114,96,227,1) 0%, rgba(86,69,200,1) 37%,
 
 
 /*Stickynote*/
-.section{
+.section {
     margin-top: 100px;
     float: right;
     width: 50%;
@@ -396,12 +402,12 @@ background: linear-gradient(60deg, rgba(114,96,227,1) 0%, rgba(86,69,200,1) 37%,
     padding: 4px 4px;
 }
 
-.dummy{
+.dummy {
     width: 300px;
     height: 180px;
 }
 
-.stickynote{
+.stickynote {
     width: 310px;
     padding: 20px;
     margin: 30px 0;
@@ -409,7 +415,7 @@ background: linear-gradient(60deg, rgba(114,96,227,1) 0%, rgba(86,69,200,1) 37%,
     height: fit-content;
     overflow: hidden;
     max-height: 550px;
-    border-top-right-radius:  30px; 
+    border-top-right-radius: 30px;
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.126);
 }
 
@@ -419,7 +425,7 @@ background: linear-gradient(60deg, rgba(114,96,227,1) 0%, rgba(86,69,200,1) 37%,
 /*End of journal*/
 
 /*All Entries*/
-input[type = "text"]{
+input[type="text"] {
     background: none;
     width: 250px;
     padding: 4px 4px 4px 32px;
@@ -429,7 +435,7 @@ input[type = "text"]{
     border: 1px solid rgba(0, 0, 0, 0.527);
 }
 
-button[type = "submit"]{
+button[type="submit"] {
     padding: 3px;
     font-size: 22px;
     background: none;
@@ -440,7 +446,7 @@ button[type = "submit"]{
     cursor: pointer;
 }
 
-#search{
+#search {
     position: absolute;
     right: 30;
     top: 7%;
@@ -448,7 +454,7 @@ button[type = "submit"]{
 }
 
 
-.dropdown-menu:first-child{
+.dropdown-menu:first-child {
     padding: 4px 4px 4px 32px;
     width: 250px;
     border: 1px solid rgba(0, 0, 0, 0.527);
@@ -457,23 +463,23 @@ button[type = "submit"]{
     cursor: pointer;
 }
 
-.dropdown-menu:first-child:hover .dropdown-content{
+.dropdown-menu:first-child:hover .dropdown-content {
     display: block;
 }
 
 
-.table{
+.table {
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 100px;
 }
 
 
-.fc{
+.fc {
     padding-left: 64px;
 }
 
-thead tr th{
+thead tr th {
     position: sticky;
     top: 0;
     height: 50px;
@@ -483,23 +489,23 @@ thead tr th{
     border-bottom: 1px solid var(--sec-light);
 }
 
-tbody tr th i{
+tbody tr th i {
     vertical-align: middle;
     padding: 0 20px;
     cursor: pointer;
 }
 
-tbody tr th{
+tbody tr th {
     height: 35px;
 }
 
-th{
+th {
     text-align: left;
     padding: 0 40px 0px 10px;
 }
 
 
-.popup{
+.popup {
     height: 60px;
     position: absolute;
     background-color: #ffffff;
@@ -515,7 +521,7 @@ th{
     visibility: hidden;
 }
 
-.popup-active{
+.popup-active {
     opacity: 1;
     visibility: visible;
     bottom: 30px;
@@ -524,13 +530,13 @@ th{
 
 /*Book background*/
 
-.book-right::-webkit-scrollbar{
+.book-right::-webkit-scrollbar {
     display: none;
 }
 
-.filler{
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 11%, rgba(231,231,231,1) 45%, rgba(230,230,230,1) 87%, rgba(231,231,231,1) 100%);
+.filler {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 11%, rgba(231, 231, 231, 1) 45%, rgba(230, 230, 230, 1) 87%, rgba(231, 231, 231, 1) 100%);
     border-top-right-radius: 40px;
     height: 22%;
     width: 55%;
@@ -540,10 +546,10 @@ th{
     z-index: 2;
 }
 
-.book-right{
+.book-right {
     padding: 100px 40px;
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 11%, rgba(231,231,231,1) 45%, rgba(230,230,230,1) 87%, rgba(231,231,231,1) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 11%, rgba(231, 231, 231, 1) 45%, rgba(230, 230, 230, 1) 87%, rgba(231, 231, 231, 1) 100%);
     width: 55%;
     height: 90%;
     border-top-right-radius: 40px;
@@ -555,10 +561,10 @@ th{
     overflow-y: scroll;
 }
 
-.book-left{
+.book-left {
     padding: 20px 40px;
-    background: rgb(200,200,200);
-    background: linear-gradient(270deg, rgba(200,200,200,1) 0%,  rgba(246,246,246,1) 27%, rgba(255,255,255,1) 48%, rgba(255,255,255,1) 100%);
+    background: rgb(200, 200, 200);
+    background: linear-gradient(270deg, rgba(200, 200, 200, 1) 0%, rgba(246, 246, 246, 1) 27%, rgba(255, 255, 255, 1) 48%, rgba(255, 255, 255, 1) 100%);
     width: 28%;
     height: 90%;
     top: 10%;
@@ -574,7 +580,7 @@ th{
 
 
 /*Post*/
-.write-up{
+.write-up {
     border-radius: 5px;
     z-index: 2;
     background-color: var(--primarycolor);
@@ -583,35 +589,35 @@ th{
     height: fit-content;
     max-width: 850px;
     margin: auto;
-    margin-top: 50px ;
+    margin-top: 50px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.707);
 }
 
-.write-up h6{
+.write-up h6 {
     font-size: 13px;
     color: var(--sec-light);
     padding: 5px;
 }
 
-.post-options{
+.post-options {
     max-width: 850px;
     margin: auto;
     padding-top: 80px;
 }
 
-.post-options a{
+.post-options a {
     padding: 10px;
     margin-right: 40px;
     color: var(--accent);
     float: right;
 }
 
-.post-options a:hover{
+.post-options a:hover {
     text-decoration: underline;
     color: var(--sec);
 }
 
-#export{
+#export {
     font-size: 15px;
     border: none;
     background-color: var(--primarycolor);
@@ -620,22 +626,23 @@ th{
     cursor: pointer;
 }
 
-#export:hover{
+#export:hover {
     text-decoration: underline;
     color: var(--sec);
 }
 
-#myChart{
+#myChart {
     margin: auto;
     margin-top: 100px;
 }
 
-.movie-rec{
+.movie-rec {
     display: block;
     font-size: 20px;
 }
 
-.rec-container{
+.rec-container {
     margin: auto;
     margin-top: 50px;
+    margin-left: 20px;
 }
