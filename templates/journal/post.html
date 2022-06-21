@@ -43,20 +43,27 @@ Eudaimonia | {{ entry.title }}
     </div>
 
     <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
-    <div class="rec-container">
-        {% for el in model %}
-        <div class="movie-rec">
-            {{ el }}
+    <div class="grid">
+        <div class="rec-container">
+            <div class="rec">Movie Recommendations</div>
+            {% for el in model %}
+            <div class="movie-rec">
+                {{ el }}
+            </div>
+            {% endfor %}
         </div>
         {% endfor %}
     </div>
 
     <div class="rec-container">
+        <div class="rec">Music Recommendations</div>
         {% for el in music_model %}
         <div class="movie-rec">
             {{ el }}
         </div>
         {% endfor %}
+    </div>
+    {% endfor %}
     </div>
 
     <script>
