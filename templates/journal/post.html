@@ -28,7 +28,7 @@ Eudaimonia | {{ entry.title }}
 
         </div>
 
-        <div class="write-up">
+        <div class="post">
             <div id="eName">{{ entry.title }}
             </div>
         
@@ -42,22 +42,25 @@ Eudaimonia | {{ entry.title }}
     </div>
     
     <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
-    <div class="rec-container">
-        {% for el in model %}
-        <div class="movie-rec">
-            {{ el }}
+    <div class="grid">
+        <div class="rec-container">
+            <div>Movie Recommendations</div>
+            {% for el in model %}
+            <div class="movie-rec">
+                {{ el }}
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
 
-    <div class="rec-container">
-        {% for el in music_model %}
-        <div class="movie-rec">
-            {{ el }}
+        <div class="rec-container">
+            <div>Music Recommendations</div>
+            {% for el in music_model %}
+            <div class="movie-rec">
+                {{ el }}
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-
+</div>
     <script>
         var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
             var yValues = [{{ emotion_data.joy }}, {{ emotion_data.disgust }}, {{ emotion_data.sadness }}, {{ emotion_data.surprise }},
