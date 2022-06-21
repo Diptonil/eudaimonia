@@ -42,10 +42,13 @@ Eudaimonia | {{ entry.title }}
     </div>
     
     <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
-
-    {% for el in model %}
-    {{ el }}
-    {% endfor %}
+    <div class="rec-container">
+        {% for el in model %}
+        <div class="movie-rec">
+            {{ el }}
+        </div>
+        {% endfor %}
+    </div>
 
     <script>
         var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
