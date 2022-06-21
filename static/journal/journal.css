@@ -580,12 +580,11 @@ th {
 
 
 /*Post*/
-.write-up {
+.post {
     border-radius: 5px;
     z-index: 2;
     background-color: var(--primarycolor);
     padding: 20px 25px;
-    max-height: fit-content;
     height: fit-content;
     max-width: 850px;
     margin: auto;
@@ -593,7 +592,7 @@ th {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.707);
 }
 
-.write-up h6 {
+.post h6 {
     font-size: 13px;
     color: var(--sec-light);
     padding: 5px;
@@ -639,10 +638,18 @@ th {
 .movie-rec {
     display: block;
     font-size: 20px;
+    text-align: center;
 }
 
 .rec-container {
     margin: auto;
     margin-top: 50px;
     margin-left: 20px;
+
+}
+
+.grid {
+    max-width: 800px;
+    display: grid;
+    grid-column: auto autos;
 }
