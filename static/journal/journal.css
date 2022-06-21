@@ -629,3 +629,13 @@ th{
     margin: auto;
     margin-top: 100px;
 }
+
+.movie-rec{
+    display: block;
+    font-size: 20px;
+}
+
+.rec-container{
+    margin: auto;
+    margin-top: 50px;
+}
