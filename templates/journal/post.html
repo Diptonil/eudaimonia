@@ -43,7 +43,6 @@ Eudaimonia | {{ entry.title }}
     </div>
 
     <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
-    <div class="grid">
         <div class="rec-container">
             <div class="rec">Movie Recommendations</div>
             {% for el in model %}
@@ -52,8 +51,6 @@ Eudaimonia | {{ entry.title }}
             </div>
             {% endfor %}
         </div>
-        {% endfor %}
-    </div>
 
     <div class="rec-container">
         <div class="rec">Music Recommendations</div>
@@ -62,8 +59,6 @@ Eudaimonia | {{ entry.title }}
             {{ el }}
         </div>
         {% endfor %}
-    </div>
-    {% endfor %}
     </div>
 
     <script>
