@@ -8,10 +8,11 @@ Eudaimonia | {{ entry.title }}
 {% block body %}
 <link rel="stylesheet" href="{% static 'journal/journal.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
 <body>
 
     <div class="post-options">
-        <form  method="post" enctype='multipart/form-data'>
+        <form method="post" enctype='multipart/form-data'>
             {% csrf_token %}
             <input id="export" type="submit" value="Export as pdf" />
         </form>
@@ -21,52 +22,49 @@ Eudaimonia | {{ entry.title }}
         {% else %}
         <a href="{% url 'star' id=entry.id %}">Highlight Entry</a>
         {% endif %}
-        </div>
+    </div>
     <div id="post">
 
-        <div >
+        <div>
 
         </div>
 
-        <div class="post">
+        <div class="write-up">
             <div id="eName">{{ entry.title }}
             </div>
-        
-        <h6>{{ entry.date }}</h6>
-        <div class="card">
-            <div id="entry">
-                {{ entry.entry|safe }}
-            </div>
-        </div>
-    </div>
-    </div>
-    
-    <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
-    <div class="grid">
-        <div class="rec-container">
-            <div>Movie Recommendations</div>
-            {% for el in model %}
-            <div class="movie-rec">
-                {{ el }}
-            </div>
-            {% endfor %}
-        </div>
 
-        <div class="rec-container">
-            <div>Music Recommendations</div>
-            {% for el in music_model %}
-            <div class="movie-rec">
-                {{ el }}
+            <h6>{{ entry.date }}</h6>
+            <div class="card">
+                <div id="entry">
+                    {{ entry.entry|safe }}
+                </div>
             </div>
-            {% endfor %}
         </div>
-</div>
+    </div>
+
+    <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
+    <div class="rec-container">
+        {% for el in model %}
+        <div class="movie-rec">
+            {{ el }}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="rec-container">
+        {% for el in music_model %}
+        <div class="movie-rec">
+            {{ el }}
+        </div>
+        {% endfor %}
+    </div>
+
     <script>
         var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
-            var yValues = [{{ emotion_data.joy }}, {{ emotion_data.disgust }}, {{ emotion_data.sadness }}, {{ emotion_data.surprise }},
-            {{ emotion_data.positive }}, {{ emotion_data.negative }}, {{ emotion_data.trust }},
-            {{ emotion_data.anticipation }}, {{ emotion_data.fear }}, {{ emotion_data.anger }}];
-            var barColors = [
+        var yValues = [{{ emotion_data.joy }}, { { emotion_data.disgust } }, { { emotion_data.sadness } }, { { emotion_data.surprise } },
+        { { emotion_data.positive } }, { { emotion_data.negative } }, { { emotion_data.trust } },
+        { { emotion_data.anticipation } }, { { emotion_data.fear } }, { { emotion_data.anger } }];
+        var barColors = [
             "#1572A1",
             "#9AD0EC",
             "#EFDAD7",
@@ -77,24 +75,24 @@ Eudaimonia | {{ entry.title }}
             "#957DAD",
             "#046582",
             "#709FB0"
-            ];
-        
+        ];
+
         new Chart("myChart", {
-        type: "pie",
-        data: {
-            labels: xValues,
-            datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-            }]
-        },
-        options: {
-            title: {
-            display: true,
-            text: "Overall Mood Analysis"
+            type: "pie",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Overall Mood Analysis"
+                }
             }
-        }
         });
-        </script>
+    </script>
 </body>
 {% endblock %}

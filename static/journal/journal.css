@@ -647,9 +647,3 @@ th {
     margin-left: 20px;
 
 }
-
-.grid {
-    max-width: 800px;
-    display: grid;
-    grid-column: auto autos;
-}
