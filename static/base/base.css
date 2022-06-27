@@ -21,6 +21,13 @@ input{
 }
 
 
+#circle{
+    position:absolute;
+    height:15px;
+    width:15px;
+    border-radius:50%;
+    border:2px solid var(--accent);
+}
 * {
     -webkit-user-select: none;
     user-select: none;

@@ -33,7 +33,7 @@ Eudaimonia | Your Dashboard
             <div class="mini-nav">
                 <a href="{% url 'dashboard' %}" style="color: #301dad;"><i class="ri ri-dashboard-line"></i></a>
                 <a {% block nav_share%}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></a>
-                <a {% block nav_story%}{% endblock %} href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i></a>
+                <a {% block nav_story%}{% endblock %} href="{% url 'my_share' %}"><i onclick="changecolor(this);" class="ri ri-stack-line"></i></a>
             </div>
 
             <br /><br /><br />
@@ -47,9 +47,6 @@ Eudaimonia | Your Dashboard
                         <h5>{{ post.date }}</h5>
                         <p>{{ post.post|truncatechars:1100 }} 
                             <a class="read-more" href="{% url 'story' id=post.id %}">Read more</a> </p>
-                        <!--<div class="react">
-                            <i onclick="liked(this)" class="ri ri-heart-line"></i>
-                        </div>-->
                     </div>
                     {% endfor %}
         </div>
@@ -77,24 +74,6 @@ Eudaimonia | Your Dashboard
         document.getElementsByClassName("infinite-item").onclick = function () {
 
         }
-
-        function getHeight(infiniteElement){
-
-        }
-
-        function liked(heart) {
-        if (heart.classList.contains('ri-heart-line')) {
-            heart.classList.remove('ri-heart-line');
-            heart.classList.add('ri-heart-fill');
-
-        }
-        else {
-            heart.classList.remove('ri-heart-fill');
-            heart.classList.add('ri-heart-line');
-        }
-    }
-
-
 
     </script>
 </body>
