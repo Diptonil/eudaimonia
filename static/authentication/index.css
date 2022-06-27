@@ -4,14 +4,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
 /*showcase*/
-
 button {
     border-radius: 0px;
     margin: 10px 0;
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.774);
     background: none;
     font-size: 20px;
-    border: 2px solid var(--accent);
+    border: 2px solid rgba(255, 255, 255, 0.774);
     height: 50px;
     width: 250px;
     cursor: pointer;
@@ -19,94 +18,13 @@ button {
 }
 
 button:hover {
-    background-color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.262);
     color: var(--primarycolor)
 }
 
 #container-in{
-    background-attachment: fixed;
-    background-size: cover;
-    overflow: hidden;
-    width: 98.7vw;
-    position: absolute;
-    height: 100vh;
+    margin: 100px;
 }
-
-/*animation*/
-
-.animation-area {
-    background-image: linear-gradient(to bottom, #3400df, #6500e3, #8708e7, #a315eb, #bd23ef);
-    width: 100%;
-    height: 100vh;
-  }
-  .box-area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  .box-area li {
-    position: absolute;
-    display: block;
-    list-style: none;
-    width: 25px;
-    height: 25px;
-    background: rgba(255, 255, 255, 0.2);
-    animation: animate 20s linear infinite;
-    bottom: -150px;
-  }
-  .box-area li:nth-child(1) {
-    left: 86%;
-    width: 80px;
-    height: 80px;
-    animation-delay: 0s;
-  }
-  .box-area li:nth-child(2) {
-    left: 12%;
-    width: 30px;
-    height: 30px;
-    animation-delay: 1.5s;
-    animation-duration: 10s;
-  }
-  .box-area li:nth-child(3) {
-    left: 70%;
-    width: 100px;
-    height: 100px;
-    animation-delay: 5.5s;
-  }
-  .box-area li:nth-child(4) {
-    left: 42%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 15s;
-  }
-  .box-area li:nth-child(5) {
-    left: 65%;
-    width: 40px;
-    height: 40px;
-    animation-delay: 0s;
-  }
-  .box-area li:nth-child(6) {
-    left: 15%;
-    width: 110px;
-    height: 110px;
-    animation-delay: 3.5s;
-  }
-  @keyframes animate {
-    0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-800px) rotate(360deg);
-      opacity: 0;
-    }
-  }
-  
-
 
 .showcase {
     z-index: 1;
@@ -114,70 +32,164 @@ button:hover {
     width: 100%;
 }
 
+/* showcase top */
 
 
+#cursor {
+    pointer-events: none;
+    display: none;
+    position: fixed;
+    top: var(--cursorY);
+    left: var(--cursorX);
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition-timing-function: ease-in-out;
+  }
 
-.showcase-text {
-    color: var(--primarycolor);
-    margin-right: 15%;
-    z-index: 3;
-    max-width: 700px;
-    float: right;
-    padding-top: 200px;
-    justify-content: left;
+.showcase-text{
+    margin-top: 200px;
+    margin-right: 300px;
 }
 
-#quote{
-    z-index: 2;
-    font-size: 300pt;
-    color: #edeafc52;
+#showcase-text-quote-top,
+#showcase-text-quote-bottom{
     position: absolute;
-    margin-top: 7%;
-    margin-left: 59%;
-    font-family: 'Courgette', cursive;
+    top: 200px;
+    font-size: 8em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 7px;
+    line-height: 150px;
+    -webkit-text-stroke-width: 2px;
 }
 
-/*
-.animate-charcter
-{
-    /*background: rgb(135,118,240);
-background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%, rgba(29,8,171,1) 49%, rgba(17,1,124,1) 71%, rgba(15,0,113,1) 89%, rgba(12,0,93,1) 100%);
-    background-image: linear-gradient(
-        -225deg,
-        #231557 0%,
-        #641bb1 29%,
-        #1d0075 67%,
-        #000129 100%
-    );
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 3s infinite;
-    display: inline-block;
-    font-size: 190px;
+
+#showcase-text-quote-top{
+	color: transparent;
+	-webkit-text-stroke: 2px #301dad;
 }
 
-@keyframes textclip {
-    0% {
-        background-position: 150% 200%;
-    }
-    30% {
-        background-position: 200% 100%;
-    }
-}*/
+#showcase-text-quote-bottom {
+	color: #301dad;
+	animation: animate 4s ease-in-out infinite;
+}
 
-#showcase-text-quote{
-    color: var(--primarycolor);
+#showcase-text-quote-rest{
+    width: 800px;
+    margin-left: 50px;
+    margin-top: 350px;
+    font-size: 3.2em;
+    font-weight: 100;
     line-height: 70px;
-    font-size: 90px;
-    text-align: right;
-    
+    letter-spacing: 2px;
+    font-family: 'Open Sans', sans-serif;
 }
+
+#showcase-text-quote-by{
+    margin-left: 50px;
+    margin-top: 100px;
+    font-family: sans-serif;
+}
+
+#stroke{
+    position: absolute;
+    top: 0;
+}
+
+#laptop{
+    position: absolute;
+    top: 60px;
+    right: 130px;
+}
+
+#book{
+    position: absolute;
+    top: 400px;
+    right: 0px;
+}
+
+#line{
+    position: absolute;
+    top: 100px;
+    right: 0;
+}
+
+#stroke{
+    display: inline-block;
+    height: 100%;
+}
+
+#book path,
+#laptop path {
+    stroke-dasharray: 5000;
+    stroke-dashoffset: 5000;
+    animation-name: dash;
+    animation-duration: 12s;
+    animation-timing-function: linear;
+    animation-direction: reverse;
+    animation-iteration-count: infinite;
+}
+
+#laptop path{
+    animation-delay: 6s;
+    animation-direction: alternate-reverse;
+}
+
+/* #laptop path{
+    stroke-dasharray: 4000;
+    stroke-dashoffset: 4000;
+    animation: dash 6s linear alternate infinite;
+} */
+
+@keyframes dash {
+    0%,
+    100%{
+        stroke-dashoffset: 5000;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes animate {
+	0%,
+	100% {
+		clip-path: polygon(
+			0% 45%,
+			16% 44%,
+			33% 50%,
+			54% 60%,
+			70% 61%,
+			84% 59%,
+			100% 52%,
+			100% 100%,
+			0% 100%
+		);
+	}
+
+	50% {
+		clip-path: polygon(
+			0% 60%,
+			15% 65%,
+			34% 66%,
+			51% 62%,
+			67% 50%,
+			84% 45%,
+			100% 46%,
+			100% 100%,
+			0% 100%
+		);
+	}
+}
+
+
+
+
+
+
 
 .showcase-text h1{
     color: var(--primarycolor);
@@ -199,27 +211,31 @@ background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%
     font-size: 23px;
 }
 
+#color-contain{
+    background-color: #301dad;
+}
+
 .full-text{
-    height: 100vh;
+    height: fit-content;
 }
 
 .content {
-    margin-top: 110vh;
     max-width: 70%;
 }
 
 .showcase-text-left a{
-    color: black;
+    color: rgba(255, 255, 255, 0.774);
 }
 
 .showcase-text-left{
-    color: black;
+    color: rgba(255, 255, 255, 0.774);
     margin-left: 0px;
     padding-top: 50px;
     max-width: 65%;
 }
 
 .showcase-text-left p{
+    color: rgba(255, 255, 255, 0.774);
     font-size: 19px;
     line-height: 30px;
 }
@@ -234,10 +250,11 @@ background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%
 
 /*Features*/
 
+
 #features{
     height: 250vh;
     position: relative;
-    background-color: #fafafafa;
+    background-color: #fffffffa;
     background-image: url(../images/blueill.png);
     padding-left: 100px;
 }
@@ -344,17 +361,12 @@ background: linear-gradient(60deg, rgba(135,118,240,1) 0%, rgba(90,72,207,1) 26%
 
 /*Footer*/
 #footer{
-    margin-top: 100px;
     height: 200px;
+    background-color: #301dad;
 }
 /*End of Footer*/
 /*End of Landing page*/
 
-#showcase-text-quote-by
-{   
-    text-align: right;
-    margin-right: 40px;
-}
 
 
 /*Services*/

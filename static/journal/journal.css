@@ -417,6 +417,8 @@ input[type="file"] {
     max-height: 550px;
     border-top-right-radius: 30px;
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.126);
+    background-image: url(../images/texture.jpg);
+    background-size: cover;
 }
 
 

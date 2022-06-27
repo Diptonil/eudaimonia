@@ -32,13 +32,19 @@ Eudaimonia | Your Dashboard
 
             <div class="mini-nav">
                 <a href="{% url 'dashboard' %}" style="color: #301dad;"><i class="ri ri-dashboard-line"></i></a>
+<<<<<<< HEAD
                 <a href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></a>
                 <a href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i></a>
+=======
+                <a {% block nav_share%}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></a>
+                <a {% block nav_story%}{% endblock %} href="{% url 'my_share' %}"><i onclick="changecolor(this);" class="ri ri-stack-line"></i></a>
+>>>>>>> c007bf38d5f67e8acbf733ff27e943d7eaf956bb
             </div>
 
             <br /><br /><br />
         </div>
         <div class="infinite-container">
+<<<<<<< HEAD
             {% for post in page_obj %}
             <div onload="getHeight(this)" class="infinite-item">
                 <a class="post-title" href="{% url 'story' id=post.id %}">
@@ -53,6 +59,18 @@ Eudaimonia | Your Dashboard
                         </div>-->
             </div>
             {% endfor %}
+=======
+                    {% for post in page_obj %}
+                    <div onload="getHeight(this)" class="infinite-item">
+                        <a class="post-title" href="{% url 'story' id=post.id %}">
+                            <h2>{{ post.title }}</h2>
+                        </a>
+                        <h5>{{ post.date }}</h5>
+                        <p>{{ post.post|truncatechars:1100 }} 
+                            <a class="read-more" href="{% url 'story' id=post.id %}">Read more</a> </p>
+                    </div>
+                    {% endfor %}
+>>>>>>> c007bf38d5f67e8acbf733ff27e943d7eaf956bb
         </div>
 
         <p class="loading">Loading...</p>
@@ -79,6 +97,7 @@ Eudaimonia | Your Dashboard
 
         }
 
+<<<<<<< HEAD
         function getHeight(infiniteElement) {
 
         }
@@ -97,6 +116,8 @@ Eudaimonia | Your Dashboard
 
 
 
+=======
+>>>>>>> c007bf38d5f67e8acbf733ff27e943d7eaf956bb
     </script>
 </body>
 {% endblock %}
