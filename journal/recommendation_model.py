@@ -6,17 +6,14 @@ import requests as HTTP
 
 
 def predict_movies(liked, disliked, mood):
-    if 'negative' in mood:
-        emotion_sadness = mood.get('sadness')
-        emotion_disgust = mood.get('disgust')
-        emotion_anger = mood.get('anger')
-        emotion_fear = mood.get('fear')
-        emotion_list_raw = sorted([rate for rate in [emotion_sadness, emotion_anger, emotion_disgust, emotion_fear] if rate is not None], reverse=True)
-        print(emotion_list_raw)
-    elif 'positive' in mood:
-        emotion_joy = mood['joy']
-        emotion_trust = mood['trust']
-        emotion_list_raw = sorted([rate for rate in [emotion_joy, emotion_trust] if rate is not None], reverse=True)
+    emotion_sadness = mood.get('sadness')
+    emotion_disgust = mood.get('disgust')
+    emotion_anger = mood.get('anger')
+    emotion_fear = mood.get('fear')
+    emotion_joy = mood.get('joy')
+    emotion_trust = mood.get('trust')
+    emotion_list_raw = sorted([rate for rate in [emotion_sadness, emotion_anger, emotion_disgust, emotion_fear, emotion_joy, emotion_trust] if rate is not None], reverse=True)
+    print(emotion_list_raw)
     genres = ['Western', 'Musical', 'Action', 'Thriller', 'Romance', 'Mystery', 'Horror', 'Fantasy', 'Drama', 'Comedy']
     final_genre = list()
     for genre in genres:
@@ -26,12 +23,6 @@ def predict_movies(liked, disliked, mood):
     for genre in genres:
         if genre in liked:
             final_genre.append(genre)
-    if emotion_list_raw[0] == 'sadness':
-        try:
-            final_genre.remove('Drama')
-            final_genre.remove('Horror')
-        except ValueError:
-            pass
     genre_chosen = random.choice(final_genre)
     url = 'http://www.imdb.com/search/title?genres=%s&title_type=feature&sort=moviemeter, asc' % (genre_chosen)
 
@@ -50,17 +41,15 @@ def predict_movies(liked, disliked, mood):
 
 
 def predict_music(liked, disliked, mood):
-    if 'negative' in mood:
-        emotion_sadness = mood.get('sadness')
-        emotion_disgust = mood.get('disgust')
-        emotion_anger = mood.get('anger')
-        emotion_fear = mood.get('fear')
-        emotion_list_raw = sorted([rate for rate in [emotion_sadness, emotion_anger, emotion_disgust, emotion_fear] if rate is not None], reverse=True)
-        print(emotion_list_raw)
-    elif 'positive' in mood:
-        emotion_joy = mood['joy']
-        emotion_trust = mood['trust']
-        emotion_list_raw = sorted([rate for rate in [emotion_joy, emotion_trust] if rate is not None], reverse=True)
+    emotion_sadness = mood.get('sadness')
+    emotion_disgust = mood.get('disgust')
+    emotion_anger = mood.get('anger')
+    emotion_fear = mood.get('fear')
+    emotion_list_raw = sorted([rate for rate in [emotion_sadness, emotion_anger, emotion_disgust, emotion_fear] if rate is not None], reverse=True)
+    emotion_joy = mood.get('joy')
+    emotion_trust = mood.get('trust')
+    emotion_list_raw = sorted([rate for rate in [emotion_joy, emotion_trust] if rate is not None], reverse=True)
+    print(emotion_list_raw)
     genres = ['country', 'classical', 'dance', 'blues', 'drill', 'dubstep', 'electronic', 'folk', 'funk', 'garage', 'indie',
               'hiphop', 'house', 'metal', 'jazz', 'kpop', 'pop', 'punk', 'psychedelic', "rap", 'rock', 'reggae', 'soul']
     final_genre = list()
