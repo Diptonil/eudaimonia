@@ -1,0 +1,136 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | Personality Quiz
+{% endblock %}
+
+{% block body %}
+<body>
+    SOME GUIDELINES THAT WOULD LATER BE MENTIONED... Answers default to the first option. Please alter the choices in the field accordingly.
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            What is your preferred social setup?<br />
+            1. To be with a group of people; expend energy.
+            2. To be alone and aloof; save energy.
+            {{ form.q1 }}
+        </div>
+        <div>
+            When you're reading a piece of text, do you:<br />
+            1. Interpret literally and quickly?
+            2. Look for meanings and possibilities?
+            {{ form.q2 }}
+        </div>
+        <div>
+            When encountered with a situation requiring your decision:<br />
+            1. You decide by rational & logical thinking and questioning.
+            2. You decide by intuition & give your emotions the upper hand.
+            {{ form.q3 }}
+        </div>
+        <div>
+            Are you:<br />
+            1. Organized and orderly?
+            2. Flexible and adaptable?
+            {{ form.q4 }}
+        </div>
+        <div>
+            How often do you voice your thoughts out loud before someone?<br />
+            1. As much as you can/ mostly.
+            2. As least as you can/ rarely.
+            {{ form.q5 }}
+        </div>
+        <div>
+            How would you describle yourself?<br />
+            1. Practical, realistic and experiential
+            2. Imaginative, innovative and theoretical
+            {{ form.q6 }}
+        </div>
+        <div>
+            What is your preferred approach when giving suggestions/ advices to your friends?<br />
+            1. Speak to them candidly and be straight-forward and realistic.
+            2. Speak to them with tact and be encouraging and more positive.
+            {{ form.q7 }}
+        </div>
+        <div>
+            How do you like to arrange trips to vacation places?<br />
+            1. With utmost care, scheduling and planning.
+            2. With spontaneity, without much plans.
+            {{ form.q8 }}
+        </div>
+        <div>
+            What sort of activities do you prefer?<br />
+            1. Those involving more collaboration and interaction with others; public activities.
+            2. Those involving more solo concentration and self-reflection; private activities.
+            {{ form.q9 }}
+        </div>
+        <div>
+            When you come across a certain idea or belief that is foreign to you, do you:<br />
+            1. Analyse, dissect and consider every factor before judging the idea?
+            2. Roughly scope the idea and go with your gut feeling before judging the idea?
+            {{ form.q10 }}
+        </div>
+        <div>
+            When you're teaching something to someone, what is your preferred approach?<br />
+            1. Be firm, tend to criticise more and hold the line. Sternness guarantees greatness.
+            2. Be gentle, tend to appreciate more and conciliate. Politeness ensures no negativity.
+            {{ form.q11 }}
+        </div>
+        <div>
+            How do you live your life?<br />
+            1. Regulate and structure activities, maintain schedules and have firm routines.
+            2. Place no bounds on activities, do whatever feels right at the moment and be carefree.
+            {{ form.q12 }}
+        </div>
+        <div>
+            Imagine your first business brainstorming session at work amidst a bunch of new people (hypothetical). You will:<br />
+            1. Express yourself freely to make your ideas heard, even though they may be flawed.
+            2. Keep to yourself to not let your ideas out, even though may be good.
+            {{ form.q13 }}
+        </div>
+        <div>
+            While solving problems, you tend to:<br />
+            1. Focus on the here and now, look at the most minute details for perfection.
+            2. Focus on the bigger picture and global perspective, choose to look past details because they may later need to change.
+            {{ form.q14 }}
+        </div>
+        <div>
+            You are:<br />
+            1. Tough minded and just.
+            2. Tender hearted and merciful.
+            {{ form.q15 }}
+        </div>
+        <div>
+            When dealing with any problem (work, personal or day-to-day life) and working towards solving it, you:<br />
+            1. Prepare and plan ahead.
+            2. Improvise and go with the flow.
+            {{ form.q16 }}
+        </div>
+        <div>
+            While in a conversation with a random person, what would you be more likely to do?<br />
+            1. Be more active and initiate.
+            2. Be more reflective and laid-back.
+            {{ form.q17 }}
+        </div>
+        <div>
+            While making any decision, what do you generally look at?<br />
+            1. Hard facts, the present scenario.
+            2. Ideas and hypothesis, 'what-could-be'.
+            {{ form.q18 }}
+        </div>
+        <div>
+            You're in a discussion and it is getting late. A person is still pitching their ideas and is getting off-track. Would you:<br />
+            1. Politely cut that person off, be more issue-oriented with respect to the discussion?
+            2. Stay put and let the person finish, be compassionate while evaluating their decision?
+            {{ form.q19 }}
+        </div>
+        <div>
+            How is your default nature and behavior towards yourself?<br />
+            1. A high degree of governance or control of mind and body.
+            2. A high degree of latitude and freedom in life.
+            {{ form.q20 }}
+        </div>
+        <input type="submit" value="Submit" id="btn" />
+    </form>
+</body>
+{% endblock %}

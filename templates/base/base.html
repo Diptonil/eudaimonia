@@ -61,7 +61,7 @@
     <a href="{% url 'profile' %}"><i class="ri ri-profile-line"></i>Profile</a>
     <a href="{% url 'stats' %}"><i class="ri ri-bar-chart-grouped-line"></i>Statistics</a>
     <a href="{% url 'settings' %}"><i class="ri ri-settings-5-line"></i>Settings</a>
-    <a href="{% url 'logout' %}"><i class="ri ri-logout-box-r-line"></i>Log Out</a>
+    <a id="logout-button"><i class="ri ri-logout-box-r-line"></i>Log Out</a>
     <div class="section">
 
     </div>
@@ -107,6 +107,24 @@
         document.getElementById("mySidebar").style.width = "0";
         document.getElementById("sidebar-active").style.display = "none";
     }
+
+    $(document).ready(function() {
+        var startDate = new Date();
+        $("#logout-button").click(function (event) {
+            var endDate = new Date();
+            $.ajax({ 
+                type: "POST",
+                url: "{% url 'logout' %}",
+                data: {'csrfmiddlewaretoken': "{{  csrf_token  }}", 'time_spent': (endDate - startDate) / 3600},
+                async: false,
+                success: function (response) {
+                    if (response == 1) {
+                        window.location = "{% url 'index' %}";
+                    }
+                },      
+            })
+        });
+    });
 </script>
 {% endif %}
 

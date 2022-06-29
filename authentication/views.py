@@ -1,11 +1,12 @@
+import decimal
 import logging
-import time
-from datetime import date
+import json
 
 from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.http import HttpResponse
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
@@ -22,9 +23,10 @@ from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.views.generic import UpdateView
 
 import constants
-from authentication.models import Profile, FrequencyStatistics
+from authentication.models import Profile
 from authentication.forms import SignupForm, LoginForm, ProfileForm, RecommendationForm
 from authentication.tokens import account_activation_token
+from analysis.models import RegularityStat
 
 logout_time = 0
 login_time = 0
@@ -46,12 +48,9 @@ def login_page_view(request):
                 use_username = False
             else:
                 use_username = True
-            global login_time
             if use_username:
-                login_time = time.time()
                 user = authenticate(username=login_form.cleaned_data['user_identifier'], password=login_form.cleaned_data['password'])
             else:
-                login_time = time.time()
                 user = get_user_model().objects.get(email=login_form.cleaned_data['user_identifier'])
                 user = authenticate(username=user.username, password=login_form.cleaned_data['password'])
             if user is not None:
@@ -162,9 +161,15 @@ def password_change_page_view(request):
 
 @login_required
 def logout_page_view(request):
-    logout(request)
     cache.delete(constants.CURRENT_USER_CACHE_KEY)
-    return redirect('index')
+    if request.POST.get('time_spent') is not None and (request.method == 'POST'):
+        print('ass')
+        time_spent = decimal.Decimal(request.POST.get('time_spent'))
+        model = RegularityStat.objects.filter(user=request.user).first()
+        model.time_spent += time_spent
+        model.save()
+        logout(request)
+        return HttpResponse(json.dumps(1), content_type='application/json')
 
 
 @login_required

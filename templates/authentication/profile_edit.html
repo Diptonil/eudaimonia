@@ -41,6 +41,11 @@ Eudaimonia | Edit Profile
                     {% endfor %}
                 </div>
                 <a href="{% url 'recommendations_edit' pk=profile.pk %}">Alter Recommendation Preferences</a>
+                {% if profile.personality == None %}
+                <a href="{% url 'quiz' %}">Set Personality Preferences</a>
+                {% else %}
+                Personality preferences have been set for better analysis.
+                {% endif %}
             </div>
             <div class="container-right">
                 <img src="{{ profile.image.url }}" alt="" />

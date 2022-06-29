@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from .models import Entry, EmotionsStat
+from .models import Entry
 
 admin.site.register(Entry)
-admin.site.register(EmotionsStat)

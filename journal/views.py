@@ -15,10 +15,10 @@ from django.db.models import Sum
 
 import constants
 from authentication.models import Profile
-from journal.recommendation_model import predict_movies, predict_music
 from journal.encryption import encrypt, decrypt
 from journal.forms import EntrySearchForm
-from journal.models import Entry, EmotionsStat
+from journal.models import Entry
+from analysis.models import EmotionsStat
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
@@ -39,21 +39,17 @@ def entry_page_view(request):
         content = str(request.POST.get('content'))
         content.replace('&nbsp;', '')
         headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
-        request0 = requests.post('http://127.0.0.1:7000/get_mood/', json={'CORPUS': content}, headers=headers)
+        request0 = requests.post('http://127.0.0.1:7000/api/v1/get_mood/', json={'CORPUS': content}, headers=headers)
+        emotion = requests.post('http://127.0.0.1:7000/api/v1/get_emotion/', json={'CORPUS': content}, headers=headers).json()['emotion']
         response = request0.json()
         print(response, content)
         print(request0)
-        joy = response.get('joy', 0)
-        disgust = response.get("disgust", 0)
-        sadness = response.get('sadness', 0)
-        surprise = response.get('surprise', 0)
-        negative = response.get('negative', 0)
-        positive = response.get('positive', 0)
-        trust = response.get('trust', 0)
-        anticipation = response.get('anticipation', 0)
-        fear = response.get('fear', 0)
-        anger = response.get('anger', 0)
-        EmotionsStat.objects.create(user=request.user, joy=joy, disgust=disgust, sadness=sadness, surprise=surprise, negative=negative, positive=positive, trust=trust, fear=fear, anger=anger, anticipation=anticipation)
+        happy = response.get('Happy', 0)
+        sad = response.get('Sad', 0)
+        surprise = response.get('Surprise', 0)
+        fear = response.get('Fear', 0)
+        angry = response.get('Angry', 0)
+        EmotionsStat.objects.create(user=request.user, happy=happy, sad=sad, surprise=surprise, fear=fear, angry=angry, emotion=emotion)
         encryption_key = get_user_model().objects.get(username=request.user.username).password[53:69]
         encryption_key = hashlib.sha256(encryption_key.encode()).digest()
         content = encrypt(content, encryption_key)
@@ -76,33 +72,27 @@ def post_page_view(request, id):
     entry_model.entry = content
     emotion_data = dict()
     headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
-    request0 = requests.post('http://127.0.0.1:7000/get_mood/', json={'CORPUS': content}, headers=headers)
+    request0 = requests.post('http://127.0.0.1:7000/api/v1/get_mood/', json={'CORPUS': content}, headers=headers)
+    emotion = requests.post('http://127.0.0.1:7000/api/v1/get_emotion/', json={'CORPUS': content}, headers=headers).json()['emotion']
     response = request0.json()
     model_favourite_movie_genres = [obj[0] for obj in profile_model.fav_movie_genres.values_list('field')]
     model_unfavourite_movie_genres = [obj[0] for obj in profile_model.unfav_movie_genres.values_list('field')]
-    model_favourite_music_genres = [obj[0] for obj in profile_model.fav_music_genres.values_list('field')]
-    model_unfavourite_music_genres = [obj[0] for obj in profile_model.unfav_music_genres.values_list('field')]
-    model = predict_movies(model_favourite_movie_genres, model_unfavourite_movie_genres, response)
-    music_model = predict_music(model_favourite_music_genres, model_unfavourite_music_genres, response)
-    res = [i for i in model if i != ' \n']
-    res = [i for i in res if i != 'X']
-    res2 = [i[1:] for i in music_model]
-    emotion_data['joy'] = response.get('joy', 0)
-    emotion_data['anger'] = response.get("anger", 0)
-    emotion_data['sadness'] = response.get("sadness", 0)
-    emotion_data['disgust'] = response.get("disgust", 0)
-    emotion_data['surprise'] = response.get("surprise", 0)
-    emotion_data['negative'] = response.get("negative", 0)
-    emotion_data['positive'] = response.get("positive", 0)
-    emotion_data['trust'] = response.get("trust", 0)
-    emotion_data['anticipation'] = response.get("anticipation", 0)
-    emotion_data['fear'] = response.get("fear", 0)
+    # model_favourite_music_genres = [obj[0] for obj in profile_model.fav_music_genres.values_list('field')]
+    # model_unfavourite_music_genres = [obj[0] for obj in profile_model.unfav_music_genres.values_list('field')]
+    favourites = ['No Country for Old Men', 'The Dark Knight']
+    json_data = {'LIKED_MOVIE_GENRES': model_favourite_movie_genres, 'DISLIKED_MOVIE_GENRES': model_unfavourite_movie_genres, 'FAVOURITE_MOVIES': favourites, 'CORPUS': emotion}
+    model_movie = requests.post('http://127.0.0.1:7000/api/v1/get_movie/', json=json_data, headers=headers)
+    emotion_data['Happy'] = response.get('Happy', 0)
+    emotion_data['Angry'] = response.get("Angry", 0)
+    emotion_data['Sad'] = response.get("Sad", 0)
+    emotion_data['Surprise'] = response.get("Surprise", 0)
+    emotion_data['Fear'] = response.get("Fear", 0)
     if request.method == 'POST':
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(content, features='html5lib')
         print(soup.get_text().replace('    ', '').replace('\n', ''))
         return redirect('pdf', text=soup.get_text().replace('\t', ' ').replace('\n', ''), filename='{0}.pdf'.format(entry_model.title))
-    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data, 'model': res, 'music_model': res2})
+    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data, 'model_movie': model_movie})
 
 
 @login_required

@@ -62,10 +62,9 @@ Eudaimonia | {{ entry.title }}
     </div>
 
     <script>
-        var xValues = ["Joy", "Sadness", "Disgust", "Surprise", "Negative", "Positive", "Trust", "Anticipation", "Fear", "Anger"];
-            var yValues = [{{ emotion_data.joy }}, {{ emotion_data.disgust }}, {{ emotion_data.sadness }}, {{ emotion_data.surprise }},
-            {{ emotion_data.positive }}, {{ emotion_data.negative }}, {{ emotion_data.trust }},
-            {{ emotion_data.anticipation }}, {{ emotion_data.fear }}, {{ emotion_data.anger }}];
+        var xValues = ["Happy", "Angry", "Sad", "Surprise", "Fear"];
+            var yValues = [{{ emotion_data.Happy }}, {{ emotion_data.Angry }}, {{ emotion_data.Sad }}, {{ emotion_data.Surprise }},
+            {{ emotion_data.Fear }}];
             var barColors = [
             "#1572A1",
             "#9AD0EC",
