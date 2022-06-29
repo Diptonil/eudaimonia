@@ -1,14 +1,14 @@
 {% extends 'base/base.html' %}
 {% block nav_dashboard %}
 {% if not my_shares %}
-    class="active"
+class="active"
 {% endif %}
 {% endblock %}
 
 
 {% block nav_my_share%}
 {% if my_shares %}
-    class="active"
+class="active"
 {% endif %}
 {% endblock %}
 
@@ -27,13 +27,13 @@ Eudaimonia | Your Dashboard
             <form id="search" method="post">
                 {% csrf_token %}
                 {{ form.search }}
-                <button class="search-button"   type="submit"><i class="ri-search-line"></i></button>
+                <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
             </form>
-            
+
             <div class="mini-nav">
                 <a href="{% url 'dashboard' %}" style="color: #301dad;"><i class="ri ri-dashboard-line"></i></a>
-                <a {% block nav_share%}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></a>
-                <a {% block nav_story%}{% endblock %} href="{% url 'my_share' %}"><i onclick="changecolor(this);" class="ri ri-stack-line"></i></a>
+                <a href="{% url 'share' %}"><i class="ri ri-add-box-line"></i></a>
+                <a href="{% url 'my_share' %}"><i class="ri ri-stack-line"></i></a>
             </div>
 
             <br /><br /><br />

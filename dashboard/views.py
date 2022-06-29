@@ -1,14 +1,24 @@
+import datetime
+
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
 from authentication.models import Profile
-from .models import Post
-from .forms import EntrySearchForm, PostForm
+from dashboard.models import Post
+from dashboard.forms import EntrySearchForm, PostForm
+from analysis.models import RegularityStat
 
 
 @login_required
 def dashboard_page_view(request):
+    recent_regularity = RegularityStat.objects.filter(user=request.user)
+    # Streak break logic
+    if len(recent_regularity) != 0:
+        if recent_regularity.first().date != datetime.date.today():
+            RegularityStat.objects.create(user=request.user, streak=recent_regularity.first().streak + 1, date=datetime.date.today())
+    else:
+        RegularityStat.objects.create(user=request.user, streak=1, date=datetime.date.today())
     entry_search_form = EntrySearchForm()
     post_model = Post.objects.all()
     paginator = Paginator(post_model, 5)

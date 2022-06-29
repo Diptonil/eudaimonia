@@ -37,6 +37,7 @@ class Profile(models.Model):
     join_date = models.DateField(default=date.today)
     image = models.ImageField(upload_to=user_directory_path, default='profiles/default_zayg9d.jpg')
     purpose = models.CharField(max_length=16, choices=PURPOSE, default=PERSONAL)
+    personality = models.CharField(max_length=4, default=None, null=True)
     fav_movie_genres = models.ManyToManyField(MovieField, related_name='favourite_movie')
     unfav_movie_genres = models.ManyToManyField(MovieField, related_name='unfavourite_movie')
     fav_music_genres = models.ManyToManyField(MusicField, related_name='favourite_music')
@@ -56,10 +57,3 @@ class Profile(models.Model):
 
     class Meta:
         ordering = ('join_date',)
-
-
-class FrequencyStatistics(models.Model):
-
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    active_time = models.DecimalField(max_digits=20, decimal_places=10)
-    date = models.DateField(default=date.today)
