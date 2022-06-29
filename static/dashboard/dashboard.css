@@ -1,12 +1,32 @@
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    margin-top: 200px ;
+    margin-bottom: 200px ;
+    box-shadow: inset 0 0 5px white;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00000043;
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #291d78;
+}
+
 
 #dashboard{
     background-color: var(--primary-dark);
 }
 
 .dashboard-container{
-    max-width: 900px;
-    margin: auto;
+    max-width: 30%;
+    margin-left: 7%;
     margin-top: 100px;
 }
 
@@ -27,7 +47,7 @@
     position: fixed;
     margin: 0 20px;
     top: 55px;
-    width: 860px;
+    width: 85%;
     background-color: var(--primary-dark);
     height: 50px
 }
@@ -35,7 +55,7 @@
 .mini-nav{
     position: absolute;
     top: 10px;
-    left: 700px;
+    right: 30px;
 }
 
 .mini-nav .ri:hover{
@@ -75,52 +95,22 @@ button .ri-search-line{
 }
 
 .post-title{
-    font-size: 25px;
+    font-size: 20px;
 }
 
-/*
-.infinite-item:nth-child(2n+1) {
-    width: 98%;
-    border-radius: 5px;
-    background-color: var(--primarycolor);
-    border: none;
-    margin: 14px 0;
-    padding: 10px;
-    height: fit-content;
-    overflow: hidden;
-    max-height: 750px;
-    box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.11);
+.infinite-item:nth-child(1){
+    border-right: 4px solid #301dad91 ;
 }
-
-.infinite-item:nth-child(2n) {
-    width: 98%;
-    display: block;
-    border-radius: 5px;
-    background-color: var(--primarycolor);
-    border: none;
-    margin: 14px 0;
-    padding: 10px;
-    height: fit-content;
-    overflow: hidden;
-    max-height: 750px;
-    box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.11);
-}
-*/
-body{
-    background-image: linear-gradient(to right top, #acefff, #a2e5ff, #a8d9ff, #bbcaff, #d5b8ff);
-}
-
 
 .infinite-item{
     transition: transform .3s;
     border-radius: 5px;
     background-color: var(--primarycolor);
     border: none;
-    margin: 18px 0;
+    margin: 12px 0;
     padding: 30px;
     height: fit-content;
     overflow: hidden;
-    max-height: 750px;
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.11);
 }
 
@@ -129,7 +119,8 @@ body{
 }
 
 .infinite-item p{
-    font-size: 17px;
+    color: #4c4c4c;
+    font-size: 15px;
     line-height: 23px;
 }
 
@@ -143,31 +134,37 @@ body{
     text-decoration: underline;
 }
 
-
-.react{
-    width: 100%;
-    height: 50px;
-    padding: 8px;
+.post-card{
+    padding: 60px;
+    padding-left: 90px;
+    padding-bottom: 30px ;
+    background-color: white;
+    position: fixed;
+    width: 55%;
+    height: 83vh;
+    top: 110px;
+    border-radius: 10px;
+    right: 7%;
+    overflow-y: scroll;
+    box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.11);
 }
 
-.ri-heart-line{
-    float: right;
-    font-size: 30px;
-    vertical-align: center;
-    color: var(--sec-light);
-    cursor: pointer;
+.datePost{
+    color: #000000a9;
+    padding: 5px;
 }
 
-.ri-heart-fill{
-    color: #301dad;
-    float: right;
-    font-size: 30px;
-    vertical-align: center;
-    color: var(--sec-light);
-    cursor: pointer;
+.titlePost{
+    margin: 0;
+    font-size: 3em;
+    width: 70%;
+    padding-bottom: 40px;
+    
 }
 
-
+.contentPost{
+    font-size: 17px;
+}
 
 /*story*/
 .story{

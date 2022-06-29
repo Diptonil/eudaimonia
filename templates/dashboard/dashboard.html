@@ -40,13 +40,12 @@ Eudaimonia | Your Dashboard
         </div>
         <div class="infinite-container">
                     {% for post in page_obj %}
-                    <div onload="getHeight(this)" class="infinite-item">
-                        <a class="post-title" href="{% url 'story' id=post.id %}">
-                            <h2>{{ post.title }}</h2>
-                        </a>
-                        <h5>{{ post.date }}</h5>
-                        <p>{{ post.post|truncatechars:1100 }} 
-                            <a class="read-more" href="{% url 'story' id=post.id %}">Read more</a> </p>
+                    <div class="infinite-item">
+                        <h2 class="post-title">{{ post.title }}</h2>
+                        <h5 >{{ post.date }}</h5>
+                        <p>{{ post.post|truncatechars:150 }} 
+                            <!-- <a class="read-more" href="{% url 'story' id=post.id %}">Read more</a>  -->
+                        </p>
                     </div>
                     {% endfor %}
         </div>
@@ -58,6 +57,14 @@ Eudaimonia | Your Dashboard
             {% endif %}
         </div>
     </div>
+
+    <div class="post-card">
+        <h5 class="datePost"></h5>
+        <h2 class="titlePost" >Some placeholder title here</h2>
+        <p class="contentPost">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia totam autem perspiciatis, aperiam quam tempore cupiditate voluptate. Eum ipsum consequuntur quasi molestias, quod officia quo ut fuga magnam. Obcaecati repudiandae aliquam totam inventore laudantium autem, debitis qui aliquid dignissimos tempora ab aspernatur natus eligendi quod dolorum reiciendis esse quasi. Unde laboriosam tempora aliquid quas voluptatem sunt praesentium modi in dolorem, error, labore optio vero tempore? Atque labore laborum iure pariatur? Delectus odio atque, eum exercitationem temporibus aliquam quis velit fugit! Officia, sunt quam. Consequatur accusantium distinctio ad nesciunt pariatur voluptatem similique nulla odio. Dicta, consequuntur quae nesciunt voluptatem consectetur obcaecati. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore totam delectus reiciendis rerum. Sed sapiente nihil, delectus corrupti facere voluptatibus quas ab eos ducimus ut. Delectus adipisci minima maxime. Unde dolor iusto similique provident atque, ipsum ratione sint ea laborum culpa eius placeat ut. Tempore placeat ad possimus similique, facilis rem earum corporis! Modi neque quasi at quo quaerat quibusdam fugit. Nobis explicabo voluptatem cumque libero perferendis? Ipsum molestiae suscipit quisquam aut nemo nesciunt Modi neque quasi at quo quaerat quibusdam fugit. Nobis explicabo voluptatem </p>
+    </div>
+
+
     <script src="/static/infinite scroll js/jquery.waypoints.min.js"></script>
     <script src="/static/infinite scroll js/infinite.min.js"></script>
     <script>
@@ -75,6 +82,14 @@ Eudaimonia | Your Dashboard
 
         }
 
+        // function displayfull(el){
+        //     const nodeList = el.childNodes;
+        //     let text = "";
+        //     for (let i = 0; i < nodeList.length; i++) {
+        //     text += nodeList[i] + "<br>";
+        //     }
+        //     document.querySelector(".contentPost").innerHTML = text;
+        // }
     </script>
 </body>
 {% endblock %}
