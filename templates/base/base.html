@@ -28,8 +28,13 @@
         Darkmode
     </div>
 
-
     <div class="navigate">
+        <a {% block nav_zen %}{% endblock %} href="" id="Zen mode">
+            <i class="ri ri-focus-line"></i>
+            Zen Mode
+        </a>
+        <hr>
+        <br>
         <a {% block nav_dashboard %}{% endblock %} href="{% url 'dashboard' %}"><i
                 class="ri ri-dashboard-line"></i>Dashboard</a>
         <a {% block nav_share %}{% endblock %} href="{% url 'share' %}"><i class="ri ri-add-box-line"></i>New

@@ -18,28 +18,44 @@ Eudaimonia | Edit Profile
         <form method="post" enctype='multipart/form-data'>
             {% csrf_token %}
             <div class="container-left">
+                <h1>Basic Information</h1>
                 <div><span class="labels">Birthday </span>{{ form.birth_date }}</div>
                 <div><span class="labels">Bio </span>{{ form.bio }}</div>
-                <div><span class="labels">Preferred Movie Genres </span>
-                    {% for item in fav_mov %}
-                    {{ item }}
-                    {% endfor %}
+                <br><br>
+                <h1>Preferences</h1>
+                <div>
+                    <span class="labels">Preferred Movie Genres </span>
+                    <div class="item-group">
+                        {% for item in fav_mov %}
+                        <div class="item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div><span class="labels">Unfavourite Movie Genres </span>
-                    {% for item in unfav_mov %}
-                    {{ item }}
-                    {% endfor %}
+                <div>
+                    <span class="labels">Unfavourite Movie Genres </span>
+                    <div class="item-group">
+                        {% for item in unfav_mov %}
+                        <div class="item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div><span class="labels">Preferred Music Genres </span>
-                    {% for item in fav_mus %}
-                    {{ item }}
-                    {% endfor %}
+                <div>
+                    <span class="labels">Preferred Music Genres </span>
+                    <div class="item-group">
+                        {% for item in fav_mus %}
+                        <div class="item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div><span class="labels">Unfavourite Music Genres </span>
-                    {% for item in unfav_mus %}
-                    {{ item }}
-                    {% endfor %}
+                <div>
+                    <span class="labels">Unfavourite Music Genres </span>
+                    <div class="item-group">
+                        {% for item in unfav_mus %}
+                        <div class="item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
                 </div>
+
                 <a href="{% url 'recommendations_edit' pk=profile.pk %}">Alter Recommendation Preferences</a>
                 {% if profile.personality == None %}
                 <a href="{% url 'quiz' %}">Set Personality Preferences</a>
@@ -54,8 +70,10 @@ Eudaimonia | Edit Profile
                 <input type="submit" value="Save" id="btn" />
             </div>
         </form>
+
+        <div>Choosing a genre for both preferred and unfavourite fields may nullify or disrupt recommendations.</div>
     </div>
-    <div>Choosing a genre for both preferred and unfavourite fields may nullify or disrupt recommendations.</div>
+    
 </body>
 {% endblock %}
 

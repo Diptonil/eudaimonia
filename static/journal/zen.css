@@ -1,0 +1,264 @@
+
+*{
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: hsla(206, 23%, 94%, 1);
+    overflow: hidden;
+}
+  
+  .text {
+    color: white;
+    position: relative;
+    top: 35%;
+    display: flex;
+    justify-content: left;
+    font-size: 28px;
+    font-family: Source Sans Pro;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 0.7em;
+    animation: spacing 4s ease-out alternate infinite;
+    animation-delay: -2s;
+    z-index: 6;
+}
+  
+  .water {
+    background-color: #301dad37;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+  
+.water:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%; 
+    border-radius: 50px;
+    background: linear-gradient(
+      transparent 0%,
+      transparent 40%,
+      #301dad32 100%
+    ); 
+    mix-blend-mode: color;
+    z-index: 4;
+    transform: translate3d(0, 0, 0);
+}
+  
+.ripple-one {
+    position: absolute;
+    top: 0%;
+    width: 2525px;
+    height: 2025px;
+    border-radius: 45%;
+    transform-origin: 50% 48%;
+    animation: water 5s infinite linear;
+    background: #301dad27;
+    z-index: 3;
+    transform: translate3d(0, 0, 0);
+}
+  
+.ripple-two {
+    position: absolute;
+    width: 2400px;
+    height: 2400px;
+    border-radius: 42%;
+    top: 20%;
+    transform-origin: 50% 48%;
+    animation: water 8s infinite linear;
+    background: #301dad25;
+    z-index: 2;
+}
+
+.ripple-three {
+    position: absolute;
+    top: 10%;
+    width: 2550px;
+    height: 2450px;
+    border-radius: 45%;
+    transform-origin: 50% 48%;
+    animation: water 6s infinite linear;
+    background: #301dad21;
+    z-index: 1;
+}
+
+@keyframes water {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+/*zen window*/
+.window{
+    display: none;
+}
+
+.active{
+    display: block;
+}
+
+.zen-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.absolute-container{
+    text-align: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+}
+
+#select{
+    color: rgb(31, 31, 31);
+    border: 1px solid white;
+    width: 250px;
+    z-index: 10;
+    position: absolute;
+    top: 180px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 4px 30px 4px 10px;
+    font-size: 14px;
+    width: 270px;
+    height: 30px;
+    background-color: #ffffff3e;
+    border: none;
+}
+
+#select option{
+  width: 300px;
+  height: 30px;
+  background-color: #ffffff7f;
+}
+
+#zen-but{
+    z-index: 10;
+    width: 100px;
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    width: 150px;
+    height: 50px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.z-card{
+    position: absolute;
+    top: 100px;
+    color: white;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    margin: auto;
+  
+}
+
+.z-card{
+    font-size: 30px;
+}
+
+#countdown{
+    font-weight: 800;
+    font-size:3rem;
+    position:absolute;
+    padding: 2rem;
+    top:100px;
+    z-index:100;
+    text-align:center;
+    width:100%;
+    mix-blend-mode: difference;
+}
+
+#BreakCountdown{
+    font-weight: 800;
+    font-size:2rem;
+    position:absolute;
+    padding: 2rem;
+    top:180px;
+    z-index:100;
+    text-align:center;
+    width:100%;
+    mix-blend-mode: difference;
+}
+
+.timedMessage{
+  width: 400px;
+    font-size: 20px;
+    position:absolute;
+    bottom: 145px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#stop, #pause, #resume{
+    background-color: transparent;
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    width: 150px;
+    height: 50px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+#stop:hover, #pause:hover, #resume:hover{
+  background-color: #00000036;
+}
+
+#zen-but:hover{
+  background-color: #ffffff36;
+}
+
+#stop{
+    position: absolute;
+    bottom: 70px;
+    left: 35%;
+}
+
+#pause, #resume{
+    position: absolute;
+    bottom: 70px;
+    left: 55%;
+}
+
+#resume{
+    display: none;
+}
+
+
+#gradient-canvas {
+    width:100%;
+    height:100%;
+    --gradient-color-1: #F4EEFF; 
+    --gradient-color-2: #DCD6F7; 
+    --gradient-color-3: #A6B1E1;  
+    --gradient-color-4: #424874;
+    z-index:0;
+  }
