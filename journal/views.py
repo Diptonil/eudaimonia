@@ -39,11 +39,9 @@ def entry_page_view(request):
         content = str(request.POST.get('content'))
         content.replace('&nbsp;', '')
         headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
-        request0 = requests.post('http://127.0.0.1:7000/api/v1/get_mood/', json={'CORPUS': content}, headers=headers)
-        emotion = requests.post('http://127.0.0.1:7000/api/v1/get_emotion/', json={'CORPUS': content}, headers=headers).json()['emotion']
-        response = request0.json()
+        response = requests.post('http://127.0.0.1:7000/api/v1/get_mood/', json={'CORPUS': content}, headers=headers).json()
+        emotion = 'Happy' if response['Happy'] > response['Sad'] else 'Sad'
         print(response, content)
-        print(request0)
         happy = response.get('Happy', 0)
         sad = response.get('Sad', 0)
         surprise = response.get('Surprise', 0)
@@ -72,9 +70,9 @@ def post_page_view(request, id):
     entry_model.entry = content
     emotion_data = dict()
     headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
-    request0 = requests.post('http://127.0.0.1:7000/api/v1/get_mood/', json={'CORPUS': content}, headers=headers)
-    emotion = requests.post('http://127.0.0.1:7000/api/v1/get_emotion/', json={'CORPUS': content}, headers=headers).json()['emotion']
-    response = request0.json()
+    request0 = requests.post('http://127.0.0.1:7000/api/v1/get_mood/', json={'CORPUS': content}, headers=headers).json()
+    emotion = 'Happy' if request0['Happy'] > request0['Sad'] else 'Sad'
+    print(emotion)
     model_favourite_movie_genres = [obj[0] for obj in profile_model.fav_movie_genres.values_list('field')]
     model_unfavourite_movie_genres = [obj[0] for obj in profile_model.unfav_movie_genres.values_list('field')]
     # model_favourite_music_genres = [obj[0] for obj in profile_model.fav_music_genres.values_list('field')]
@@ -82,15 +80,14 @@ def post_page_view(request, id):
     favourites = ['No Country for Old Men', 'The Dark Knight']
     json_data = {'LIKED_MOVIE_GENRES': model_favourite_movie_genres, 'DISLIKED_MOVIE_GENRES': model_unfavourite_movie_genres, 'FAVOURITE_MOVIES': favourites, 'CORPUS': emotion}
     model_movie = requests.post('http://127.0.0.1:7000/api/v1/get_movie/', json=json_data, headers=headers)
-    emotion_data['Happy'] = response.get('Happy', 0)
-    emotion_data['Angry'] = response.get("Angry", 0)
-    emotion_data['Sad'] = response.get("Sad", 0)
-    emotion_data['Surprise'] = response.get("Surprise", 0)
-    emotion_data['Fear'] = response.get("Fear", 0)
+    emotion_data['Happy'] = request0.get('Happy', 0)
+    emotion_data['Angry'] = request0.get("Angry", 0)
+    emotion_data['Sad'] = request0.get("Sad", 0)
+    emotion_data['Surprise'] = request0.get("Surprise", 0)
+    emotion_data['Fear'] = request0.get("Fear", 0)
     if request.method == 'POST':
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(content, features='html5lib')
-        print(soup.get_text().replace('    ', '').replace('\n', ''))
         return redirect('pdf', text=soup.get_text().replace('\t', ' ').replace('\n', ''), filename='{0}.pdf'.format(entry_model.title))
     return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data, 'model_movie': model_movie})
 
@@ -182,24 +179,8 @@ def autocomplete(request):
     return render(request, 'journal/all_entries.html')
 
 
-def stats_page_view(request):
-    emotion_data = dict()
-    emotion_queryset = EmotionsStat.objects.filter(user=request.user)
-    emotion_data['joy'] = float(emotion_queryset.aggregate(Sum('joy'))['joy__sum'])
-    emotion_data['anger'] = float(emotion_queryset.aggregate(Sum('anger'))['anger__sum'])
-    emotion_data['sadness'] = float(emotion_queryset.aggregate(Sum('sadness'))['sadness__sum'])
-    emotion_data['disgust'] = float(emotion_queryset.aggregate(Sum('disgust'))['disgust__sum'])
-    emotion_data['surprise'] = float(emotion_queryset.aggregate(Sum('surprise'))['surprise__sum'])
-    emotion_data['negative'] = float(emotion_queryset.aggregate(Sum('negative'))['negative__sum'])
-    emotion_data['positive'] = float(emotion_queryset.aggregate(Sum('positive'))['positive__sum'])
-    emotion_data['trust'] = float(emotion_queryset.aggregate(Sum('trust'))['trust__sum'])
-    emotion_data['anticipation'] = float(emotion_queryset.aggregate(Sum('anticipation'))['anticipation__sum'])
-    emotion_data['fear'] = float(emotion_queryset.aggregate(Sum('fear'))['fear__sum'])
-    return render(request, 'journal/stats.html', {'emotion_data': emotion_data})
-
-
 def journal_navbar(request):
-    display = True if request.user else False
+    display = True if str(request.user) != 'AnonymousUser' else False
     # display = ('journal/' in request.path) or ('profile/' in request.path) or ('dashboard/' in request.path) or ('zen/' in request.path)
     recaptcha_key = None
     if 'signup/' in request.path:

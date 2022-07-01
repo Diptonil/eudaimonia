@@ -1,11 +1,46 @@
 from django.shortcuts import redirect, render
+from django.db.models import Sum
 
 from authentication.models import Profile
+from analysis.models import EmotionsStat
 from analysis.forms import QuestionnaireForm
 
 
 def stats_page_view(request):
-    return render(request, 'analysis/stats.html')
+    emotion_data = dict()
+    emotion_data_last = dict()
+    emotion_data_weekly = dict()
+    emotion_data_monthly = dict()
+    total_entries = EmotionsStat.objects.filter(user=request.user).count()
+    print(total_entries)
+    if total_entries > 0:
+        emotion_queryset = EmotionsStat.objects.filter(user=request.user)
+        emotion_data['Happy'] = float(emotion_queryset.aggregate(Sum('happy'))['happy__sum'])
+        emotion_data['Angry'] = float(emotion_queryset.aggregate(Sum('angry'))['angry__sum'])
+        emotion_data['Sad'] = float(emotion_queryset.aggregate(Sum('sad'))['sad__sum'])
+        emotion_data['Surprise'] = float(emotion_queryset.aggregate(Sum('surprise'))['surprise__sum'])
+        emotion_data['Fear'] = float(emotion_queryset.aggregate(Sum('fear'))['fear__sum'])
+        emotion_queryset_last = EmotionsStat.objects.filter(user=request.user).first()
+        emotion_data_last['Happy'] = float(emotion_queryset_last.happy)
+        emotion_data_last['Angry'] = float(emotion_queryset_last.angry)
+        emotion_data_last['Sad'] = float(emotion_queryset_last.sad)
+        emotion_data_last['Surprise'] = float(emotion_queryset_last.surprise)
+        emotion_data_last['Fear'] = float(emotion_queryset_last.fear)
+    if total_entries >= 7:
+        emotion_queryset_weekly = EmotionsStat.objects.filter(user=request.user)[:7]
+        emotion_data_weekly['Happy'] = float(emotion_queryset_weekly.aggregate(Sum('happy'))['happy__sum'])
+        emotion_data_weekly['Angry'] = float(emotion_queryset_weekly.aggregate(Sum('angry'))['angry__sum'])
+        emotion_data_weekly['Sad'] = float(emotion_queryset_weekly.aggregate(Sum('sad'))['sad__sum'])
+        emotion_data_weekly['Surprise'] = float(emotion_queryset_weekly.aggregate(Sum('surprise'))['surprise__sum'])
+        emotion_data_weekly['Fear'] = float(emotion_queryset_weekly.aggregate(Sum('fear'))['fear__sum'])
+    if total_entries >= 30:
+        emotion_queryset_monthly = EmotionsStat.objects.filter(user=request.user)[:30]
+        emotion_data_monthly['Happy'] = float(emotion_queryset_monthly.aggregate(Sum('happy'))['happy__sum'])
+        emotion_data_monthly['Angry'] = float(emotion_queryset_monthly.aggregate(Sum('angry'))['angry__sum'])
+        emotion_data_monthly['Sad'] = float(emotion_queryset_monthly.aggregate(Sum('sad'))['sad__sum'])
+        emotion_data_monthly['Surprise'] = float(emotion_queryset_monthly.aggregate(Sum('surprise'))['surprise__sum'])
+        emotion_data_monthly['Fear'] = float(emotion_queryset_monthly.aggregate(Sum('fear'))['fear__sum'])
+    return render(request, 'analysis/stats.html', {'emotion_data': emotion_data, 'emotion_data_weekly': emotion_data_weekly, 'emotion_data_monthly': emotion_data_monthly, 'emotion_data_last': emotion_data_last})
 
 
 def quiz_page_view(request):
@@ -36,12 +71,10 @@ def quiz_page_view(request):
             q20 = question_form.cleaned_data['q20']
             IN, E, S, N, T, F, J, P = 0, 0, 0, 0, 0, 0, 0, 0
             for e in [q1, q5, q9, q13, q17]:
-                print(type(e))
                 if e == '1':
                     E += 1
                 else:
                     IN += 1
-                print(I, E)
             for e in [q2, q6, q10, q14, q18]:
                 if e == '1':
                     S += 1
