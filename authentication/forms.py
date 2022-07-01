@@ -67,4 +67,4 @@ class RecommendationForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['fav_movie_genres', 'unfav_movie_genres', 'fav_music_genres', 'unfav_music_genres']
+        fields = ['hobby', 'fav_movie', 'fav_movie_genres', 'unfav_movie_genres', 'fav_music_genres', 'unfav_music_genres']

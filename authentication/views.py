@@ -238,7 +238,7 @@ class RecommendationPageView(UpdateView):
     form_class = RecommendationForm
     template_name = 'authentication/recommendation_edit.html'
 
-    def get_success_url(self) -> str:
+    def get_success_url(self):
         return reverse('profile_edit')
 
 

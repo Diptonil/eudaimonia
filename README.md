@@ -149,7 +149,7 @@ The technical resources utilized for this project are:
 - [AES-256 Encryption](https://www.nist.gov/publications/advanced-encryption-standard-aes)
 
 The academic and theoretical resources and articles utilized for this project are:
-- [The Genre Theory in Film](https://www.cooperscoborn.org.uk/wp-content/uploads/2018/10/Genre-identify-all-of-the-theories-about-genre.pdf): A simplified and abstract version of the paper has been utilised, keeping in mind the nuances that any user may be capable of comprehending. The distillation of the genres would be considered in the implementation of the recommendation system.
-- []
+- [The Genre Theory in Film](https://www.cooperscoborn.org.uk/wp-content/uploads/2018/10/Genre-identify-all-of-the-theories-about-genre.pdf): A simplified and distilled version of the paper has been utilised, keeping in mind the nuances that any user may be capable of comprehending.
+- [Ekman's Basic Emotion Model](https://www.paulekman.com/wp-content/uploads/2013/07/Basic-Emotions.pdf):
 
 <p align="right">(<a href="#top">Top</a>)</p>

@@ -201,9 +201,11 @@ CELERY_RESULT_BACKEND = 'amqps://vomcxylc:L9uD-DWsO9vwcMqyF7b3CfvqD1F1cudz@puffi
 RECATCHA_PUBLIC_KEY = '6Lde9vYeAAAAAAqkzxT95WxssHcD_fHb16Jc_EbC'
 RECAPTCHA_PRIVATE_KEY = '6Lde9vYeAAAAAK6WbLJOym1TazSq24xej5DZwc9f'
 
+'''
 sentry_sdk.init(
     dsn="https://d7756c60fa4245ac8057a723bb810f7d@o1249277.ingest.sentry.io/6410159",
     integrations=[DjangoIntegration()],
     traces_sample_rate=1.0,
     send_default_pii=True
 )
+'''

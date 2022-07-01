@@ -77,6 +77,8 @@ Eudaimonia | Your Entries
                         <th>{{ entry.date }}
                         </th>
                     </tr>
+                    {% empty %}
+                    <th>Your journal is empty! Start with some new entries...</th>
                     {% endfor %}
                     {% endfor %}
                 </tbody>

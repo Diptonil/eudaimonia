@@ -10,6 +10,8 @@ Eudaimonia | Edit Profile
 <body>
     <form method="post">
         {% csrf_token %}
+        <div>Hobbies and Interests: {{ form.hobby }}</div>
+        <div>Favourite Movies (Separate film names with a semicolon): {{ form.fav_movie }}</div><br />
         <div>Preferred Movie Genres: {{ form.fav_movie_genres }}</div><br />
         <div>Least Preferred Movie Genres: {{ form.unfav_movie_genres }}</div><br />
         <div>Preferred Music Genres: {{ form.fav_music_genres }}</div><br />

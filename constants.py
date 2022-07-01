@@ -20,7 +20,7 @@ PURPOSE = (
     (SPIRITUAL, "Spiritual"),
     (DAILY, 'Daily Log'),
 )
-ALL = 'All'
+NONE = 'None'
 ACTION = 'Action'
 COMEDY = 'Comedy'
 DRAMA = 'Drama'
@@ -32,7 +32,6 @@ THRILLER = 'Thriller'
 WESTERN = 'Musical'
 MUSICAL = 'Musical'
 MOVIE_GENRES = (
-    (ALL, 'All'),
     (ACTION, 'Action'),
     (COMEDY, 'Comedy'),
     (DRAMA, 'Drama'),
@@ -70,7 +69,6 @@ RNB = 'RnB'
 REGGAE = 'Reggae'
 SOUL = 'Soul'
 MUSIC_GENRES = (
-    (ALL, 'All'),
     (COUNTRY, 'Country'),
     (CLASSICAL, 'Classical'),
     (DANCE, 'Dance'),

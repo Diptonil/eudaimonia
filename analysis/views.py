@@ -34,19 +34,19 @@ def quiz_page_view(request):
             q18 = question_form.cleaned_data['q18']
             q19 = question_form.cleaned_data['q19']
             q20 = question_form.cleaned_data['q20']
-            I, E, S, N, T, F, J, P = 0, 0, 0, 0, 0, 0, 0, 0
+            IN, E, S, N, T, F, J, P = 0, 0, 0, 0, 0, 0, 0, 0
             for e in [q1, q5, q9, q13, q17]:
                 print(type(e))
                 if e == '1':
                     E += 1
                 else:
-                    I += 1
+                    IN += 1
                 print(I, E)
             for e in [q2, q6, q10, q14, q18]:
                 if e == '1':
                     S += 1
                 else:
-                    N += 1
+                    IN += 1
             for e in [q3, q7, q11, q15, q19]:
                 if e == '1':
                     T += 1
@@ -57,7 +57,7 @@ def quiz_page_view(request):
                     J += 1
                 else:
                     P += 1
-            personality = str('I' if I > E else 'E') + str('S' if S > N else 'N') + str('T' if T > F else 'F') + str('J' if J > P else 'P')
+            personality = str('I' if IN > E else 'E') + str('S' if S > N else 'N') + str('T' if T > F else 'F') + str('J' if J > P else 'P')
             print(personality)
             profile_model.personality = personality
             profile_model.save()

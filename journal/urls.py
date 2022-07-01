@@ -4,6 +4,7 @@ from journal import views
 
 urlpatterns = [
     path('', view=views.journal_page_view, name='journal'),
+    path('zen/', view=views.zen_page_view, name='zen'),
     path('entry/', view=views.entry_page_view, name='entry'),
     path('entry/pdf/<text>/<filename>/', view=views.pdf_convert, name='pdf'),
     path('entry/delete/<id>/', view=views.disable_view, name='disable'),

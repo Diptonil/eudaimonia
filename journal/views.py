@@ -137,6 +137,11 @@ def all_entries_page_view(request, star=None):
 
 
 @login_required
+def zen_page_view(request):
+    return render(request, 'journal/zen.html')
+
+
+@login_required
 def pdf_convert(request, text, filename):
     buffer = io.BytesIO()
     p = canvas.Canvas(buffer)
@@ -194,7 +199,8 @@ def stats_page_view(request):
 
 
 def journal_navbar(request):
-    display = ('journal/' in request.path) or ('profile/' in request.path) or ('dashboard/' in request.path) or ('stats/' in request.path)
+    display = True if request.user else False
+    # display = ('journal/' in request.path) or ('profile/' in request.path) or ('dashboard/' in request.path) or ('zen/' in request.path)
     recaptcha_key = None
     if 'signup/' in request.path:
         recaptcha_key = settings.RECATCHA_PUBLIC_KEY
