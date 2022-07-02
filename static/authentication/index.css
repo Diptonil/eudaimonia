@@ -227,6 +227,10 @@ button:hover {
     color: rgba(255, 255, 255, 0.774);
 }
 
+.showcase-text-left a:hover{
+    text-decoration: underline;
+}
+
 .showcase-text-left{
     color: rgba(255, 255, 255, 0.774);
     margin-left: 0px;
@@ -252,7 +256,7 @@ button:hover {
 
 
 #features{
-    height: 250vh;
+    height: 410vh;
     position: relative;
     background-color: #fffffffa;
     background-image: url(../images/blueill.png);
@@ -331,31 +335,102 @@ button:hover {
     height: 370px;
 }
 
+#feature5{
+    transition: transform .3s;
+    background-color: white;
+    margin-top: 1800px;
+    margin-left: 1%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
+}
+
+
+#feature6{
+    transition: transform .3s;
+    background-color: white;
+    margin-top: 2200px;
+    margin-left: 55%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
+}
+
+
+#feature7{
+    transition: transform .3s;
+    background-color: white;
+    margin-top: 2600px;
+    margin-left: 20%;
+    z-index: 3;
+    position: absolute;
+    padding: 45px;
+    width: 550px;
+    height: 370px;
+}
+
+
 #feature1:hover, 
 #feature2:hover,
 #feature3:hover,
-#feature4:hover{
+#feature4:hover,
+#feature5:hover,
+#feature6:hover,
+#feature7:hover{
     transform: scale(1.06);
 }
-/*
-.cover h1:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--accent);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+
+#feature1:hover p, 
+#feature2:hover p,
+#feature3:hover p,
+#feature4:hover p,
+#feature1:hover h1, 
+#feature2:hover h1,
+#feature3:hover h1,
+#feature5:hover p,
+#feature6:hover p,
+#feature7:hover p,
+#feature5:hover h1, 
+#feature6:hover h1,
+#feature7:hover h1,
+#feature4:hover h1{
+    animation-name: colorflicker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-direction: reverse;
+    animation-iteration-count: 1;
 }
 
-.cover h1:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+@keyframes colorflicker {
+    0% , 100%{
+        color: black;
+    }
+    20%{
+        color: #301dad44;
+    }
+    30%{
+        color: #301dadb2;
+    }
+    450%{
+        color: #301dad8b;
+    }
+    50%{
+        color: #301dad;
+    }
+    75%{
+        color: #301dad3d;
+    }
+    80%{
+        color: #301dadd1;
+    }
+    90%{
+        color: #301dadbf;
+    }
 }
-*/
 /*End of features*/
 
 
