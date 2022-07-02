@@ -103,15 +103,27 @@ button .ri-search-line{
 }
 
 .infinite-item{
+    position: relative;
     transition: transform .3s;
     border-radius: 5px;
     background-color: var(--primarycolor);
     border: none;
     margin: 12px 0;
     padding: 30px;
-    height: fit-content;
+    height: 185px;
     overflow: hidden;
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.11);
+}
+
+
+.bottom-padding{
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    z-index: 10;
 }
 
 .infinite-item:hover{
