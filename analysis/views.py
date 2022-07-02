@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.db.models import Sum
 
 from authentication.models import Profile
-from analysis.models import EmotionsStat
+from analysis.models import EmotionsStat, RegularityStat
 from analysis.forms import QuestionnaireForm
 
 
@@ -12,7 +12,13 @@ def stats_page_view(request):
     emotion_data_weekly = dict()
     emotion_data_monthly = dict()
     total_entries = EmotionsStat.objects.filter(user=request.user).count()
-    print(total_entries)
+    regularity_model = RegularityStat.objects.filter(user=request.user)
+    regularity_model_x, regularity_model_y = list(), list()
+    for x in regularity_model.iterator():
+        regularity_model_x.append(x.date.day)
+    for y in regularity_model.iterator():
+        regularity_model_y.append(float(y.time_spent))
+    regularity_model_len = regularity_model.count()
     if total_entries > 0:
         emotion_queryset = EmotionsStat.objects.filter(user=request.user)
         emotion_data['Happy'] = float(emotion_queryset.aggregate(Sum('happy'))['happy__sum'])
@@ -26,21 +32,23 @@ def stats_page_view(request):
         emotion_data_last['Sad'] = float(emotion_queryset_last.sad)
         emotion_data_last['Surprise'] = float(emotion_queryset_last.surprise)
         emotion_data_last['Fear'] = float(emotion_queryset_last.fear)
-    if total_entries >= 7:
+        print(emotion_data_last)
+    if total_entries >= 3:
         emotion_queryset_weekly = EmotionsStat.objects.filter(user=request.user)[:7]
         emotion_data_weekly['Happy'] = float(emotion_queryset_weekly.aggregate(Sum('happy'))['happy__sum'])
         emotion_data_weekly['Angry'] = float(emotion_queryset_weekly.aggregate(Sum('angry'))['angry__sum'])
         emotion_data_weekly['Sad'] = float(emotion_queryset_weekly.aggregate(Sum('sad'))['sad__sum'])
         emotion_data_weekly['Surprise'] = float(emotion_queryset_weekly.aggregate(Sum('surprise'))['surprise__sum'])
         emotion_data_weekly['Fear'] = float(emotion_queryset_weekly.aggregate(Sum('fear'))['fear__sum'])
-    if total_entries >= 30:
+    if total_entries >= 7:
         emotion_queryset_monthly = EmotionsStat.objects.filter(user=request.user)[:30]
         emotion_data_monthly['Happy'] = float(emotion_queryset_monthly.aggregate(Sum('happy'))['happy__sum'])
         emotion_data_monthly['Angry'] = float(emotion_queryset_monthly.aggregate(Sum('angry'))['angry__sum'])
         emotion_data_monthly['Sad'] = float(emotion_queryset_monthly.aggregate(Sum('sad'))['sad__sum'])
         emotion_data_monthly['Surprise'] = float(emotion_queryset_monthly.aggregate(Sum('surprise'))['surprise__sum'])
         emotion_data_monthly['Fear'] = float(emotion_queryset_monthly.aggregate(Sum('fear'))['fear__sum'])
-    return render(request, 'analysis/stats.html', {'emotion_data': emotion_data, 'emotion_data_weekly': emotion_data_weekly, 'emotion_data_monthly': emotion_data_monthly, 'emotion_data_last': emotion_data_last})
+    context = {'emotion_data': emotion_data, 'emotion_data_weekly': emotion_data_weekly, 'emotion_data_monthly': emotion_data_monthly, 'emotion_data_last': emotion_data_last, 'regularity_model_len': regularity_model_len, 'regularity_model': regularity_model, 'regularity_model_x': regularity_model_x, 'regularity_model_y': regularity_model_y}
+    return render(request, 'analysis/stats.html', context=context)
 
 
 def quiz_page_view(request):
