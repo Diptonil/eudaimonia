@@ -1,4 +1,5 @@
 # Eudaimonia
+![Border](static/readme/github%20ul.png)
 <div id="top"></div>
 <span>
 <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green" />
@@ -17,6 +18,7 @@
 
 
 ## Table of Contents
+![Border](static/readme/github%20ul.png)
 
 - [Description](#description)
 - [Frameworks and Tools](#frameworks-and-tools)
@@ -24,10 +26,12 @@
 - [Installation](#installation)
 - [Tests](#tests)
 - [Roadmap](#roadmap)
+- [Achievements](#achievements)
 - [Credits](#credits)
 
 
 ## Description
+![Border](static/readme/github%20ul.png)
 
 Eudaimonia is a scalable and dynamic web application that serves to make journaling accessible to all, making it easy for users to inculcate a habit of periodic writing. The project highlights the benefits of journaling and regular usage of the application can be an enriching experience, which is facilitated by running ML models on the input data for scrutinizing their moods and creating reports on their behaviours. The main features of this project are:
 <ul>
@@ -43,6 +47,7 @@ The future scope of the project would be to extend its use-cases, improving the 
 
 
 ## Frameworks and Tools
+![Border](static/readme/github%20ul.png)
 
 The major frameworks, tools, services and APIs used for the making of this project is hereby listed:
 
@@ -66,6 +71,7 @@ The major frameworks, tools, services and APIs used for the making of this proje
 
 
 ## Prerequisites
+![Border](static/readme/github%20ul.png)
 
 1. Install Python for your respective operating system at [https://www.python.org/downloads/](https://www.python.org/downloads/).
 
@@ -75,6 +81,7 @@ The major frameworks, tools, services and APIs used for the making of this proje
 
 
 ## Installation
+![Border](static/readme/github%20ul.png)
 
 1. Clone the repository:
     ```sh
@@ -101,6 +108,7 @@ Now the website is up and running (at port 8000 in case nothing else is mentione
 
 
 ## Tests
+![Border](static/readme/github%20ul.png)
 
 The project has been developed with adherence to Test-Driven Development principles. Hence, there are a lot of tests that can be run to validate the requirements or verify the programming.<br>
 
@@ -124,6 +132,7 @@ python tests\scenario_testing.py
 
 
 ## Roadmap
+![Border](static/readme/github%20ul.png)
 
 There are subsequent upgrades to be made to the project to reach the final stage. Here are a list of all immediate objectives:
 
@@ -134,6 +143,7 @@ There are subsequent upgrades to be made to the project to reach the final stage
 - [x] Develop the zen mode for productive sessions.
 - [x] Implement the base theme of the website.
 - [x] Develop sentiment-analysis API.
+- [ ] Ready the API for marketability and perfect use.
 - [x] Develop frequency and habit analysis models.
 - [ ] Extend the prior features by refinement 
 - [ ] Deploy using CI/CD practices.
@@ -142,6 +152,7 @@ There are subsequent upgrades to be made to the project to reach the final stage
 
 
 ## Achievements
+![Border](static/readme/github%20ul.png)
 
 - Third Place in the IEEE ComSoc Bangalore chapter hackathon 'CODIFY' arranged by BNMIT.
 
@@ -149,6 +160,7 @@ There are subsequent upgrades to be made to the project to reach the final stage
 
 
 ## Credits
+![Border](static/readme/github%20ul.png)
 
 The collaborators involved in this project are:
 
