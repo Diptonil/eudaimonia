@@ -27,3 +27,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Story(models.Model):
+
+    title = models.CharField(max_length=64)
+    author = models.CharField(max_length=32)
+    body = models.TextField()
+
+    def __str__(self):
+        return self.title

@@ -1,0 +1,157 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Eudaimonia | User Statistics
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'analysis/stats.css' %}">
+
+<body >
+    <div id="suggestions_page">
+        <h1>Suggestions Based on Personality:</h1>
+
+        <ul>
+            {% for result in final_result %}
+            <li>{{ result }}</li>
+            {% endfor %}
+        </ul>
+        
+        <h1>Suggestions Based on Hobbies:</h1>
+        {% for hob in hobby %}
+        
+            {% if hob == 'Handicrafts' %}
+            <h2>Handicrafts</h2>
+            <ul>
+                <li><a href="https://www.handicraft.com/" target="_blank">Handicrafts</a> is a niche website specially designed to cater
+                to professionals and enthusiastic hobbyists alike. It contains special blogposts & creative products for sale.</li>
+                <li><a href="https://www.youtube.com/c/VENTUNOART" target="_blank">Ventuno Art</a> is a YouTube channel famous for 
+                arts and crafts, origami and DIYs that are pretty easy to follow and get started with.</li>
+            </ul>
+            {% endif %}
+
+            {% if hob == 'Adventure' %}
+            {% endif %}
+
+            {% if hob == 'Gardening' %}
+            <h2>Gardening</h2>
+            <ul>
+                <li><a href="https://indiagardening.com/" target="_blank">India Gardening</a> is a website made for the purchase of plants
+                    of various different kinds that are not easily available in the market. This might be something that would
+                    interest you if you're into varied plantations...</li>
+                <li><a href="https://www.youtube.com/c/GardenUp" target="_blank">Garden Up</a> is a YouTube channel hosted by Ekta, a 
+                    researcher with decades of knowledge in ecology that stands firm with the ideas of green revolution around us. This 
+                    might be something that would interest you if you wish to learn about plants more along with your hobby of gardening.</li>
+                <li><a href="https://www.youtube.com/user/busygardener" target="_blank">Y Garden</a> is a channel hosted by a professional 
+                    landscape designer whose sense in green aesthetics make her a great candidate to learn from. This would be a good choice 
+                    for people who are interested in learning about the principles of Green Design.</li>
+            </ul>
+            {% endif %}
+
+            {% if hob == 'Nerding' %}
+                <h2>Nerding</h2>
+                <ul>
+                    <li><a href="https://owlcation.com/" target="_blank">Owlcation</a> is a website designed purely for highly intellectual
+                         nerds. It covers almost every imaginable topic out there with respect to humanities and sciences.</li>
+                    <li><a href="https://nerdist.com/" target="_blank">Nerdist</a> is a website that deals in fan theories and exploration of 
+                        high fantasy mythology. Be it Marvel, DC or Game of Thrones, they never miss a mark here.</li>
+                    <li><a href="https://www.youtube.com/user/Nerdwriter1" target="_blank">Nerdwriter1</a> is a channel that deals with video
+                        essay series that go deep in the exploration of Arts and Culture. The viewers of the channel mostly have extreme elitism 
+                        when it comes to the critique of any work of art in general. This channel continues to prove that nerds do not always mean
+                        silent students who always read books. They can be cool as well.</li>
+                    <li><a href="https://www.youtube.com/c/TomScottGo" target="_blank">Tom Scott</a> is a channel that dives deep dives into
+                        knowledgable things pertaining to science and technology that arrest the attention of many nerds.</li>
+                </ul>
+            {% endif %}
+
+            {% if hob == 'Videogames' %}
+                <h2>Videogames</h2>
+                <ul>
+                    <li><a href="https://www.gameinformer.com/" target="_blank">Game Informer</a> is designed to for gamers of all ages 
+                    to help them browse through and choose videogames of their liking by giving special recommendations, reviews and ratings.</li>
+                    <li><a href="https://www.youtube.com/c/IGNGames" target="_blank">IGNGames</a> is a YouTube channel famous for their 
+                    videogame reviews and roasts. It is one of the best channels that actually put out legitimate content and walkthroughs.</li>
+                    <li><a href="https://www.pogo.com/?utm_source=ea&utm_medium=learnmorecta&utm_campaign=eafreetoplaypagepogobanner" target="_blank">
+                    POGO</a> is a platform for mostly old-school and arcade games that developers release for others to assess and judge them.
+                    It can not only be used by regular players, but would also provide invaluable service to those who make are into gamemaking.</li>
+                </ul>
+            {% endif %}
+
+            {% if hob == 'Music' %}
+            <h2>Music</h2>
+            <ul>
+                <li>Take advantage of the Music Recommendations below that get generated each day with respect to the genres previously 
+                    selected and your moods.</li>
+                <li>If you have a lot of time and resources at your disposal, you may want to consider learning a new instrument.</li>
+            </ul>
+            {% endif %}
+
+            {% if hob == 'Movies' %}
+            <ul> <li><a href="https://letterboxd.com/" target="_blank">It is an online movie platform in which users can view the ratings and reviews of movies and it is a also a community where people having similar interests can meet and bond over mo vies. </a></li>
+                <li>Torrent movies using a VPN</li>
+                <li>Take advantage of the Movie Recommendations below that get generated each day with respect to the genres previously 
+                    selected and your moods.</li>
+                <li></li>
+            </ul>
+            {% endif %}
+
+            {% if hob == 'Dancing' %}
+            <ul>
+                <li><a href="https://www.thewonderfulworldofdance.com/" target="_blank">The Wonderful World of Music</a></li>
+            </ul>
+            
+            {% endif %}
+            
+
+            {% if hob == 'Cooking' %}
+            <ul>
+                <li><a href="https://cookpad.com/in/search_categories" target="_blank">Cookpad</a></li>
+            </ul>
+            {% endif %}
+
+            {% if hob == 'Sports' %}
+            <ul>
+                <li><a href="https://theathletic.com/" target="_blank">The Athletic</a></li>
+            </ul>
+            {% endif %}
+
+            {% if hob == 'Writing' %}
+            <ul>
+                <li><a href="https://www.journalbuddies.com/journal-prompts-writing-ideas/44-good-writing-ideas/" target="_blank">Journal Buddies</a>encourages people to stretch their imagination and go deeper into their creativity with their good writing ideas.</li>
+            </ul>
+            {% endif %}
+
+            {% if hob == 'Reading' %}
+            <ul>
+                <li><a href="https://apublicspace.org/" target="_blank">A Public Space</a></li>
+            </ul>
+            
+            {% endif %}
+
+        {% endfor %}
+
+        
+
+        <h1>Music Recommendation</h1>
+        <p>Today's music recommendation is {{ track }} by {{ artist }}.</p>
+
+        <h1>Movie Recommendations</h1>
+        <div class="float-left">
+            {% for film in response.films %}
+                <div class="film"> {{ film }} </div>
+                <br />
+            {% endfor %}
+        </div>
+
+        <div class="float-right">
+            {% for overview in response.overviews %}
+                <div class="overview"> {{ overview }} </div>
+                <br />
+            {% endfor %}
+        </div>
+
+        
+</div>
+</body>
+{% endblock %}

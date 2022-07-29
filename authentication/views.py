@@ -242,6 +242,9 @@ class RecommendationPageView(UpdateView):
         return reverse('profile_edit')
 
 
+def help_page_view(request):
+    return render(request, 'extras/seek_help.html')
+
 def demo_page_view(request):
     return render(request, 'authentication/demo.html')
 

@@ -1,0 +1,188 @@
+
+
+#myChart{
+    margin: auto;
+    margin-top: 100px;
+}
+
+#myBar{
+    margin: auto;
+    margin-top: 100px;
+}
+
+.stats-heading{
+    margin-left: 100px;
+}
+
+h1{
+    margin-left: 50%;
+    margin: auto;
+    margin-top: 100px;
+    font-size: 15px;
+}
+
+#myChart0{
+    margin: auto;
+    margin-top: 30px;
+}
+
+#myChart1 {
+    display: inline;
+    margin-top: 110px;
+}
+
+#myChart2 {
+    display: inline;
+    margin-top: 110px;
+}
+
+#myChart3 {
+    display: inline;
+    margin-top: 110px;
+}
+
+.stats-container{
+    margin-top: 50px;
+    max-width: 80%;
+    margin: auto;
+    height: 300px;
+}
+
+h1{
+    font-size: 35px;
+    color: var(--accent);
+}
+
+#suggestions-link{
+    text-align: right;
+    padding: 10px;
+    border: 2px solid var(--accent);
+    cursor: pointer;
+}
+
+#suggestions-link:hover{
+    background-color: #301dad2e;
+    color: var(--accent);
+}
+
+
+/*Incentives*/
+
+#margin-container{
+    margin-left: 70px;
+}
+
+#diarist1 div, 
+#diarist2 div,
+#diarist3 div,
+#diarist4 div,
+#muse1 div, 
+#muse2 div,
+#muse3 div,
+#muse4 div,
+#register div,
+#logger1 div,
+#logger2 div,
+#logger3 div,
+#logger4 div,
+#storyteller1 div,
+#storyteller2 div{
+    font-size: 25px;
+    position: absolute;
+    top: -30px;
+    height: auto;
+    text-align: center;
+    left: 150px;
+}
+
+#diarist1 p, 
+#diarist2 p,
+#diarist3 p,
+#diarist4 p,
+#register p,
+#muse1 p, 
+#muse2 p,
+#muse3 p,
+#muse4 p,
+#register p,
+#storyteller1 p,
+#storyteller2 p{
+    position: absolute;
+    top: -5px;
+    height: auto;
+    text-align: center;
+    left: 80px;
+}
+
+#logger1 p,
+#logger2 p,
+#logger3 p,
+#logger4 p{
+    position: absolute;
+    top: -5px;
+    height: auto;
+    text-align: center;
+    left: 130px;
+} 
+
+
+
+#badges img{
+    position: relative;
+    width: 230px;
+    height: auto;
+}
+
+#badges span{
+    padding: 50px;
+    position: relative;
+    height: 800px;
+    display: inline;
+}
+
+
+#diarist #diarist1, 
+#muse #muse4, 
+#logger #logger4{
+    margin-top: -100px;
+}
+
+/*End of Incentives*/
+
+
+
+
+/*Suggestions*/
+#suggestions_page{
+    margin: 120px;
+}
+
+#suggestions_page ul{
+    margin-top: 30px;
+}
+
+#suggestions_page ul li{
+    padding-bottom: 10px;
+}
+
+.float-left{
+    float: left;
+    height: 200px;
+    width: 17%;
+}
+
+.float-left .film{
+    height: 70px;
+}
+
+.float-right{
+    float: right;
+    height: 200px;
+    width: 80%;
+}
+
+.float-right .overview{
+    min-height: 70px;
+}
+
+

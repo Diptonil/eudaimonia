@@ -1,0 +1,105 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block style %}
+    <style>  
+        h1, h1 a{
+            font-family: 'Open Sans', sans-serif;
+        }
+    
+        #help {
+            margin: 100px 200px;
+        }
+
+        .helpline{
+            margin-bottom: 70px;
+        }
+
+        .helpline a,  .helpline h1{
+            font-size: 30px;
+        }
+
+        .helpline a:hover{
+            text-decoration: underline;
+        }
+
+        .helpline p{
+            font-size: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+Eudaimonia | Seek Help
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <div id="help">
+        <div class="helpline">
+            <h1>Virtual General Purpose <a href="https://icallhelpline.org/" target="_blank">(iCall)</a></h1>
+            <p class="info">iCall is a telephone and email based counselling service run by School of Human Ecology, Tata Institute of Social Sciences, that offers free telephone and email-based counseling services, to individuals in emotional and psychological distress, across age, language, gender, sexual orientation and issues, through a team of qualified and trained mental health professionals.
+            <br>
+            Available from Monday to Saturday: 10:00 am to 8:00 pm
+            </p>
+            <p>Call on: 9152987821</p>
+        </div>
+    
+        <div class="helpline">
+            <h1>General Purpose <a href="http://www.mastermindfoundation.com/contact/" target="_blank">(Mastermind Foundation)</a></h1>
+            <p class="info">Mastermind Foundation offers over 60 psychologists to help you through the same. Their services can be availed round the clock and in 11 languages. 
+            <br>
+            Available hours can be viewed on the website along with the contact information of the psychologists.
+            </p>
+            <p>Call on: 9445670257, 8072469596, 9962826333</p>
+        </div>
+
+        <div class="helpline">
+            <h1>Disaster Survivors <a href="https://nimhans.ac.in/pssmhs-helpline/" target="_blank">(NIMHANS)</a></h1>
+            <p class="info">NIMHANS is the first institute in India to start a helpline inclusively for Psychosocial support and mental health services during disasters. The helpline addresses the psychosocial issues of disaster survivors and creates a tertiary level support system for them during emergencies caused by disasters. 
+            <br>
+            Available 24 x 7 (toll free helpline). 
+            </p>
+            <p>Call on: 9152987821</p>
+        </div>
+
+        <div class="helpline">
+            <h1>Suicidal Ideators<a href="https://sumaitri.net/" target="_blank">(Sumaitri)</a></h1>
+            <p class="info">A crisis intervention centre for people experiencing depression or suicidal thoughts, Sumaitri offers telephonic counselling conducted by trained volunteers. 
+            <br>
+            Available seven days a week, from 2 pm to 6:30 pm. 
+            </p>
+            <p>Call on: 011-23389090, 09315767849</p>
+        </div>
+
+        <div class="helpline">
+            <h1>Stressed Students (Fortis Stress Helpline)</h1>
+            <p class="info">Launched in 2016 for students and parents dealing with exam stress, the Fortis Stress Helpline offers mental health support in over 15 languages. The 24-hour service is taking emergency calls and offering instant responses every day.
+            <br>
+            Available 24 hours, seven days a week.
+            </p>
+            <p>Call on: 011-23389090, 09315767849</p>
+        </div>
+
+        <div class="helpline">
+            <h1>Child Abuse Victims <a href="http://www.arpan.org.in/mental-health-support-covid-19/" target="_blank">(Arpan)</a></h1>
+            <p class="info">The Mumbai-based organisation, which works to address the issue of child sexual abuse in India, has launched a free helpline service for people in need of mental health support during these uncertain times. Their trained professionals also offer chat-based counselling via direct messaging on Instagram, Twitter and Facebook.
+            <br>
+            Available from Monday to Friday, 9AM to 5PM.
+            </p>
+            <p>Call on: 09819086444</p>
+        </div>
+
+        <div class="helpline">
+            <h1>Pandemic Victims <a href="https://www.snehi.org/covid-19" target="_blank">(Snehi)</a></h1>
+            <p class="info">Promoting mental wellbeing particularly among children and adolescents since 1994, the NGO understands how the pandemic—and the consequential academic and social switch—can impact the formative mind of a child. Hence, the organisation has extended support during this time of crisis through free telephonic consultations.
+            <br>
+            Available seven days a week, from 10am to 10pm.
+            </p>
+            <p>Call on: 09582208181</p>
+        </div>
+    </div>
+
+</body>
+{% endblock %}

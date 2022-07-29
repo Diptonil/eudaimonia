@@ -1,6 +1,8 @@
 from django.utils import timezone
 from django.db import models
 from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 def user_directory_path(instance, filename):
@@ -23,3 +25,17 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Zen(models.Model):
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    time = models.FloatField(default=0)
+
+    @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Zen.objects.create(user=instance)
+
+    def __str__(self):
+        return self.user.username

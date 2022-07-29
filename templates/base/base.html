@@ -17,6 +17,8 @@
     <!-- reCaptcha
         <script src='https://www.google.com/recaptcha/api.js?render={{ key }}'></script>
     -->
+    {% block style %}
+    {% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -39,6 +41,9 @@
         <a {% block nav_star %}{% endblock %} href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>Starred Entries</a>
         <hr />
         <a {% block nav_zen %}{% endblock %} href="{% url 'zen' %}" id="Zen mode"><i class="ri ri-focus-line"></i>Zen Mode</a>
+        <a {% block nav_incentives %}{% endblock %} href="{% url 'incentives' %}" id="badges"><i class="ri ri-medal-line"></i>Badges</a>
+        <a href="{% url 'suggestions' %}" ><i class="ri ri-medal-line"></i>Suggestions</a>
+        <a href="{% url 'story' %}"><i class="ri ri-medal-line"></i>Personal Stories</a>
     </div>
 
     <label class="switch">
@@ -55,6 +60,7 @@
     <a href="{% url 'profile' %}"><i class="ri ri-profile-line"></i>Profile</a>
     <a href="{% url 'stats' %}"><i class="ri ri-bar-chart-grouped-line"></i>Statistics</a>
     <a href="{% url 'settings' %}"><i class="ri ri-settings-5-line"></i>Settings</a>
+    <a href="{% url 'help' %}"><i class="ri ri-settings-5-line"></i>Seek Help</a>
     <a id="logout-button"><i class="ri ri-logout-box-r-line"></i>Log Out</a>
     <div class="section">
 

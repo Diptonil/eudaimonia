@@ -334,6 +334,10 @@ input[type="file"] {
     color: var(--primary-dark);
 }
 
+.stickynote h2{
+    font-size: 30px;
+}
+
 
 
 .journal-info {
@@ -411,10 +415,9 @@ input[type="file"] {
     width: 310px;
     padding: 20px;
     margin: 30px 0;
-    min-height: 300px;
     height: fit-content;
     overflow: hidden;
-    max-height: 550px;
+    max-height: fit-content;
     border-top-right-radius: 30px;
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.126);
     background-image: url(../images/texture.jpg);
@@ -576,7 +579,10 @@ th {
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.651);
 }
 
-
+.heading th{
+    font-size: 28px;
+    font-family: 'Sacramento', cursive;
+}
 
 /*End of All entries*/
 

@@ -1,0 +1,264 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block nav_incentives%}
+    class="active"
+{% endblock %}
+
+{% block title %}
+Eudaimonia | Personality Quiz
+{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'analysis/stats.css' %}">
+
+<body>
+    <div id="margin-container">
+    <div id="badges">
+        <h1>Collected Badges</h1>
+        {% if incentives_model.diarist1 %}
+        <span id="diarist1">
+            <img src="{% static 'images/diarist1.svg' %}" alt="">
+            <div>Diarist I</div>
+            <p>Have written your first entry.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.diarist2 %}
+        <span id="diarist2">
+            <img src="{% static 'images/diarist2.svg' %}" alt="">
+            <div>Diarist II</div>
+            <p>Have written three entries.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.diarist3 %}
+        <span id="diarist3">
+            <img src="{% static 'images/diarist3.svg' %}" alt="">
+            <div>Diarist III</div>
+            <p>Have written entries for a week.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.diarist4 %}
+        <span id="diarist4">
+            <img src="{% static 'images/diarist4.svg' %}" alt="">
+            <div>Diarist IV</div>
+            <p>Have written entries for two weeks.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.logger1 %}
+        <span id="logger1">
+            <img src="{% static 'images/logger1.svg' %}" alt="">
+            <div>Logger I</div>
+            <p>Login for three days.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.logger2 %}
+        <span id="logger2">
+            <img src="{% static 'images/logger2.svg' %}" alt="">
+            <div>Logger II</div>
+            <p>Login for a week.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.logger3 %}
+        <span id="logger3">
+            <img src="{% static 'images/logger3.svg' %}" alt="">
+            <div>Logger III</div>
+            <p>Login for two weeks.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.logger4 %}
+        <span id="logger4">
+            <img src="{% static 'images/logger4.svg' %}" alt="">
+            <div>Logger IV</div>
+            <p>Login for a month.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.muse1 %}
+        <span id="muse1">
+            <img src="{% static 'images/muse1.svg' %}" alt="">
+            <div>Muse I</div>
+            <p>Have used Zen Mode for an hour.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.muse1 %}
+        <span id="muse2">
+            <img src="{% static 'images/muse2.svg' %}" alt="">
+            <div>Muse II</div>
+            <p>Have used Zen Mode for five hour.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.muse1 %}
+        <span id="muse3">
+            <img src="{% static 'images/muse3.svg' %}" alt="">
+            <div>Muse III</div>
+            <p>Have used Zen Mode for ten hour.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.muse1 %}
+        <span id="muse4">
+            <img src="{% static 'images/muse4.svg' %}" alt="">
+            <div>Muse IV</div>
+            <p>Have used Zen Mode for twenty hour.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.registrar %}
+        <span id="register">
+        <img src="{% static 'images/register.svg' %}" alt="">
+            <div>Registrar I</div>
+            <p>Have filled profile details.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.storyteller1 %}
+        <span id="storyteller1">
+            <img src="{% static 'images/storyteller1.svg' %}" alt="">
+            <div>Storyteller I</div>
+            <p>Have posted once in the Dashboard.</p>
+        </span>
+        {% endif %}
+
+        {% if incentives_model.storyteller2 %}
+        <span id="storyteller2">
+            <img src="{% static 'images/storyteller2.svg' %}" alt="">
+            <div>Storyteller II</div>
+            <p>Have posted thrice in the Dashboard.</p>
+        </span>
+        {% endif %}
+        <br />
+
+        <h1>Badges Yet to be Collected</h1>
+        {% if not incentives_model.diarist1 %}
+        <span id="diarist1">
+            <img src="{% static 'images/diarist1.svg' %}" alt="">
+            <div>Diarist I</div>
+            <p>Have written your first entry.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.diarist2 %}
+        <span id="diarist2">
+            <img src="{% static 'images/diarist2.svg' %}" alt="">
+            <div>Diarist II</div>
+            <p>Have written three entries.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.diarist3 %}
+        <span id="diarist3">
+            <img src="{% static 'images/diarist3.svg' %}" alt="">
+            <div>Diarist III</div>
+            <p>Have written entries for a week.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.diarist4 %}
+        <span id="diarist4">
+            <img src="{% static 'images/diarist4.svg' %}" alt="">
+            <div>Diarist IV</div>
+            <p>Have written entries for two weeks.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.logger1 %}
+        <span id="logger1">
+            <img src="{% static 'images/logger1.svg' %}" alt="">
+            <div>Logger I</div>
+            <p>Login for three days.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.logger2 %}
+        <span id="logger2">
+            <img src="{% static 'images/logger2.svg' %}" alt="">
+            <div>Logger II</div>
+            <p>Login for a week.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.logger3 %}
+        <span id="logger3">
+            <img src="{% static 'images/logger3.svg' %}" alt="">
+            <div>Logger III</div>
+            <p>Login for two weeks.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.logger4 %}
+        <span id="logger4">
+            <img src="{% static 'images/logger4.svg' %}" alt="">
+            <div>Logger IV</div>
+            <p>Login for a month.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.muse1 %}
+        <span id="muse1">
+            <img src="{% static 'images/muse1.svg' %}" alt="">
+            <div>Muse I</div>
+            <p>Have used Zen Mode for an hour.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.muse1 %}
+        <span id="muse2">
+            <img src="{% static 'images/muse2.svg' %}" alt="">
+            <div>Muse II</div>
+            <p>Have used Zen Mode for five hour.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.muse1 %}
+        <span id="muse3">
+            <img src="{% static 'images/muse3.svg' %}" alt="">
+            <div>Muse III</div>
+            <p>Have used Zen Mode for ten hour.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.muse1 %}
+        <span id="muse4">
+            <img src="{% static 'images/muse4.svg' %}" alt="">
+            <div>Muse IV</div>
+            <p>Have used Zen Mode for twenty hour.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.registrar %}
+        <span id="register">
+        <img src="{% static 'images/register.svg' %}" alt="">
+            <div>Registrar I</div>
+            <p>Have filled profile details.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.storyteller1 %}
+        <span id="storyteller1">
+            <img src="{% static 'images/storyteller1.svg' %}" alt="">
+            <div>Storyteller I</div>
+            <p>Have posted once in the Dashboard.</p>
+        </span>
+        {% endif %}
+
+        {% if not incentives_model.storyteller2 %}
+        <span id="storyteller2">
+            <img src="{% static 'images/storyteller2.svg' %}" alt="">
+            <div>Storyteller II</div>
+            <p>Have posted thrice in the Dashboard.</p>
+        </span>
+        {% endif %}
+    </div>
+</div>
+</body>
+{% endblock %}

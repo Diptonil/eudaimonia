@@ -1,9 +1,9 @@
 import hashlib
 import json
 import io
+import random
 
 import requests
-from reportlab.pdfgen import canvas
 from django.http import FileResponse, JsonResponse
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -11,14 +11,13 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.core.cache import cache
 from django.core.cache.backends.base import DEFAULT_TIMEOUT
-from django.db.models import Sum
 
 import constants
 from authentication.models import Profile
 from journal.encryption import encrypt, decrypt
 from journal.forms import EntrySearchForm
-from journal.models import Entry
-from analysis.models import EmotionsStat
+from journal.models import Entry, Zen
+from analysis.models import EmotionsStat, Incentive
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
@@ -26,7 +25,9 @@ CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 @login_required
 def journal_page_view(request):
     profile_model = Profile.objects.get(user=request.user)
-    return render(request, 'journal/journal.html', {'profile': profile_model})
+    entry_model = Entry.objects.filter(user=request.user).first()
+    count = Entry.objects.filter(user=request.user).count()
+    return render(request, 'journal/journal.html', {'profile': profile_model, 'entry_model': entry_model, 'quotes': constants.QUOTES[random.randint(0, 9)], 'count': count})
 
 
 @login_required
@@ -95,6 +96,7 @@ def post_page_view(request, id):
 @login_required
 def all_entries_page_view(request, star=None):
     entry_search_form = EntrySearchForm()
+    incentive_model = Incentive.objects.get(user=request.user)
     if cache.get(constants.ALL_ENTRIES_UNFILTERED_CACHE_KEY):
         entries = cache.get(constants.ALL_ENTRIES_UNFILTERED_CACHE_KEY)
     else:
@@ -112,6 +114,18 @@ def all_entries_page_view(request, star=None):
         profile_model = Profile.objects.get(user=request.user)
         cache.set(constants.CURRENT_USER_CACHE_KEY, profile_model)
     results = None
+    if entries.count() > 0 and entries.count() < 2:
+        incentive_model.diarist1 = True
+        incentive_model.save()
+    elif entries.count() > 1 and entries.count() < 8:
+        incentive_model.diarist2 = True
+        incentive_model.save()
+    elif entries.count() > 7 and entries.count() < 15:
+        incentive_model.diarist3 = True
+        incentive_model.save()
+    elif entries.count() > 14 and entries.count() < 30:
+        incentive_model.diarist4 = True
+        incentive_model.save()
     if request.POST.get('stars') is not None and (request.method == 'POST'):
         cache.delete(constants.ALL_ENTRIES_STARRED_CACHE_KEY)
         entry = Entry.objects.get(id=request.POST.get('id'))
@@ -135,18 +149,13 @@ def all_entries_page_view(request, star=None):
 
 @login_required
 def zen_page_view(request):
+    if request.POST.get('hours') is not None and (request.method == 'POST'):
+        print('zen')
+        zen_model = Zen.objects.get(user=request.user)
+        zen_model.time += request.POST.get('time')
+        zen_model.save()
+        return HttpResponse(json.dumps(1), content_type='application/json')
     return render(request, 'journal/zen.html')
-
-
-@login_required
-def pdf_convert(request, text, filename):
-    buffer = io.BytesIO()
-    p = canvas.Canvas(buffer)
-    p.drawString(100, 100, text)
-    p.showPage()
-    p.save()
-    buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename=filename)
 
 
 @login_required
@@ -181,7 +190,6 @@ def autocomplete(request):
 
 def journal_navbar(request):
     display = True if str(request.user) != 'AnonymousUser' else False
-    # display = ('journal/' in request.path) or ('profile/' in request.path) or ('dashboard/' in request.path) or ('zen/' in request.path)
     recaptcha_key = None
     if 'signup/' in request.path:
         recaptcha_key = settings.RECATCHA_PUBLIC_KEY
