@@ -36,7 +36,6 @@ django-redis==5.2.0
 django-taggit==2.1.0
 django-timezone-field==4.2.3
 django-treebeard==4.5.1
-django-user-visit==0.5.1
 djangorestframework==3.13.1
 draftjs-exporter==2.1.7
 et-xmlfile==1.1.0
