@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@95,300&family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
 body{
@@ -10,16 +9,23 @@ body{
     --sec-light: #3e3e3e;
 }
 
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
 body{
     background-color: var(--primarycolor);
 }
 
 
+h1 , h2{
+    font-family: 'Sacramento', cursive;
+}
+
 input{
     color: var(--sec);
     
 }
-
 
 #circle{
     position:absolute;
@@ -295,7 +301,7 @@ input:checked + .slider:before {
     border-radius: 25px;
     background: var(--primarycolor);
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll;
     transition: 0.5s;
     padding-top: 0px;
 

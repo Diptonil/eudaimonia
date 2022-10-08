@@ -48,14 +48,14 @@ Eudaimonia | Your Entries
 
             <table>
                 <thead>
-                    <tr>
+                    <tr class="heading">
                         <th class="fc" style="width: 67.5%;">Entry</th>
                         <th>Date of Entry</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for result in results %}
-                    <tr>
+                    <tr >
                         <th><a href="{% url 'post' id=result.id %}">{{ result.title }}</a></th>
                         <th>{{ result.date }}</th>
 

@@ -95,22 +95,6 @@ if 'test' in sys.argv:
         'NAME': 'test'
     }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://redis-10569.c301.ap-south-1-1.ec2.cloud.redislabs.com:10569',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-            'PASSWORD': 'NyAN7qRQFv79BlUAPwAtGu4McHHlypWV'
-        },
-        'KEY_PREFIX': 'cache-database'
-    }
-}
-CACHE_TTL = 0
-CACHE_MIDDLEWARE_SECONDS = CACHE_TTL
-# CACHE_MIDDLEWARE_ALIAS = 'cache'
-CACHE_MIDDLEWARE_KEY_PREFIX = ''
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

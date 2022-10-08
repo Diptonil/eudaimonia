@@ -6,17 +6,13 @@ Eudaimonia | User Statistics
 {% endblock %}
 
 {% block body %}
-<link rel="stylesheet" href="{% static 'journal/stats.css' %}">
+<link rel="stylesheet" href="{% static 'analysis/stats.css' %}">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 <body>
 
-{% if emotion_data %}
-<canvas id="myChart1" style="width:100%;max-width:800px"></canvas>
-{% else %}
-Sufficient data unavailable.
-{% endif %}
+<h1 class="stats-heading">Graphical Stats</h1>
 
 {% if emotion_data_last %}
 <canvas id="myChart0" style="width:100%;max-width:800px"></canvas>
@@ -25,22 +21,35 @@ Sufficient data unavailable. Write your first entry!
 {% endif %}
 
 {% if emotion_data_weekly %}
-<canvas id="myChart2" style="width:100%;max-width:800px"></canvas>
+<canvas id="myChart2" style="width:100%;max-width:500px; display: inline;"></canvas>
 {% else %}
 Sufficient data unavailable.
 {% endif %}
 
 {% if emotion_data_monthly %}
-<canvas id="myChart3" style="width:100%;max-width:800px"></canvas>
+<canvas id="myChart3" style="width:100%;max-width:500px; display: inline;"></canvas>
 {% else %}
 Sufficient data unavailable.
 {% endif %}
 
-<canvas id="myBar" style="width:100%;max-width:600px"></canvas>
+{% if emotion_data %}
+<canvas id="myChart1" style="width:100%;max-width:500px; display: inline;"></canvas>
+{% else %}
+Sufficient data unavailable.
+{% endif %}
 
-<p>Total number of days active: {{ regularity_model_len }}</p>
+<br><br>
+<canvas id="myBar" style="width:100%;max-width:600px;"></canvas>
 
-<a href="{% link 'suggestions' %}">Suggestions</a>
+<div class="stats-container">
+  <br>
+  <h1>Numerical Stats</h1>
+  <br>
+  <p>Total number of days active: {{ regularity_model_len }}</p>
+  <p>Hours spent in the Zen Mode: {{ zen_model.time }}</p>
+  <br><br>
+  <a id="suggestions-link" href="{% url 'suggestions' %}">Suggestions</a>
+</div>
 
 <script>
   var xValues = ["Happy", "Angry", "Sad", "Surprise", "Fear"];
@@ -159,8 +168,10 @@ Sufficient data unavailable.
 </script>
 
 <script>
-var xValues = {{ regularity_model_x|safe }};
-var yValues = {{ regularity_model_y|safe }};
+//var xValues = {{ regularity_model_x|safe }};
+//var yValues = {{ regularity_model_y|safe }};
+var xValues = [3];
+var yValues = [0.1]
 new Chart("myBar", {
   type: "line",
   data: {
@@ -180,7 +191,7 @@ new Chart("myBar", {
     },
     legend: {display: false},
     scales: {
-      yAxes: [{ticks: {min: 0, max:100}}],
+      yAxes: [{ticks: {min: 0, max:10}}],
     }
   }
 });

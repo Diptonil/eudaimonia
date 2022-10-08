@@ -13,8 +13,8 @@ body {
     background: hsla(206, 23%, 94%, 1);
     overflow: hidden;
 }
-  
-  .text {
+
+.text {
     color: white;
     position: relative;
     top: 35%;
@@ -29,8 +29,8 @@ body {
     animation-delay: -2s;
     z-index: 6;
 }
-  
-  .water {
+
+.water {
     background-color: #301dad37;
     position: absolute;
     width: 100vw;
@@ -262,3 +262,7 @@ body {
     --gradient-color-4: #424874;
     z-index:0;
   }
+
+
+
+  /*Player*/

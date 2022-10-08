@@ -84,6 +84,7 @@ sniffio==1.2.0
 snowballstemmer==2.2.0
 sortedcontainers==2.4.0
 soupsieve==2.3.1
+spotipy==2.20.0
 sqlparse==0.4.2
 tablib==3.2.1
 telepath==0.2

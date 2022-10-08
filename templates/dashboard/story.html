@@ -1,23 +1,49 @@
 {% extends 'base/base.html' %}
-
 {% load static %}
 
-{% block title %}
-Eudaimonia | {{ story.title }}
+
+{% block style %}
+    <style>  
+        .contain{
+            margin: 100px;
+        }
+
+        .author{
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .titlePost{
+            margin-top: 70px;
+            font-size: 35px;
+        }
+        
+        .contentPost{
+            font-size: 18px;
+        }
+
+
+    </style>
 {% endblock %}
 
-{% block body %}
-<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+{% block title %}
+Eudaimonia | User Statistics
+{% endblock %}
 
-<body  class="story">
-    <br><br><br>
-        <div class="story-container">
-            <h1>{{ story.title }}</h1>
-            <b>{{ story.date }}</b>
-            {% if story.image %}
-            <img src="{{ story.image.url }}" />
-            {% endif %}
-            <p>{{ story.post }}</p>
-        </div>
+
+{% block body %}
+<body>
+    <div class="contain">
+        <form id="search" method="post">
+            {% csrf_token %}
+            {{ form.search }}
+            <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
+        </form>
+        {% for entry in entry_model %}
+            <h1 class= "titlePost">{{ entry.title }}</h1>
+            <h5 class="author">By: {{ entry.author }} </h5> 
+            <p class="contentPost">{{ entry.body }}</p>
+        {% endfor %}
+    </div>
 </body>
 {% endblock %}

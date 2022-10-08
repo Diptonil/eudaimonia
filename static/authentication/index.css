@@ -65,6 +65,19 @@ button:hover {
     -webkit-text-stroke-width: 2px;
 }
 
+#wavtop{
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+@keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+  }
+
 
 #showcase-text-quote-top{
 	color: transparent;

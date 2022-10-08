@@ -18,8 +18,6 @@ from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.core.mail import EmailMessage
 from django.conf import settings
-from django.core.cache import cache
-from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.views.generic import UpdateView
 
 import constants
@@ -31,7 +29,6 @@ from analysis.models import RegularityStat
 logout_time = 0
 login_time = 0
 logger = logging.getLogger('main')
-CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 
 def index_page_view(request):
@@ -161,9 +158,7 @@ def password_change_page_view(request):
 
 @login_required
 def logout_page_view(request):
-    cache.delete(constants.CURRENT_USER_CACHE_KEY)
     if request.POST.get('time_spent') is not None and (request.method == 'POST'):
-        print('ass')
         time_spent = decimal.Decimal(request.POST.get('time_spent'))
         model = RegularityStat.objects.filter(user=request.user).first()
         model.time_spent += time_spent
@@ -180,11 +175,7 @@ def settings_page_view(request):
 
 @login_required
 def profile_page_view(request):
-    if cache.get(constants.CURRENT_USER_CACHE_KEY):
-        profile_model = cache.get(constants.CURRENT_USER_CACHE_KEY)
-    else:
-        profile_model = Profile.objects.get(user=request.user)
-        cache.set(constants.CURRENT_USER_CACHE_KEY, profile_model)
+    profile_model = Profile.objects.get(user=request.user)
     if profile_model.bio is None:
         profile_model.bio = ''
     if profile_model.birth_date is None:
@@ -195,11 +186,7 @@ def profile_page_view(request):
 @login_required
 def profile_edit_page_view(request):
     profile_form = ProfileForm()
-    if cache.get(constants.CURRENT_USER_CACHE_KEY):
-        profile_model = cache.get(constants.CURRENT_USER_CACHE_KEY)
-    else:
-        profile_model = Profile.objects.get(user=request.user)
-        cache.set(constants.CURRENT_USER_CACHE_KEY, profile_model)
+    profile_model = Profile.objects.get(user=request.user)
     model_bio = profile_model.bio
     model_birth_date = profile_model.birth_date
     model_favourite_movie_genres = [obj[0] for obj in profile_model.fav_movie_genres.values_list('field')]

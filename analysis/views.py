@@ -235,6 +235,6 @@ def suggestions_page_view(request):
     final_result = [generalized_suggestions1[random.randint(0, 2)], generalized_suggestions2[random.randint(0, 2)], generalized_suggestions3[random.randint(0, 2)], generalized_suggestions4[random.randint(0, 2)]]
 
     model_favourite_music_genres = [obj[0] for obj in profile_model.fav_music_genres.values_list('field')]
-    track = sp.search(q='genre:' + model_favourite_music_genres[random.randint(0, 2)], type='track', market='GB', limit=1, offset=0)['tracks']['items'][0]['name']
-    artist = sp.search(q='genre:' + model_favourite_music_genres[random.randint(0, 2)], type='track', market='GB', limit=1, offset=0)['tracks']['items'][0]['artists'][0]['name']
+    track = sp.search(q='genre:' + model_favourite_music_genres[0], type='track', market='GB', limit=1, offset=0)['tracks']['items'][0]['name']
+    artist = sp.search(q='genre:' + model_favourite_music_genres[0], type='track', market='GB', limit=1, offset=0)['tracks']['items'][0]['artists'][0]['name']
     return render(request, 'analysis/suggestions.html', {'profile_model': profile_model.personality, 'track': track, 'artist': artist, 'failure': failure, 'hobby': hobby, 'final_result': final_result, 'response': response})

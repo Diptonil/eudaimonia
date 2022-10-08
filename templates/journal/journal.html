@@ -14,8 +14,6 @@ Eudaimonia | Your Journal
 <body class="journal-body">
     <canvas class="background"></canvas>
 
-
-
     <div class="bookmark1">
         <a href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>all entries  </a>
         
@@ -28,32 +26,28 @@ Eudaimonia | Your Journal
         <div id="jname">{{ user.username }}'s  journal</div>
     </div>
 
-
-    <script src="path/to/particles.min.js"></script>
-
     <div class="section">
         <div class="row">
             <div class="column">
                 <div class="dummy"></div>
-               
                 <div class="stickynote" >
-                    <h3>Lorem, ipsum dolor.</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
+                    <p>Journal created on: {{ profile.join_date }}</p>
+                    <p>Total entries written: {{ count }}</p>
+                    <p>Last entry written: {{ entry_model.date }}</p>
+                    <p>Last entry's title: {{ entry_model.title }}</p>
                 </div>
             </div>
             <div class="column">
                 <div  class="stickynote">
-                    <h3>Lorem, ipsum dolor.</h3>
-                    <img src="../../static/images/pastelbg.jpg" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
+                    <h2>{{ quotes }}</h2>
                 </div>
-                <div  class="stickynote">
-                    <h3>Lorem, ipsum dolor.</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nemo blanditiis quos unde debitis, placeat doloribus tempore. Maxime dolore natus dolor odit, animi delectus dolorum. Nobis, exercitationem fuga dicta placeat, aliquam, modi porro cupiditate et quidem dignissimos odio odit asperiores nisi voluptate. Quis provident itaque doloremque tenetur ab error quaerat!</p>
+                <div class="stickynote">
+                    <h2>Welcome to Journaling!</h2>
+                    <p>Here you can record your experiences and events as and when you feel like it. The process is therapeutic and 
+                        would relieve you of stress by offering you a private space to vent over your feelings or make logs so that
+                        you may manage to stay productive as much as you can.</p>
                 </div>
             </div>
-            
         </div>
 
     </div>

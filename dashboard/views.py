@@ -98,4 +98,10 @@ def my_share_page_view(request):
 @login_required
 def story_page_view(request):
     entry_model = Story.objects.all()
-    return render(request, 'dashboard/story.html', {'entry_model': entry_model})
+    if request.method == 'POST':
+        entry_search_form = EntrySearchForm(request.POST)
+        if entry_search_form.is_valid():
+            search = entry_search_form.cleaned_data['search']
+            if search is not None:
+                entry_model = Story.objects.filter(title__icontains=search)
+    return render(request, 'dashboard/story.html', {'entry_model': entry_model, 'form': entry_search_form})
