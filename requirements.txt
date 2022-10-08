@@ -24,7 +24,7 @@ coverage==6.3.2
 cryptography==37.0.2
 Deprecated==1.2.13
 dj-database-url==0.5.0
-Django==3.2.13
+Django==3.2.15
 django-celery-beat==2.2.1
 django-cloudinary-storage==0.3.0
 django-environ==0.8.1
@@ -46,7 +46,7 @@ httplib2==0.20.4
 idna==3.3
 kombu==5.2.4
 l18n==2021.3
-lxml==4.9.0
+lxml==4.9.1
 mccabe==0.6.1
 Naked==0.1.31
 oauth2client==4.1.3
