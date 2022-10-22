@@ -14,7 +14,6 @@ Eudaimonia | New Entry
 <body class="writing">
     <div class="grid">
     <div id="writing-pad">
-        
         <div class="card">
             <form id="test" method="post">
                 {% csrf_token %}
@@ -84,10 +83,13 @@ Eudaimonia | New Entry
     </div>
 
     
-    <img src="" id="display-img">
+    <img src="{% static 'images/placePicture.png' %}" id="display-img">
             <img >
     </div>
 
+    <div>
+        <img src="{% static 'images/binding.svg' %}" alt="" id="binding">
+    </div>
     <div class="popup">
         <p>Your entry is being saved. Please wait.</p>
     </div>

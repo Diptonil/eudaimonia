@@ -62,46 +62,40 @@ html {
     background-color: var(--primarycolor);
     padding: 10px 25px;
     max-height: fit-content;
-    max-width: 950px;
-    margin: auto;
-    margin-right: 0;
-    margin-top: 70px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.378);
-}
-
-.write-up {
-    border-radius: 5px;
-    z-index: 2;
-    background-color: var(--primarycolor);
-    padding: 10px 25px;
-    max-height: fit-content;
-    min-height: 400px;
-    max-width: 850px;
-    margin: auto;
-    margin-top: 70px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.378);
+    width: 800px;
+    margin-top: 100px;
+    margin-left: 160px;
+    box-shadow: 5px 4px 10px 4px rgba(0, 0, 0, 0.06);
 }
 
 #display-img {
     float: left;
-    width: 270px;
+    max-width: 390px;
     height: auto;
-    margin-top: 70px;
-    display: none;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.378);
+    margin-top: 100px;
+    border-radius: 10px;
+}
+
+#binding{
+    width: 100px;
+    position: absolute;
+    z-index: 5;
+    top: 100px;
+    left: 940px;
 }
 
 iframe {
     border: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.521);
-    width: 900px;
-    height: 70vh;
+    border-top: 2px solid rgba(0, 0, 0, 0.134);
+    width: 750px;
+    height: 68vh;
+    margin-bottom: 30px;
     margin-top: 20px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: 80% 10%;
+    grid-template-columns: 63% 30%;
     height: 100%;
     gap: 10px;
 }
@@ -261,6 +255,7 @@ input[type="file"] {
 /*Journal page*/
 .journal-body {
     color: black;
+    overflow: hidden;
 }
 
 .background {
@@ -273,7 +268,7 @@ input[type="file"] {
 
 .bookmark1 {
     padding-top: 10;
-    position: fixed;
+    position: absolute;
     top: 130px;
     left: 700px;
     overflow: hidden;
@@ -287,7 +282,7 @@ input[type="file"] {
 .bookmark2 {
     padding-top: 10;
     overflow: hidden;
-    position: fixed;
+    position: absolute;
     top: 210px;
     left: 700px;
     height: 40px;
@@ -373,13 +368,18 @@ input[type="file"] {
     font-weight: 600;
 }
 
+.theBook{
+    margin-left: 35vw;
+    position: relative;
+}
+
 #journal {
     cursor: pointer;
-    position: fixed;
+    position: absolute;
     background: rgb(114, 96, 227);
     background: linear-gradient(60deg, rgba(114, 96, 227, 1) 0%, rgba(86, 69, 200, 1) 37%, rgba(70, 53, 186, 1) 100%);
     border-left: 40px solid rgba(0, 0, 0, 0.504);
-    top: 80px;
+    top: 100px;
     left: 150px;
     border-radius: 0 20px 20px 0;
     width: 550px;
@@ -387,37 +387,43 @@ input[type="file"] {
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.53);
 }
 
-
-/*Stickynote*/
-.section {
-    margin-top: 100px;
-    float: right;
-    width: 50%;
-    height: fit-content;
+#pen{
+    width: 250px;
+    position: fixed;
+    left: 33vw;
+    top: 150px;
+    z-index: 10;
 }
 
-.row {
-    display: flex;
-    padding: 0 40px;
-}
-
-.column {
-    flex: 25%;
-    padding: 4px 4px;
-}
-
-.dummy {
-    width: 300px;
-    height: 180px;
-}
-
-.stickynote {
+.stickynote1 {
     width: 310px;
     padding: 20px;
-    margin: 30px 0;
-    height: fit-content;
+    position: absolute;
+    top: 375px;
+    left: 280px;
+    height: 330px;
     overflow: hidden;
-    max-height: fit-content;
+    z-index: 5;
+    border-top-right-radius: 30px;
+    box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.126);
+    background-image: url(../images/texture.jpg);
+    background-size: cover;
+}
+
+.stickynote1 p{
+    padding: 70px 0;
+    font-size: 18px;
+}
+
+.stickynote2 {
+    width: 310px;
+    padding: 30px 20px;
+    margin: 30px 0;
+    position: absolute;
+    top: 100px;
+    left: 170px;
+    height: 330px;
+    overflow: hidden;
     border-top-right-radius: 30px;
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.126);
     background-image: url(../images/texture.jpg);
@@ -556,11 +562,11 @@ th {
     background: rgb(255, 255, 255);
     background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 11%, rgba(231, 231, 231, 1) 45%, rgba(230, 230, 230, 1) 87%, rgba(231, 231, 231, 1) 100%);
     width: 55%;
-    height: 90%;
+    height: 80%;
     border-top-right-radius: 40px;
     position: fixed;
     right: 17%;
-    top: 10%;
+    top: 18%;
     bottom: 0px;
     box-shadow: 5px 1px 10px rgba(0, 0, 0, 0.651);
     overflow-y: scroll;
@@ -571,8 +577,8 @@ th {
     background: rgb(200, 200, 200);
     background: linear-gradient(270deg, rgba(200, 200, 200, 1) 0%, rgba(246, 246, 246, 1) 27%, rgba(255, 255, 255, 1) 48%, rgba(255, 255, 255, 1) 100%);
     width: 28%;
-    height: 90%;
-    top: 10%;
+    height: 80%;
+    top: 18%;
     bottom: 0px;
     position: fixed;
     left: 0px;

@@ -20,7 +20,6 @@ Eudaimonia | Your Dashboard
 
 {% block body %}
 <link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
-
 <body id="dashboard">
     <div class="dashboard-container">
         <div class="dashboard-nav">
@@ -41,6 +40,7 @@ Eudaimonia | Your Dashboard
         <div class="infinite-container">
             {% for post in page_obj %}
             <div onclick="passitem(this)" class="infinite-item">
+                <!-- <img class="binding" src="{% static 'images/bindings.png' %}" alt=""> -->
                 <h2 class="post-title">{{ post.title }}</h2>
                 <h5  >{{ post.date }}</h5>
                 <p class="post-content">{{ post.post}}</p>
@@ -60,7 +60,10 @@ Eudaimonia | Your Dashboard
     <div class="post-card">
         <h5 class="datePost"></h5>
         <h2 class="titlePost" >Welcome! Great to have you here...</h2>
-        <p class="contentPost">The dashboard is the place where you can share your own experiences with the world or learn from others. 
+        <p class="contentPost">
+            <div id="vertical-line"></div>
+            <div id="horizontal-line"></div>
+            The dashboard is the place where you can share your own experiences with the world or learn from others. 
             It may be any achievement, any personal incident, beliefs or you opening up globally for others to learn from your stories or ideas.
             <br />
             Everyone sharing would be completely anonymous to maintain privacy. This is done so that users feel comfortable 
@@ -75,6 +78,28 @@ Eudaimonia | Your Dashboard
         </p>
     </div>
 
+
+    <div class="newpost-card">
+        <h2>Create new post</h2>
+        <br>
+        <form method="post" enctype="multipart/form-data" id="form">
+            {% csrf_token %}
+            <div class="form-control">
+                {{ form.title }}
+            </div>
+            <div class="text form-control">
+                    {{ form.post }}
+            </div>
+            <img src="" id="display-img">
+            <img >
+            <br>
+            <label for="image-button"><div class="share-text-btn">Choose image</div></label>
+            <input type="file" id="image-button" accept="image">
+            <br>
+            <br>
+            <input type="submit" value="Share" class="share-text-btn">
+        </form>
+    </div>
 
     <script src="/static/infinite scroll js/jquery.waypoints.min.js"></script>
     <script src="/static/infinite scroll js/infinite.min.js"></script>
