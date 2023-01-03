@@ -78,10 +78,10 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd4pdipj7apirmf',
-        'USER': 'eoqukyipvzzsdl',
-        'PASSWORD': '32d9e1a6dcb5f79de70b7bff76107401d8b8abec1d503945c4a84bf77d9ea570',
-        'HOST': 'ec2-52-208-221-89.eu-west-1.compute.amazonaws.com',
+        'NAME': 'eudaimonia-maindatabase',
+        'USER': 'eudaimonia-user',
+        'PASSWORD': '6b4E}xNE4$vlXdX`',
+        'HOST': '34.135.53.189',
         'PORT': '5432',
         'TEST': {
             'ENGINE': 'django.db.backends.sqlite3',
