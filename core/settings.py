@@ -11,7 +11,7 @@ SECRET_KEY = 'K*OTkno5c:9ucHVcD)KweRl9k+MLd^>Q`o`kIu)OzWeB_fFAJ_):X.fM`E^q*H^Kxe
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '*']
+ALLOWED_HOSTS = ['localhost', '34.135.53.189','34.122.26.110','*']
 
 # Admins are notified by email of request and security issues, in production.
 ADMINS = [('Batman', 'diptonilr@gmail.com')]
@@ -75,20 +75,27 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
+PROJECT_DIR = Path(__file__)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'eudaimonia-maindatabase',
-        'USER': 'eudaimonia-user',
-        'PASSWORD': '6b4E}xNE4$vlXdX`',
-        'HOST': '34.135.53.189',
-        'PORT': '5432',
-        'TEST': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': join(BASE_DIR, 'test'),
-        }
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': join(PROJECT_DIR, 'yourdatabasename.db'),
+    }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'eudaimonia-372006:us-central1:eudaimonia-db',
+#         'USER': 'postgres',
+#         'PASSWORD': "ITA-H%p>=sN8\*)'",
+#         'HOST': '34.135.53.189',
+#         'PORT': '5432',
+#         'TEST': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': join(BASE_DIR, 'test'),
+#         }
+#     },
+# }
 if 'test' in sys.argv:
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',

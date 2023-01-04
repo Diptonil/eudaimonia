@@ -7,10 +7,12 @@ WORKDIR /core
 
 RUN apt-get update \
     && apt-get -y install libpq-dev gcc \
-    && pip install psycopg2
+    && pip install psycopg2-binary \
+    && pip install psycopg2 
 
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
-CMD python manage.py runserver 0.0.0.0:80
+EXPOSE 8080
+CMD python manage.py runserver 0.0.0.0:8080
