@@ -166,11 +166,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'yourmomsjournal@gmail.com'
-EMAIL_HOST_PASSWORD = 'sylnklistqsmsztw'
+EMAIL_HOST_USER = 'diptonilr@gmail.com'
+EMAIL_HOST_PASSWORD = 'esanrubdukrphany'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'yourmomsjournal@gmail.com'
+DEFAULT_FROM_EMAIL = 'diptonilr@gmail.com'
 
 CLOUDINARY_STORAGE = {'CLOUD_NAME': "yourmomscloud", 'API_KEY': "471845542247137", 'API_SECRET': "Jgai2VdgvE1j0hrcnNlgAciPXkA"}
 MEDIA_URL = 'media/'
