@@ -75,11 +75,11 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
-PROJECT_DIR = Path(__file__)
+# PROJECT_DIR = Path(__file__)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': join(PROJECT_DIR, 'yourdatabasename.db'),
+        'NAME': 'mydatabase',
     }
 }
 # DATABASES = {
