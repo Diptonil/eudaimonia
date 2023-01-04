@@ -75,32 +75,22 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
-PROJECT_DIR = Path(__file__)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': join(PROJECT_DIR, 'yourdatabasename.db'),
-    }
-}
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'eudaimonia-372006:us-central1:eudaimonia-db',
-#         'USER': 'postgres',
-#         'PASSWORD': "ITA-H%p>=sN8\*)'",
-#         'HOST': '34.135.53.189',
-#         'PORT': '5432',
-#         'TEST': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': join(BASE_DIR, 'test'),
-#         }
-#     },
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'mydatabase',
+#     }
 # }
-if 'test' in sys.argv:
-    DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'test'
-    }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'eudaimonia',
+        'USER': 'postgres',
+        'PASSWORD': "ITA-H%p>=sN8\*)'",
+        'HOST': '34.135.53.189',
+        'PORT': '5432'
+    },
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
