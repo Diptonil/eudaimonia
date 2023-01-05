@@ -5,7 +5,7 @@ $(document).ready(function () {
         if (window.frames && window.frames.textField &&
             (iframeDoc = window.frames.textField.document)) {
             var iframeBody = iframeDoc.body;
-            var content = iframeBody.innerHTML;
+            var content = iframeBody.innerText;
         }
         $.ajax({
             type: "POST",

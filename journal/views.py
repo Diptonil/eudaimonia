@@ -32,6 +32,7 @@ def entry_page_view(request):
         title = str(request.POST.get('title'))
         content = str(request.POST.get('content'))
         # content.replace('&nbsp;', '')
+        content.replace( '/(<([^>]+)>)/ig', '');
         Entry.objects.create(user=request.user, entry=content, title=title).save()
         print(content)
         return HttpResponse(json.dumps(1), content_type='application/json')
@@ -43,8 +44,11 @@ def post_page_view(request, id):
     profile_model = Profile.objects.get(user=request.user)
     entry_model = Entry.objects.get(id=id)
     star = entry_model.starred
+    if request.POST.get('content') is not None and (request.method == 'POST'):
+        content = str(request.POST.get('content'))
+    # content.replace( '/(<([^>]+)>)/ig', '');
     # content = entry_model.entry[2:-1]
-    # entry_model.entry = content
+        entry_model.entry = content
     return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model})
 
 

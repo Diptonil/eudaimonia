@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "eudaimonia-372006",
+  "private_key_id": "413e2d2c48994e212dcd281484ff69be6d8ee033",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCJFacHR4usSYif\nzgzShOsgApLk7/H6BVQzDzQ9Ws4u70lh98xl+V8u2LSQKBkxHe1vKL4OWI3KsoS8\nTojMlREloQDgRTZH6YNgWcpCfTAeLxZApjevn6M/UNOqYlNmafq1t134bXtOvpdb\nmlFfgCxn9qvZGRUN5HDyo17CML2NWhJ8OIexRflop/HUU3OGBNLtHa4JM/y1Thx7\nJMoD5yV0UTXcnqXp2kpsa9066wKSI7Tr7cgM44SnTyZeWnvG/UwHermopMq1w0c4\nzCFj/RYLh3LwRjqw9ZcYdWoM9w6c8ccWo8DltdisyTZYihrsksvUAdeX28FSTDsu\nomaZn23vAgMBAAECggEACVNuRgoBgAqOn2SKrcW6IzbZnHaQbTRwmnql0Ki9Tycb\nRG1xu9w/s/WtLwNzV0qUbRQF/f7bQpdrfU4Qc26OuJMf9qHuw+yoceUZ4/UVUXBd\noK9OKYYAOp36kGRZDSYXlsYvP+fe1CgWLvasI4WaP8ZhwYa5znSklHU1zJs5QgTt\nsDuZBffKOT0TqSPAxznPqLHmuWIeRrnJ7eApOhApSeFcVM3S7ir5gERzI53swXNe\nNNBLJOaYbca1MZDnDxWxcIhU9FXzBYA+x8evcDa/afbNUy2MRDwR0mIxaFHZiOaT\nFGy0WzO486z6oa765SnNnI+bW/P2aWlKDMa3ChVgSQKBgQC93fo5VUn6uBZNX1bs\n/DuMhGsSoOWBCrKxp14KH0FXbwU8I6CDl/Dg98YJuIRzLGgCQshiCk9exgcP7UDE\nh8x5dyF+Wgc2IDeV3uHAU0U/MppkL9gDEZM8wS7TPntAu3X5o7L84L86/vXG8N4l\nY7UXf8490q0XpoYzU7ihMoW8OQKBgQC41S0m6LpEvRGiQz0C2a3HOhIKhkJjKGDe\nzZHrM9WHKfqD61b5wRukspOLNzx60e5cUluwpJItRAE01EGr/lnRX7MXnKcXYtvN\n1E4LhIU3szfqJgorO5JZ+GtvXAFWzzCHMpY6vMFSo5SowbKHbTUqY5PAnEDQlEcj\nYiz9bQxLZwKBgCsReTscH6XhsB1o7Pzg0lkziF43ZRf6Z0JpJqnBIT9GDbfwlO6E\nvr0pNyDpXBIMFqO8plum3w4ueVehh7mM3FMJNO3GWjBq6nDyl97ahLCrN95WA/fe\nOrnjUE3WtHqgi0hPW8CE8pvdTb8M0DdHAMMN2Kipa14cBgEKkqzuGuvxAoGAUnzQ\n6cxzVLoMZJ4dXGhJZeBErO2+MwKSON0FgjJf2TKi2rzs1AmajKYlsru0AhwuhIU8\n5liL5Ce1Yh5YMKoS654KDz+aUpWMAw/8xKcfzPvuuFDBuQmdBwoW6FvnPRa6UZwB\n77TNklPuxGGti0Lxtzk5d3xEcNG77c6ixXclRYECgYBfUzS9VKWwFgN3l+7wz9oP\nrPi2gh2BAui9u+Phs+SP6aoekRyQlIW9quFVFt/7upXvQD+NZuvdpkRN1IWP0gOJ\nAMQdKKrhnf6U+3BSjBZFQMZWrCh+PVyWUHEpzFn+nEdDNcBtHAF6oZw7yQzpbraj\ngeRURnJS73M+NzVEeLMgvQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "eudaimonia-nlp-api@eudaimonia-372006.iam.gserviceaccount.com",
+  "client_id": "102997228081972042825",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/eudaimonia-nlp-api%40eudaimonia-372006.iam.gserviceaccount.com"
+}

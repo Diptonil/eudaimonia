@@ -1,58 +1,54 @@
-{% extends 'base/base.html' %}
-{% block nav_home%}
-    class="active"
-{% endblock %}
-{% load static %}
+{% extends 'base/base.html' %} {% block nav_home%} class="active" {% endblock %}
+{% load static %} {% block title %} Eudaimonia | Your Journal {% endblock %} {%
+block body %}
 
-{% block title %}
-Eudaimonia | Your Journal
-{% endblock %}
-
-{% block body %}
-
-<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+<link rel="stylesheet" href="{% static 'journal/journal.css' %}" />
 <body class="journal-body">
-    <img id="pen" src="{% static 'images/pen.png' %}" alt="">
-    <div class="theBook">
-        
-        <div class="bookmark1">
-            <a href="{% url 'all_entries' %}"><i class="ri ri-database-line"></i>all entries  </a>
-            
-        </div>
-        <div class="bookmark2">
-            
-            <a href="{% url 'star_entries' star='star' %}"><i class="ri ri-star-line"></i>starred entries  </a>
-        </div>
-        <div id="journal" onclick="location.href='{% url 'entry' %}'">
-            <div id="jname">{{ user.username }}'s  journal</div>
-        </div>
-    </div>
-        <div  class="stickynote1">
-                    <p>{{ quotes }}</p>
-                </div>
-        <div class="stickynote2">
-                    <h2>Welcome to Journaling!</h2>
-                    <p>Here you can record your experiences and events as and when you feel like it. The process is therapeutic and 
-                        would relieve you of stress by offering you a private space to vent over your feelings or make logs so that
-                        you may manage to stay productive as much as you can.</p>
-                </div>
+	<img id="pen" src="{% static 'images/pen.png' %}" alt="" />
+	<div class="theBook">
+		<div class="bookmark1">
+			<a href="{% url 'all_entries' %}"
+				><i class="ri ri-database-line"></i>all entries
+			</a>
+		</div>
+		<div class="bookmark2">
+			<a href="{% url 'star_entries' star='star' %}"
+				><i class="ri ri-star-line"></i>starred entries
+			</a>
+		</div>
+		<div id="journal" onclick="location.href='{% url \'entry\' %}'">
+			<div id="jname">{{ user.username }}'s journal</div>
+		</div>
+	</div>
+	<div class="stickynote1">
+		<p>{{ quotes }}</p>
+	</div>
+	<div class="stickynote2">
+		<h2>Welcome to Journaling!</h2>
+		<p>
+			Here you can record your experiences and events as and when you feel like
+			it. The process is therapeutic and would relieve you of stress by offering
+			you a private space to vent over your feelings or make logs so that you
+			may manage to stay productive as much as you can.
+		</p>
+	</div>
 
+	<script>
+		window.onload = function () {
+			Particles.init({
+				selector: ".background",
+			});
+		};
 
-    <script>
+		function openBookmark() {
+			document.getElementById("mySidebar").style.width = "320px";
+			document.getElementById("sidebar-active").style.display = "block";
+		}
 
-window.onload= function() {Particles.init({
-    selector: '.background'});
-};
-
-        function openBookmark() {
-            document.getElementById("mySidebar").style.width = "320px";
-            document.getElementById("sidebar-active").style.display = "block";
-        }
-
-        function closeBookmark() {
-            document.getElementById("mySidebar").style.width = "0";
-            document.getElementById("sidebar-active").style.display = "none";
-        }
-    </script>
+		function closeBookmark() {
+			document.getElementById("mySidebar").style.width = "0";
+			document.getElementById("sidebar-active").style.display = "none";
+		}
+	</script>
 </body>
 {% endblock %}

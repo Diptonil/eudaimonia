@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'authentication',
     'journal',
     'dashboard',
-    'analysis'
+    'analysis',
+    'APIApp'
 ]
 
 MIDDLEWARE = [
