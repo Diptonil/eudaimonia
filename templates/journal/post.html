@@ -1,99 +1,47 @@
-{% extends 'base/base.html' %}
-{% load static %}
-
-{% block title %}
-Eudaimonia | {{ entry.title }}
-{% endblock %}
-
-{% block body %}
-<link rel="stylesheet" href="{% static 'journal/journal.css' %}">
+{% extends 'base/base.html' %} {% load static %} {% block title %} Eudaimonia |
+{{ entry.title }} {% endblock %} {% block body %}
+<link rel="stylesheet" href="{% static 'journal/journal.css' %}" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 <body>
+	<div class="post-options">
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<input id="export" type="submit" value="Export as pdf" />
+		</form>
+		<a href="{% url 'disable' id=entry.id %}">Delete Entry</a>
+		{% if star %}
+		<a href="{% url 'star' id=entry.id %}">Unighlight Entry</a>
+		{% else %}
+		<a href="{% url 'star' id=entry.id %}">Highlight Entry</a>
+		{% endif %}
+	</div>
+	<div id="post">
+		<div></div>
 
-    <div class="post-options">
-        <form method="post" enctype='multipart/form-data'>
-            {% csrf_token %}
-            <input id="export" type="submit" value="Export as pdf" />
-        </form>
-        <a href="{% url 'disable' id=entry.id %}">Delete Entry</a>
-        {% if star %}
-        <a href="{% url 'star' id=entry.id %}">Unighlight Entry</a>
-        {% else %}
-        <a href="{% url 'star' id=entry.id %}">Highlight Entry</a>
-        {% endif %}
-    </div>
-    <div id="post">
+		<div class="post">
+			<div id="eName">{{ entry.title }}</div>
 
-        <div>
+			<h6>{{ entry.date }}</h6>
+			<div class="card">
+				<div id="entry">{{ entry.entry|safe }}</div>
+			</div>
+		</div>
+	</div>
 
-        </div>
+	<canvas id="myChart" style="width: 100%; max-width: 800px"></canvas>
+	<div class="rec-container">
+		<div class="rec">Movie Recommendations</div>
+		{% for el in model %}
+		<div class="movie-rec">{{ el }}</div>
+		{% endfor %}
+	</div>
 
-        <div class="post">
-            <div id="eName">{{ entry.title }}
-            </div>
-
-            <h6>{{ entry.date }}</h6>
-            <div class="card">
-                <div id="entry">
-                    {{ entry.entry|safe }}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
-        <div class="rec-container">
-            <div class="rec">Movie Recommendations</div>
-            {% for el in model %}
-            <div class="movie-rec">
-                {{ el }}
-            </div>
-            {% endfor %}
-        </div>
-
-    <div class="rec-container">
-        <div class="rec">Music Recommendations</div>
-        {% for el in music_model %}
-        <div class="movie-rec">
-            {{ el }}
-        </div>
-        {% endfor %}
-    </div>
-
-    <script>
-        var xValues = ["Happy", "Angry", "Sad", "Surprise", "Fear"];
-            var yValues = [{{ emotion_data.Happy }}, {{ emotion_data.Angry }}, {{ emotion_data.Sad }}, {{ emotion_data.Surprise }},
-            {{ emotion_data.Fear }}];
-            var barColors = [
-            "#1572A1",
-            "#9AD0EC",
-            "#EFDAD7",
-            "#E3BEC6",
-            "#FFDFD3",
-            "#FEC8D8",
-            "#D291BC",
-            "#957DAD",
-            "#046582",
-            "#709FB0"
-        ];
-
-        new Chart("myChart", {
-            type: "pie",
-            data: {
-                labels: xValues,
-                datasets: [{
-                    backgroundColor: barColors,
-                    data: yValues
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: "Overall Mood Analysis"
-                }
-            }
-        });
-    </script>
+	<div class="rec-container">
+		<div class="rec">Music Recommendations</div>
+		{% for el in music_model %}
+		<div class="movie-rec">{{ el }}</div>
+		{% endfor %}
+	</div>
 </body>
 {% endblock %}
