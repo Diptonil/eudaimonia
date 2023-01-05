@@ -11,7 +11,6 @@ from django.conf import settings
 
 import constants
 from authentication.models import Profile
-from journal.encryption import encrypt, decrypt
 from journal.forms import EntrySearchForm
 from journal.models import Entry, Zen
 from analysis.models import EmotionsStat, Incentive
@@ -33,12 +32,8 @@ def entry_page_view(request):
         title = str(request.POST.get('title'))
         content = str(request.POST.get('content'))
         # content.replace('&nbsp;', '')
-        # encryption_key = get_user_model().objects.get(username=request.user.username).password[53:69]
-        # encryption_key = hashlib.sha256(encryption_key.encode()).digest()
-        # content = encrypt(content, encryption_key)
         Entry.objects.create(user=request.user, entry=content, title=title).save()
         print(content)
-        # print(decrypt(content, encryption_key))
         return HttpResponse(json.dumps(1), content_type='application/json')
     return render(request, 'journal/entry.html', {'profile': profile_model})
 
@@ -49,31 +44,7 @@ def post_page_view(request, id):
     entry_model = Entry.objects.get(id=id)
     star = entry_model.starred
     # content = entry_model.entry[2:-1]
-    # encryption_key = get_user_model().objects.get(username=request.user.username).password[53:69]
-    # encryption_key = hashlib.sha256(encryption_key.encode()).digest()
-    # content = decrypt(content, encryption_key)
     # entry_model.entry = content
-    # emotion_data = dict()
-    # headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
-    # request0 = requests.post('http://127.0.0.1:7000/api/v1/get_mood/', json={'CORPUS': content}, headers=headers).json()
-    # emotion = 'Happy' if request0['Happy'] > request0['Sad'] else 'Sad'
-    # print(emotion)
-    # model_favourite_movie_genres = [obj[0] for obj in profile_model.fav_movie_genres.values_list('field')]
-    # model_unfavourite_movie_genres = [obj[0] for obj in profile_model.unfav_movie_genres.values_list('field')]
-    # model_favourite_music_genres = [obj[0] for obj in profile_model.fav_music_genres.values_list('field')]
-    # model_unfavourite_music_genres = [obj[0] for obj in profile_model.unfav_music_genres.values_list('field')]
-    # favourites = ['No Country for Old Men', 'The Dark Knight']
-    # json_data = {'LIKED_MOVIE_GENRES': model_favourite_movie_genres, 'DISLIKED_MOVIE_GENRES': model_unfavourite_movie_genres, 'FAVOURITE_MOVIES': favourites, 'CORPUS': emotion}
-    # model_movie = requests.post('http://127.0.0.1:7000/api/v1/get_movie/', json=json_data, headers=headers)
-    # emotion_data['Happy'] = request0.get('Happy', 0)
-    # emotion_data['Angry'] = request0.get("Angry", 0)
-    # emotion_data['Sad'] = request0.get("Sad", 0)
-    # emotion_data['Surprise'] = request0.get("Surprise", 0)
-    # emotion_data['Fear'] = request0.get("Fear", 0)
-    # if request.method == 'POST':
-    #     from bs4 import BeautifulSoup
-    #     soup = BeautifulSoup(content, features='html5lib')
-    #     return redirect('pdf', text=soup.get_text().replace('\t', ' ').replace('\n', ''), filename='{0}.pdf'.format(entry_model.title))
     return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model})
 
 

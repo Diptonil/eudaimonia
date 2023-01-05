@@ -14,28 +14,6 @@ from analysis.models import RegularityStat, Incentive
 def dashboard_page_view(request):
     recent_regularity = RegularityStat.objects.filter(user=request.user)
     incentive_model = Incentive.objects.get(user=request.user)
-    # Streak break logic
-    if len(recent_regularity) != 0:
-        if recent_regularity.first().date != datetime.date.today():
-            RegularityStat.objects.create(user=request.user, streak=recent_regularity.first().streak + 1, date=datetime.date.today())
-        streak = recent_regularity.first().streak
-        if streak > 2 and streak < 7:
-            incentive_model.logger1 = True
-            incentive_model.save()
-        elif streak > 6 and streak < 14:
-            incentive_model.logger2 = True
-            incentive_model.save()
-        elif streak > 13 and streak < 30:
-            incentive_model.logger3 = True
-            incentive_model.save()
-        elif streak > 29 and streak < 90:
-            incentive_model.logger4 = True
-            incentive_model.save()
-        elif streak == 91:
-            incentive_model.logger5 = True
-            incentive_model.save()
-    else:
-        RegularityStat.objects.create(user=request.user, streak=1, date=datetime.date.today())
     entry_search_form = EntrySearchForm()
     post_model = Post.objects.all()
     post_model_self = Post.objects.filter(user=request.user).count()
