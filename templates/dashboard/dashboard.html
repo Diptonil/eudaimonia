@@ -42,14 +42,13 @@ Eudaimonia | Your Dashboard
             <div onclick="passitem(this)" class="infinite-item">
                 <!-- <img class="binding" src="{% static 'images/bindings.png' %}" alt=""> -->
                 <h2 class="post-title">{{ post.title }}</h2>
-                <h5  >{{ post.date }}</h5>
+                <h5 >{{ post.date }}</h5>
                 <p class="post-content">{{ post.post}}</p>
                 <div class="bottom-padding"></div>
             </div>
             {% endfor %}
         </div>
 
-        <p class="loading">Loading...</p>
         <div class="column">
             {% if page_obj.has_next %}
             <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
@@ -102,8 +101,8 @@ Eudaimonia | Your Dashboard
     </div>
 
     <script src="/static/infinite scroll js/jquery.waypoints.min.js"></script>
-    <script src="/static/infinite scroll js/infinite.min.js"></script>
-    <script>
+    <!-- <script src="/static/infinite scroll js/infinite.min.js"></script> -->
+    <!-- <script>
         var infinite = new Waypoint.Infinite({
             element: $('.infinite-container')[0],
             offset: 'bottom-in-view',
@@ -125,6 +124,6 @@ Eudaimonia | Your Dashboard
             document.querySelector(".contentPost").innerHTML = content;
             document.querySelector("#liszt").innerHTML = "";
         }
-    </script>
+    </script> -->
 </body>
 {% endblock %}

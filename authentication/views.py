@@ -61,28 +61,24 @@ def login_page_view(request):
     return render(request, 'authentication/login.html', {'form': login_form})
 
 
+def signup_page_view(request):
+    signup_form = SignupForm()
+    if request.method == 'POST':
+        signup_form = SignupForm(request.POST)
+        if signup_form.is_valid():
+            user = signup_form.save(commit=False)
+            user.is_active = True
+            user.save()
+            login(request, user)
+            return redirect('journal')
+        else:
+            print(signup_form.errors)
+            logger.warning('Signup unsuccesful.')
+    return render(request, 'authentication/signup.html', {'form': signup_form})
+
+
 def services_page_view(requests):
     return render(requests, 'extras/services.html')
-
-
-def activate_view(request, uidb64, token):
-    try:
-        uid = force_str(urlsafe_base64_decode(uidb64))
-        user = get_user_model().objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, get_user_model().DoesNotExist):
-        user = None
-        logger.warning('New user account not activated.')
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.profile.email_confirmed = True
-        user.save()
-        login(request, user)
-        email_message = render_to_string('emails/account_activated_email.txt')
-        email = EmailMessage("Welcome to Eudaimonia!", email_message, settings.DEFAULT_FROM_EMAIL, [user.email])
-        email.send(fail_silently=False)
-        return redirect('journal')
-    else:
-        return render(request, 'authentication/account_activation_invalid.html')
 
 
 def account_activation_sent_page_view(request):

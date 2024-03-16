@@ -17,5 +17,4 @@ urlpatterns = [
     path("password_reset/", view=views.password_reset_page_view, name="password_reset"),
     path('password_change/', view=views.password_change_page_view, name='password_change'),
     path('account_activation_sent/', view=views.account_activation_sent_page_view, name='account_activation_sent'),
-    path('activate/<slug:uidb64>/<slug:token>/', view=views.activate_view, name='activate'),
 ]
