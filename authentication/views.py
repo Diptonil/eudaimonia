@@ -61,30 +61,6 @@ def login_page_view(request):
     return render(request, 'authentication/login.html', {'form': login_form})
 
 
-def signup_page_view(request):
-    signup_form = SignupForm()
-    if request.method == 'POST':
-        signup_form = SignupForm(request.POST)
-        if signup_form.is_valid():
-            user = signup_form.save(commit=False)
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            email_message = render_to_string('emails/account-activation-email.txt', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-            })
-            email = EmailMessage("Activate your Eudaimonia Account", email_message, settings.DEFAULT_FROM_EMAIL, [signup_form.cleaned_data['email']])
-            email.send(fail_silently=False)
-            messages.success(request, 'An activation link has been sent to your email. Be sure to check your spam folder as well.')
-        else:
-            print(signup_form.errors)
-            logger.warning('Signup unsuccesful.')
-    return render(request, 'authentication/signup.html', {'form': signup_form})
-
-
 def services_page_view(requests):
     return render(requests, 'extras/services.html')
 

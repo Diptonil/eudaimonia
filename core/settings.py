@@ -2,8 +2,6 @@ from pathlib import Path
 from os.path import join
 import sys
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,23 +75,10 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd4pdipj7apirmf',
-        'USER': 'eoqukyipvzzsdl',
-        'PASSWORD': '32d9e1a6dcb5f79de70b7bff76107401d8b8abec1d503945c4a84bf77d9ea570',
-        'HOST': 'ec2-52-208-221-89.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-        'TEST': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': join(BASE_DIR, 'test'),
-        }
-    },
-}
-if 'test' in sys.argv:
-    DATABASES['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'test'
+        'NAME': 'test.sqlite'
     }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -119,40 +104,6 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
-
-LOGGERS = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'main_formatter': {
-            'format': '{asctime} - {levelname} - {module} - {message}',
-            'style': '{'
-        }
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'format': 'main_formatter'
-        },
-        'file': {
-            'class': 'logging.FileHandler',
-            'filename': 'dev.log',
-            'format': 'main_formatter'
-        }
-    },
-    'loggers': {
-        'main': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True
-        },
-        'main': {
-            'handlers': ['console'],
-            'level': 'WARNING',
-            'propagate': True
-        }
-    },
-}
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
@@ -184,12 +135,3 @@ CELERY_RESULT_BACKEND = 'amqps://vomcxylc:L9uD-DWsO9vwcMqyF7b3CfvqD1F1cudz@puffi
 
 RECATCHA_PUBLIC_KEY = '6Lde9vYeAAAAAAqkzxT95WxssHcD_fHb16Jc_EbC'
 RECAPTCHA_PRIVATE_KEY = '6Lde9vYeAAAAAK6WbLJOym1TazSq24xej5DZwc9f'
-
-'''
-sentry_sdk.init(
-    dsn="https://d7756c60fa4245ac8057a723bb810f7d@o1249277.ingest.sentry.io/6410159",
-    integrations=[DjangoIntegration()],
-    traces_sample_rate=1.0,
-    send_default_pii=True
-)
-'''
