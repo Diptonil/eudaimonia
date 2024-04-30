@@ -123,21 +123,10 @@ def incentives_page_view(request):
 
 
 def suggestions_page_view(request):
-    client_id = "e44153c1ff784cdba2fc350901f0e541"
-    client_secret = "86bbb41614534aebb81180548c25f02f"
-    client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
-    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager) 
-    headers = {'Authorization': 'Api-Key %s' % 'WNTDnKHs.bd9VaRno8zsc2S6r4l4owTFgLBnijakI'}
-    
     profile_model = Profile.objects.get(user=request.user)
     hobby = [obj[0] for obj in Profile.objects.get(user=request.user).hobby.values_list('field')]
-    model_favourite_movie_genres = [obj[0] for obj in profile_model.fav_movie_genres.values_list('field')]
-    model_unfavourite_movie_genres = [obj[0] for obj in profile_model.unfav_movie_genres.values_list('field')]
-    favourites = profile_model.fav_movie
     emotion = EmotionsStat.objects.filter(user=request.user).first().emotion
-    json_data = {'LIKED_MOVIE_GENRES': model_favourite_movie_genres, 'DISLIKED_MOVIE_GENRES': model_unfavourite_movie_genres, 'FAVOURITE_MOVIES': favourites, 'MOOD': emotion}
     generalized_suggestions1, generalized_suggestions2, generalized_suggestions3, generalized_suggestions4 = [], [], [], []
-    response = requests.post('http://127.0.0.1:7000/api/v1/get_movie/', json=json_data, headers=headers).json()
     failure = False
     if (not profile_model.personality) or profile_model.personality == '':
         failure = True
