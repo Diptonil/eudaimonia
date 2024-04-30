@@ -25,10 +25,6 @@ Eudaimonia | {{ entry.title }}
     </div>
     <div id="post">
 
-        <div>
-
-        </div>
-
         <div class="post">
             <div id="eName">{{ entry.title }}
             </div>
@@ -45,20 +41,15 @@ Eudaimonia | {{ entry.title }}
     <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
         <div class="rec-container">
             <div class="rec">Movie Recommendations</div>
-            {% for el in model %}
-            <div class="movie-rec">
-                {{ el }}
-            </div>
+            {% for film in response.films %}
+                <div class="film"> {{ film }} </div>
+                <br />
             {% endfor %}
         </div>
 
     <div class="rec-container">
         <div class="rec">Music Recommendations</div>
-        {% for el in music_model %}
-        <div class="movie-rec">
-            {{ el }}
-        </div>
-        {% endfor %}
+        <p>Today's music recommendation is {{ track }} by {{ artist }}.</p>
     </div>
 
     <script>

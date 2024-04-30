@@ -233,8 +233,86 @@ def suggestions_page_view(request):
             generalized_suggestions4.append('Give more chances to the things you\'ve been avoiding to deal with.')
             generalized_suggestions4.append('Experience more things to deepen your perception and understanding of things.')
     final_result = [generalized_suggestions1[random.randint(0, 2)], generalized_suggestions2[random.randint(0, 2)], generalized_suggestions3[random.randint(0, 2)], generalized_suggestions4[random.randint(0, 2)]]
+    songs_list = [
+        {"artist": "Michael Jackson", "song": "Billie Jean"},
+        {"artist": "Madonna", "song": "Like a Prayer"},
+        {"artist": "Prince", "song": "Purple Rain"},
+        {"artist": "Whitney Houston", "song": "I Wanna Dance with Somebody"},
+        {"artist": "U2", "song": "With or Without You"},
+        {"artist": "Guns N' Roses", "song": "Sweet Child O' Mine"},
+        {"artist": "Bon Jovi", "song": "Livin' on a Prayer"},
+        {"artist": "Cyndi Lauper", "song": "Girls Just Want to Have Fun"},
+        {"artist": "The Police", "song": "Every Breath You Take"},
+        {"artist": "George Michael", "song": "Careless Whisper"},
+        {"artist": "Tears for Fears", "song": "Everybody Wants to Rule the World"},
+        {"artist": "David Bowie", "song": "Let's Dance"},
+        {"artist": "Billy Idol", "song": "White Wedding"},
+        {"artist": "Queen", "song": "Another One Bites the Dust"},
+        {"artist": "Depeche Mode", "song": "Enjoy the Silence"},
+        {"artist": "The Cure", "song": "Just Like Heaven"},
+        {"artist": "Cyndi Lauper", "song": "Time After Time"},
+        {"artist": "Pet Shop Boys", "song": "West End Girls"},
+        {"artist": "Duran Duran", "song": "Hungry Like the Wolf"},
+        {"artist": "Van Halen", "song": "Jump"}
+    ]
+    random_entry = random.choice(songs_list)
+    artist = random_entry["artist"]
+    track = random_entry["song"]
 
-    model_favourite_music_genres = [obj[0] for obj in profile_model.fav_music_genres.values_list('field')]
-    track = sp.search(q='genre:' + model_favourite_music_genres[0], type='track', market='GB', limit=1, offset=0)['tracks']['items'][0]['name']
-    artist = sp.search(q='genre:' + model_favourite_music_genres[0], type='track', market='GB', limit=1, offset=0)['tracks']['items'][0]['artists'][0]['name']
+    films = [
+        "The Shawshank Redemption",
+        "Forrest Gump",
+        "Titanic",
+        "Schindler's List",
+        "The Godfather",
+        "The Green Mile",
+        "The Pursuit of Happyness",
+        "A Beautiful Mind",
+        "Dallas Buyers Club",
+        "12 Years a Slave",
+        "Die Hard",
+        "Terminator 2: Judgment Day",
+        "Mad Max: Fury Road",
+        "Raiders of the Lost Ark",
+        "The Dark Knight",
+        "Gladiator",
+        "Braveheart",
+        "Jurassic Park",
+        "The Matrix",
+        "Inception",
+        "The Hangover",
+        "Superbad",
+        "Bridesmaids",
+        "Anchorman: The Legend of Ron Burgundy",
+        "Mean Girls",
+        "Dumb and Dumber",
+        "Shaun of the Dead",
+        "Ferris Bueller's Day Off",
+        "Groundhog Day",
+        "Airplane!",
+        "Star Wars: Episode IV - A New Hope",
+        "Blade Runner",
+        "E.T. the Extra-Terrestrial",
+        "The Lord of the Rings: The Fellowship of the Ring",
+        "Back to the Future",
+        "Avatar",
+        "The Terminator",
+        "Interstellar",
+        "The Matrix",
+        "Alien",
+        "The Silence of the Lambs",
+        "Psycho",
+        "The Shining",
+        "Get Out",
+        "Pulp Fiction",
+        "Goodfellas",
+        "Inglourious Basterds",
+        "The Departed",
+        "Casablanca",
+        "Jaws",
+        "Rocky"
+    ]
+    random_films = random.sample(films, 2)
+    response = {"films": random_films}
+
     return render(request, 'analysis/suggestions.html', {'profile_model': profile_model.personality, 'track': track, 'artist': artist, 'failure': failure, 'hobby': hobby, 'final_result': final_result, 'response': response})

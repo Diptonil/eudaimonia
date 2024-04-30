@@ -3,7 +3,7 @@ import json
 import random
 
 import requests
-from django.http import FileResponse, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -80,11 +80,92 @@ def post_page_view(request, id):
     emotion_data['Sad'] = request0.get("Sad", 0)
     emotion_data['Surprise'] = request0.get("Surprise", 0)
     emotion_data['Fear'] = request0.get("Fear", 0)
+
+    songs_list = [
+        {"artist": "Michael Jackson", "song": "Billie Jean"},
+        {"artist": "Madonna", "song": "Like a Prayer"},
+        {"artist": "Prince", "song": "Purple Rain"},
+        {"artist": "Whitney Houston", "song": "I Wanna Dance with Somebody"},
+        {"artist": "U2", "song": "With or Without You"},
+        {"artist": "Guns N' Roses", "song": "Sweet Child O' Mine"},
+        {"artist": "Bon Jovi", "song": "Livin' on a Prayer"},
+        {"artist": "Cyndi Lauper", "song": "Girls Just Want to Have Fun"},
+        {"artist": "The Police", "song": "Every Breath You Take"},
+        {"artist": "George Michael", "song": "Careless Whisper"},
+        {"artist": "Tears for Fears", "song": "Everybody Wants to Rule the World"},
+        {"artist": "David Bowie", "song": "Let's Dance"},
+        {"artist": "Billy Idol", "song": "White Wedding"},
+        {"artist": "Queen", "song": "Another One Bites the Dust"},
+        {"artist": "Depeche Mode", "song": "Enjoy the Silence"},
+        {"artist": "The Cure", "song": "Just Like Heaven"},
+        {"artist": "Cyndi Lauper", "song": "Time After Time"},
+        {"artist": "Pet Shop Boys", "song": "West End Girls"},
+        {"artist": "Duran Duran", "song": "Hungry Like the Wolf"},
+        {"artist": "Van Halen", "song": "Jump"}
+    ]
+    random_entry = random.choice(songs_list)
+    artist = random_entry["artist"]
+    track = random_entry["song"]
+    films = [
+        "The Shawshank Redemption",
+        "Forrest Gump",
+        "Titanic",
+        "Schindler's List",
+        "The Godfather",
+        "The Green Mile",
+        "The Pursuit of Happyness",
+        "A Beautiful Mind",
+        "Dallas Buyers Club",
+        "12 Years a Slave",
+        "Die Hard",
+        "Terminator 2: Judgment Day",
+        "Mad Max: Fury Road",
+        "Raiders of the Lost Ark",
+        "The Dark Knight",
+        "Gladiator",
+        "Braveheart",
+        "Jurassic Park",
+        "The Matrix",
+        "Inception",
+        "The Hangover",
+        "Superbad",
+        "Bridesmaids",
+        "Anchorman: The Legend of Ron Burgundy",
+        "Mean Girls",
+        "Dumb and Dumber",
+        "Shaun of the Dead",
+        "Ferris Bueller's Day Off",
+        "Groundhog Day",
+        "Airplane!",
+        "Star Wars: Episode IV - A New Hope",
+        "Blade Runner",
+        "E.T. the Extra-Terrestrial",
+        "The Lord of the Rings: The Fellowship of the Ring",
+        "Back to the Future",
+        "Avatar",
+        "The Terminator",
+        "Interstellar",
+        "The Matrix",
+        "Alien",
+        "The Silence of the Lambs",
+        "Psycho",
+        "The Shining",
+        "Get Out",
+        "Pulp Fiction",
+        "Goodfellas",
+        "Inglourious Basterds",
+        "The Departed",
+        "Casablanca",
+        "Jaws",
+        "Rocky"
+    ]
+    random_films = random.sample(films, 2)
+    response = {"films": random_films}
     if request.method == 'POST':
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(content, features='html5lib')
         return redirect('pdf', text=soup.get_text().replace('\t', ' ').replace('\n', ''), filename='{0}.pdf'.format(entry_model.title))
-    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data, 'model_movie': model_movie})
+    return render(request, 'journal/post.html', {'entry': entry_model, 'star': star, 'profile': profile_model, 'emotion_data': emotion_data, 'model_movie': model_movie, 'track': track, 'artist': artist, 'response': response})
 
 
 @login_required
